@@ -18,3 +18,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.bg-blue-primary {
+  background-color: #003876;
+}
