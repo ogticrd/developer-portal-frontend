@@ -1,18 +1,27 @@
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
+import { Fragment } from 'react';
 import { MenuItemModel } from '../models/menu-item.model';
+import { en } from '../public/locales/en';
+import { es } from '../public/locales/es';
+import LanguageToggle from './language-toggle.component';
 
 export default function HeaderComponent() {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === 'en' ? en : es;
+
   const menuItems: MenuItemModel[] = [
     {
-      label: 'APIs',
+      label: t.header.menu.apis,
       path: '/apis',
     },
     {
-      label: 'Documentation',
+      label: t.header.menu.documentation,
       path: '/docs',
     },
     {
-      label: 'Github',
+      label: t.header.menu.github,
       path: 'https://github.com/opticrd/',
       external: true,
     },
@@ -34,6 +43,9 @@ export default function HeaderComponent() {
               </li>
             );
           })}
+          <li>
+            <LanguageToggle />
+          </li>
         </ul>
       </nav>
     </div>
