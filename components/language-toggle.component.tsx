@@ -2,7 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import { useEffect, useRef, useState } from 'react';
 
 export default function LanguageToggle() {
-  const [isOpen, setOpen] = useState<boolean>(true);
+  const [isOpen, setOpen] = useState<boolean>(false);
 
   const router = useRouter();
   const { locale } = router;
