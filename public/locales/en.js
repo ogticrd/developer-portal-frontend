@@ -1,6 +1,6 @@
 export const en = {
   app: {
-    displayName: 'Developer Portal'
+    displayName: 'Developer Portal',
   },
   header: {
     menu: {
@@ -25,6 +25,6 @@ export const en = {
     title: 'APIs Catalog',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quam fugiat amet aliquid debitis enim repellendus laborum quae, consequatur id!',
-      
+    notResults: 'No results found',
   },
 };

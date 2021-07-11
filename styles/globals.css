@@ -38,15 +38,34 @@ a {
   height: 100%;
   width: 100%;
   background-color: #95c7ff;
-  animation:  page-loading-animation 3s infinite;
+  animation: page-loading-animation 3s infinite;
 }
 
-
 @keyframes page-loading-animation {
-  from{
+  from {
     transform: translateX(-100%);
   }
-  to{
+  to {
     transform: translateX(100%);
+  }
+}
+
+.custom-spinner {
+  height: 32px;
+  width: 32px;
+  border: 3px solid #979797;
+  margin: auto;
+  border-radius: 50%;
+  border-left: 3px solid transparent;
+  animation: spinner-spin 0.5s infinite linear;
+}
+
+@keyframes spinner-spin {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
   }
 }
