@@ -8,7 +8,8 @@ export default function ApiDetailsHeader(props: any) {
 
   const defaultImageSrc = '/images/no-image-available.svg.png';
   const [imageUrl, setImageUrl] = useState<string>(data._links.picture);
-  const onImageError = () => {
+  const onImageError = (e: any) => {
+    e.preventDefault();
     if (imageUrl != defaultImageSrc) {
       setImageUrl(defaultImageSrc);
     }
@@ -17,13 +18,15 @@ export default function ApiDetailsHeader(props: any) {
   return (
     <section className="flex bg-white shadow-md p-4">
       <div className="w-56">
-        {<Image
-          src={imageUrl}
-          width="100%"
-          height="100%"
-          alt={`${data.name} image`}
-          onError={onImageError}
-        />}
+        {
+          <Image
+            src={imageUrl}
+            width="100%"
+            height="100%"
+            alt={`${data.name} image`}
+            onError={onImageError}
+          />
+        }
       </div>
       <div>
         <h1 className="text-2xl">{data.name}</h1>

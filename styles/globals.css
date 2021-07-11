@@ -26,3 +26,27 @@ a {
 .bg-blue-primary-light {
   background-color: #5fa7f9;
 }
+
+.page-loading {
+  height: 4px;
+  width: 100%;
+  background-color: blue;
+  position: fixed;
+}
+
+.page-loading > div {
+  height: 100%;
+  width: 100%;
+  background-color: #95c7ff;
+  animation:  page-loading-animation 3s infinite;
+}
+
+
+@keyframes page-loading-animation {
+  from{
+    transform: translateX(-100%);
+  }
+  to{
+    transform: translateX(100%);
+  }
+}
