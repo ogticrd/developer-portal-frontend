@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import HeroComponent from '../components/home/hero.component';
+import PopularApisComponent from '../components/popular-apis.component';
+import { getPopularApis } from '../services/apis.service';
 
-export default function Home() {
+export default function Home({ pupularApis }: any) {
   return (
     <div>
       <Head>
@@ -11,7 +13,18 @@ export default function Home() {
       </Head>
       <main>
         <HeroComponent />
+        <PopularApisComponent pupularApis={pupularApis} />
       </main>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const data = await getPopularApis();
+
+  return {
+    props: {
+      pupularApis: data,
+    },
+  };
 }
