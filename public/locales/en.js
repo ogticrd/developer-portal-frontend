@@ -1,4 +1,7 @@
 export const en = {
+  app: {
+    displayName: 'Developer Portal'
+  },
   header: {
     menu: {
       apis: 'APIs',

@@ -6,13 +6,17 @@ import { LanguageContext } from '../../context/language.context';
 import { useContext, useState } from 'react';
 import SearchApiComponent from '../../components/apis/search-api.component';
 import SearchLoadingComponent from '../../components/apis/search-loading.component';
+import Head from 'next/head';
 
 export default function index({ data }: any) {
   const { t } = useContext<any>(LanguageContext);
   const [apis, setApis] = useState<SummaryAPI[]>(data);
   const [searching, setSearching] = useState<boolean>(false);
   return (
-    <div className="">
+    <div>
+      <Head>
+        <title>{t.app.displayName} - {t.apiCatalog.title}</title>
+      </Head>
       <section className="container m-auto text-center py-8">
         <h2 className="text-2xl">{t.apiCatalog.title}</h2>
         <p className="text-lg font-light mx-auto lg:w-2/3 md:w-full my-10">
