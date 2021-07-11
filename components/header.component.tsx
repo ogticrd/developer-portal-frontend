@@ -1,15 +1,12 @@
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+import { LanguageContext } from '../context/language.context';
 import { MenuItemModel } from '../models/menu-item.model';
-import { en } from '../public/locales/en';
-import { es } from '../public/locales/es';
 import LanguageToggle from './language-toggle.component';
 
 export default function HeaderComponent() {
-  const router = useRouter();
-  const { locale } = router;
-  const t = locale === 'en' ? en : es;
+  const { t } = useContext<any>(LanguageContext);
 
   const menuItems: MenuItemModel[] = [
     {

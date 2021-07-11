@@ -1,14 +1,10 @@
-import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { en } from '../../public/locales/en';
-import { es } from '../../public/locales/es';
+import { useContext } from 'react';
+import { LanguageContext } from '../../context/language.context';
 
 export default function HeroComponent() {
-  const router = useRouter();
-  const { locale } = router;
-  const t = locale === 'en' ? en : es;
-
+  const { t } = useContext<any>(LanguageContext);
   return (
     <section className="bg-blue-primary-light flex justify-between items-center px-6 py-12">
       <Image

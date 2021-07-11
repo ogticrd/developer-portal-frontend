@@ -1,14 +1,7 @@
-import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import HeroComponent from '../components/home/hero.component';
-import { en } from '../public/locales/en.js';
-import { es } from '../public/locales/es';
 
 export default function Home() {
-  const router = useRouter();
-  const { locale } = router;
-  const t = locale === 'en' ? en : es;
-
   return (
     <div>
       <Head>
