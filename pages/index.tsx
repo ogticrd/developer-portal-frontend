@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import HeroComponent from '../components/home/hero.component';
-import PopularApisComponent from '../components/popular-apis.component';
+import PopularApisComponent from '../components/summary-apis.component';
 import { getPopularApis } from '../services/apis.service';
 
 export default function Home({ pupularApis }: any) {

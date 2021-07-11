@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { LanguageContext } from '../context/language.context';
-import { PopularAPI } from '../models/pupular-api';
+import { SummaryAPI } from '../models/popular-api';
 import CardApiComponent from './card-api.component';
 
 export default function PopularApisComponent(props: any) {
-  const apis: PopularAPI[] = props.pupularApis;
+  const apis: SummaryAPI[] = props.pupularApis;
   const { t } = useContext<any>(LanguageContext);
 
   return (

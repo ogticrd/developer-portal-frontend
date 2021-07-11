@@ -2,11 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useState } from 'react';
 import { LanguageContext } from '../context/language.context';
-import { PopularAPI } from '../models/pupular-api';
+import { SummaryAPI } from '../models/popular-api';
 
 export default function CardApiComponent(props: any) {
   const { t } = useContext<any>(LanguageContext);
-  const data: PopularAPI = props.data;
+  const data: SummaryAPI = props.data;
 
   const defaultImageSrc = '/images/no-image-available.svg.png';
   const [imageUrl, setImageUrl] = useState<string>(data._links.picture);

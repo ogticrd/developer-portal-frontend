@@ -1,9 +1,9 @@
-import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
-import { Fragment, useContext } from 'react';
+import { useContext } from 'react';
 import { LanguageContext } from '../context/language.context';
 import { MenuItemModel } from '../models/menu-item.model';
 import LanguageToggle from './language-toggle.component';
+import Image from 'next/image';
 
 export default function HeaderComponent() {
   const { t } = useContext<any>(LanguageContext);
@@ -25,8 +25,19 @@ export default function HeaderComponent() {
   ];
 
   return (
-    <div className="bg-blue-primary flex p-4 items-center justify-between">
-      <div></div>
+    <div className="bg-blue-primary flex p-4 items-center justify-between sticky top-0 z-20">
+      <div>
+        <Link href="/">
+          <a>
+            <Image
+              src="/images/ogtic-full-logo.png"
+              height="40rem"
+              width="100%"
+              alt="OGTIC logo"
+            />
+          </a>
+        </Link>
+      </div>
       <nav>
         <ul className="flex">
           {menuItems.map((item, i) => {

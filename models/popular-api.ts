@@ -1,4 +1,4 @@
-export interface PopularAPI {
+export interface SummaryAPI {
     id:             string;
     name:           string;
     version:        string;

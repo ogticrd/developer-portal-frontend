@@ -14,7 +14,14 @@ export const en = {
   },
   popularApis: {
     title: 'Most popular APIs',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quam fugiat amet aliquid.',
-    readmore: 'Learn more'
-  }
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quam fugiat amet aliquid.',
+    readmore: 'Learn more',
+  },
+  apiCatalog: {
+    title: 'APIs Catalog',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quam fugiat amet aliquid debitis enim repellendus laborum quae, consequatur id!',
+      
+  },
 };
