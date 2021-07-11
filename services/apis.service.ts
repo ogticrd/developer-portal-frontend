@@ -12,3 +12,8 @@ export const getApis = async (): Promise<SummaryAPI[]> => {
   const { data } = await get(`${apiUrl}apis`);
   return data.data;
 };
+
+export const getApiDetails = async (id: string): Promise<SummaryAPI> => {
+  const { data } = await get(`${apiUrl}apis/${id}`);
+  return data;
+};
