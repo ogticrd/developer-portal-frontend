@@ -1,8 +1,8 @@
 export const es = {
+  app: {
+    displayName: 'Developer Portal',
+  },
   header: {
-    app: {
-      displayName: 'Developer Portal',
-    },
     menu: {
       apis: 'APIs',
       documentation: 'Documentación',

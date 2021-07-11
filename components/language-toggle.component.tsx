@@ -8,7 +8,7 @@ export default function LanguageToggle() {
   const { locale } = router;
 
   const changeLanguage = (code: string) => {
-    router.push('/', '/', { locale: code });
+    router.push(router.route, '', { locale: code });
     setOpen(false);
   };
 
