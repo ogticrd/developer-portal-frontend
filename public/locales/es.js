@@ -29,5 +29,8 @@ export const es = {
   },
   apiDetails: {
     apiDescription: 'Descripción del API',
+    pages: {
+      title: 'Páginas',
+    },
   },
 };

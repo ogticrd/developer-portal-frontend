@@ -28,6 +28,9 @@ export const en = {
     notResults: 'No results found',
   },
   apiDetails: {
-    apiDescription: "API description"
-  }
+    apiDescription: 'API description',
+    pages: {
+      title: 'Pages',
+    },
+  },
 };
