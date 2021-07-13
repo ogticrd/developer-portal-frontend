@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useContext } from 'react';
+import ApiDescription from '../../components/api-descriotion';
 import ApiDetailsHeader from '../../components/api-details-header.component';
 import { LanguageContext } from '../../context/language.context';
 import { getApiDetails } from '../../services/apis.service';
@@ -15,6 +16,7 @@ export default function ApiDetails({ data }: any) {
         </title>
       </Head>
       <ApiDetailsHeader data={data} />
+      <ApiDescription description={data.description} />
     </div>
   );
 }

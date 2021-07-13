@@ -69,3 +69,7 @@ a {
     transform: rotate(0deg);
   }
 }
+
+.card{
+  @apply bg-white shadow-md p-6 rounded-md my-4;
+}

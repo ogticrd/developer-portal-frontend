@@ -6,14 +6,16 @@ import { LanguageContext } from '../../context/language.context';
 export default function HeroComponent() {
   const { t } = useContext<any>(LanguageContext);
   return (
-    <section className="bg-blue-primary-light flex justify-between items-center px-6 py-12">
-      <Image
-        src="/images/ogtic-full-logo.png"
-        width="200px"
-        height="74px"
-        alt="OGTIC logo"
-      />
-      <div className="text-white flex flex-col items-start w-2/5">
+    <section className="bg-blue-primary-light flex justify-center md:justify-between  items-center px-6 py-12">
+      <div className="hidden md:block">
+        <Image
+          src="/images/ogtic-full-logo.png"
+          width="200px"
+          height="74px"
+          alt="OGTIC logo"
+        />
+      </div>
+      <div className="text-white flex flex-col items-start w-full md:w-2/5">
         <h3 className="text-2xl mb-4">{t.hero.ctaTitle}</h3>
         <p className="mb-4">{t.hero.ctaDescription}</p>
         <Link href="/apis">

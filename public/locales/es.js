@@ -27,4 +27,7 @@ export const es = {
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quam fugiat amet aliquid debitis enim repellendus laborum quae, consequatur id!',
     notResults: 'No se encontraron resultados',
   },
+  apiDetails: {
+    apiDescription: 'Descripción del API',
+  },
 };

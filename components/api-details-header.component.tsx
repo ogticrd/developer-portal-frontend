@@ -16,21 +16,19 @@ export default function ApiDetailsHeader(props: any) {
   };
 
   return (
-    <section className="flex bg-white shadow-md p-4">
-      <div className="w-56">
-        {
-          <Image
-            src={imageUrl}
-            width="100%"
-            height="100%"
-            alt={`${data.name} image`}
-            onError={onImageError}
-          />
-        }
+    <section className="flex card">
+      <div className="mr-5">
+        <Image
+          src={imageUrl}
+          width={150}
+          height={150}
+          alt={`${data.name} image`}
+          onError={onImageError}
+        />
       </div>
-      <div>
+      <div className="col-span-9">
         <h1 className="text-2xl">{data.name}</h1>
-        <p className="text-md">{data.description}</p>
+        {/* <p className="text-md">{data.description}</p> */}
       </div>
     </section>
   );
