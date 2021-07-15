@@ -23,32 +23,34 @@ export default function ApiPageComponent({ id }: { id: string }) {
   }, [id]);
 
   return (
-    <section>
-      <div className="bg-white shadow-md card">
-        <h2 className="text-xl mb-4">{t.apiDetails.pages.title}</h2>
-        <div>
-          {pages.map((page) => (
-            <span
-              key={page.id}
-              onClick={() => setSelectedPage(page)}
-              className={`cursor-pointer border flex-1 inline-block p-3 hover:bg-blue-800 hover:text-white duration-300 ${
-                page == selectedPage && 'bg-blue-primary text-white'
-              }`}
-            >
-              <span>{page.name}</span>
-            </span>
-          ))}
+    pages.length > 0 && (
+      <section>
+        <div className="bg-white shadow-md card">
+          <h2 className="text-xl mb-4">{t.apiDetails.pages.title}</h2>
+          <div>
+            {pages.map((page) => (
+              <span
+                key={page.id}
+                onClick={() => setSelectedPage(page)}
+                className={`cursor-pointer border flex-1 inline-block p-3 hover:bg-blue-800 hover:text-white duration-300 ${
+                  page == selectedPage && 'bg-blue-primary text-white'
+                }`}
+              >
+                <span>{page.name}</span>
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {pages.map(
-        (page) =>
-          selectedPage == page && (
-            <div key={page.id} className="card">
-              <SwaggerUI url={page._links.content} />
-            </div>
-          )
-      )}
-    </section>
+        {pages.map(
+          (page) =>
+            selectedPage == page && (
+              <div key={page.id} className="card">
+                <SwaggerUI url={page._links.content} />
+              </div>
+            )
+        )}
+      </section>
+    )
   );
 }

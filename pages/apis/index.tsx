@@ -20,7 +20,7 @@ export default function index({ data }: any) {
       </Head>
       <section className="container m-auto text-center py-8">
         <h2 className="text-2xl">{t.apiCatalog.title}</h2>
-        <p className="text-lg font-light mx-auto lg:w-2/3 md:w-full my-8">
+        <p className="text-lg font-light mx-auto lg:w-2/3 md:w-full my-8 px-10">
           {t.apiCatalog.description}
         </p>
         <SearchApiComponent setApis={setApis} setSearching={setSearching} />
