@@ -1,5 +1,5 @@
 import { ApiPage, APIPagesDTO } from '../models/api-pages';
-import { SummaryAPI } from '../models/popular-api';
+import { SummaryAPI } from '../models/summary-api';
 import { get, post } from './http/http.service';
 
 // const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';

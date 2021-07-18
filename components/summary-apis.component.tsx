@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { LanguageContext } from '../context/language.context';
-import { SummaryAPI } from '../models/popular-api';
+import { SummaryAPI } from '../models/summary-api';
 import CardApiComponent from './card-api.component';
 
 export default function PopularApisComponent(props: any) {

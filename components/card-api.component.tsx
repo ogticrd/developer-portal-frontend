@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useState } from 'react';
 import { LanguageContext } from '../context/language.context';
-import { SummaryAPI } from '../models/popular-api';
+import { SummaryAPI } from '../models/summary-api';
 import shorten from '../utils/shorten';
 
 export default function CardApiComponent(props: any) {

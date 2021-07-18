@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { SummaryAPI } from '../../models/popular-api';
+import { SummaryAPI } from '../../models/summary-api';
 import { getApis } from '../../services/apis.service';
 import CardApiComponent from '../../components/card-api.component';
 import { LanguageContext } from '../../context/language.context';

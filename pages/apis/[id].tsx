@@ -5,7 +5,7 @@ import ApiDetailsHeader from '../../components/api-details-header.component';
 import ApiPageComponent from '../../components/api-page';
 
 import { LanguageContext } from '../../context/language.context';
-import { SummaryAPI } from '../../models/popular-api';
+import { SummaryAPI } from '../../models/summary-api';
 import { getApiDetails } from '../../services/apis.service';
 
 export default function ApiDetails({ data }: { data: SummaryAPI }) {

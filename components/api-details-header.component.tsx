@@ -1,14 +1,13 @@
 import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 
-import { SummaryAPI } from '../models/popular-api';
+import { SummaryAPI } from '../models/summary-api';
 import Link from 'next/link';
 import { LanguageContext } from '../context/language.context';
+import formatVersion from '../utils/format-version';
 
 export default function ApiDetailsHeader(props: any) {
-
   const { t } = useContext<any>(LanguageContext);
-
 
   const data: SummaryAPI = props.data;
 
@@ -35,13 +34,14 @@ export default function ApiDetailsHeader(props: any) {
       <div className="col-span-9">
         <h1 className="text-2xl">{data.name}</h1>
         <p className="mt-1">
-          <b>{t.apiDetails.version}:</b> {data.version}
+          <b>{t.apiDetails.version}:</b> {formatVersion(data.version)}
         </p>
         <p className="mt-1">
           <b>{t.apiDetails.owner}:</b> {data.owner.display_name}
         </p>
         <p className="mt-1">
-          <b>{t.apiDetails.published}:</b> {new Date(data.updated_at).toLocaleDateString()}
+          <b>{t.apiDetails.published}:</b>{' '}
+          {new Date(data.updated_at).toLocaleDateString()}
         </p>
         <span className="mt-2">
           <p>
@@ -49,7 +49,7 @@ export default function ApiDetailsHeader(props: any) {
           </p>
           {data.entrypoints.map((item) => (
             <Link key={item} href={item}>
-              <a className="text-blue-900 hover:underline" target="_blank"> 
+              <a className="text-blue-900 hover:underline" target="_blank">
                 {item}
               </a>
             </Link>
