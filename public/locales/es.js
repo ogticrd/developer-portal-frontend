@@ -29,6 +29,10 @@ export const es = {
   },
   apiDetails: {
     apiDescription: 'Descripción del API',
+    version: 'Versión',
+    owner: 'Dueño',
+    published: 'Publicado',
+    entryPoints: 'Puntos de entrada',
     pages: {
       title: 'Páginas',
     },

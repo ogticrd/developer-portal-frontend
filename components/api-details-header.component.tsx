@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 
 import { SummaryAPI } from '../models/popular-api';
+import Link from 'next/link';
+import { LanguageContext } from '../context/language.context';
 
 export default function ApiDetailsHeader(props: any) {
+
+  const { t } = useContext<any>(LanguageContext);
+
+
   const data: SummaryAPI = props.data;
 
   const defaultImageSrc = '/images/no-image-available.svg.png';
@@ -20,15 +26,35 @@ export default function ApiDetailsHeader(props: any) {
       <div className="mr-5">
         <Image
           src={imageUrl}
-          width={150}
-          height={150}
+          width={180}
+          height={180}
           alt={`${data.name} image`}
           onError={onImageError}
         />
       </div>
       <div className="col-span-9">
         <h1 className="text-2xl">{data.name}</h1>
-        {/* <p className="text-md">{data.description}</p> */}
+        <p className="mt-1">
+          <b>{t.apiDetails.version}:</b> {data.version}
+        </p>
+        <p className="mt-1">
+          <b>{t.apiDetails.owner}:</b> {data.owner.display_name}
+        </p>
+        <p className="mt-1">
+          <b>{t.apiDetails.published}:</b> {new Date(data.updated_at).toLocaleDateString()}
+        </p>
+        <span className="mt-2">
+          <p>
+            <b>{t.apiDetails.entryPoints}:</b>
+          </p>
+          {data.entrypoints.map((item) => (
+            <Link key={item} href={item}>
+              <a className="text-blue-900 hover:underline" target="_blank"> 
+                {item}
+              </a>
+            </Link>
+          ))}
+        </span>
       </div>
     </section>
   );

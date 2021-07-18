@@ -29,6 +29,10 @@ export const en = {
   },
   apiDetails: {
     apiDescription: 'API description',
+    version: 'Version',
+    owner: 'Owner',
+    published: 'Published',
+    entryPoints: 'Entry points',
     pages: {
       title: 'Pages',
     },
