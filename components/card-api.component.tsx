@@ -19,7 +19,7 @@ export default function CardApiComponent(props: any) {
   };
 
   return (
-    <div className="border col-span-4 p-5 text-center shadow-md">
+    <div className="card col-span-4 p-5 text-center shadow-md">
       <Image
         src={imageUrl}
         width="100%"

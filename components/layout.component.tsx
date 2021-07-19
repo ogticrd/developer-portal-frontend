@@ -22,8 +22,8 @@ export default function Layout({ children }: any) {
 
   return (
     <div>
-      <HeaderComponent />
       {routeChanging && <PageLoadingComponent />}
+      <HeaderComponent />
       <main>{children}</main>
     </div>
   );

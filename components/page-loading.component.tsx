@@ -1,6 +1,6 @@
 export default function PageLoadingComponent() {
   return (
-    <div className="page-loading z-10">
+    <div className="page-loading z-30">
       <div></div>
     </div>
   );
