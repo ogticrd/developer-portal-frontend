@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { ApiPage } from '../models/api-pages';
-import { getPages } from '../services/apis.service';
+import { ApiPage } from '../../models/api-pages';
+import { getPages } from '../../services/apis.service';
 import SwaggerUI from 'swagger-ui-react';
 import 'swagger-ui-react/swagger-ui.css';
-import { LanguageContext } from '../context/language.context';
+import { LanguageContext } from '../../context/language.context';
 
 export default function ApiPageComponent({ id }: { id: string }): JSX.Element {
   const [pages, setPages] = useState<ApiPage[]>([]);

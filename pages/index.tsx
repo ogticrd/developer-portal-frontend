@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useContext } from 'react';
 import HeroComponent from '../components/home/hero.component';
-import PopularApisComponent from '../components/summary-apis.component';
+import PopularApisComponent from '../components/apis/summary-apis.component';
 import { LanguageContext } from '../context/language.context';
 import { getPopularApis } from '../services/apis.service';
 

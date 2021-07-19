@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { useContext } from 'react';
-import ApiDescription from '../../components/api-descriotion';
-import ApiDetailsHeader from '../../components/api-details-header.component';
-import ApiPageComponent from '../../components/api-page';
+import ApiDescription from '../../components/apis/api-descriotion';
+import ApiDetailsHeader from '../../components/apis/api-details-header.component';
+import ApiPageComponent from '../../components/apis/api-page';
 
 import { LanguageContext } from '../../context/language.context';
 import { SummaryAPI } from '../../models/summary-api';
@@ -19,7 +19,7 @@ export default function ApiDetails({ data }: { data: SummaryAPI }) {
       </Head>
       <ApiDetailsHeader data={data} />
       <ApiDescription description={data.description} />
-       <ApiPageComponent id={data.id}/>
+      <ApiPageComponent id={data.id} />
     </div>
   );
 }

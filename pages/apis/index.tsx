@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { SummaryAPI } from '../../models/summary-api';
 import { getApis } from '../../services/apis.service';
-import CardApiComponent from '../../components/card-api.component';
+import CardApiComponent from '../../components/apis/card-api.component';
 import { LanguageContext } from '../../context/language.context';
 import { useContext, useState } from 'react';
 import SearchApiComponent from '../../components/apis/search-api.component';
