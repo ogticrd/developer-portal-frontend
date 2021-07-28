@@ -12,7 +12,7 @@ export const es = {
   hero: {
     ctaTitle: 'Mira nuestro catálogo de APIs',
     ctaDescription:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quam fugiat amet aliquid debitis enim repellendus laborum quae, consequatur id!',
+      'Una comunidad de desarrolladores que diseñan y codifican servicios públicos digitales.',
     ctaButton: 'Explorar APIs',
   },
   popularApis: {
@@ -37,4 +37,8 @@ export const es = {
       title: 'Páginas',
     },
   },
+  searchBox: {
+    placeholder: "¿Que APIs quieres buscar?",
+    button: "Buscar"
+  }
 };

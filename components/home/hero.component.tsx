@@ -15,7 +15,7 @@ export default function HeroComponent() {
           alt="OGTIC logo"
         />
       </div>
-      <div className="text-white flex flex-col items-start w-full md:w-2/5">
+      <div className="text-gray-800 flex flex-col items-start w-full md:w-2/5">
         <h3 className="text-2xl mb-4">{t.hero.ctaTitle}</h3>
         <p className="mb-4">{t.hero.ctaDescription}</p>
         <Link href="/apis">

@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import Head from 'next/head';
+
 import { SummaryAPI } from '../../models/summary-api';
 import { getApis } from '../../services/apis.service';
 import CardApiComponent from '../../components/apis/card-api.component';
 import { LanguageContext } from '../../context/language.context';
 import { useContext, useState } from 'react';
 import SearchApiComponent from '../../components/apis/search-api.component';
-import Head from 'next/head';
 
 export default function index({ data }: any) {
   const { t } = useContext<any>(LanguageContext);
