@@ -6,8 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Poppins, Roboto, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -24,7 +23,7 @@ a {
 }
 
 .bg-blue-primary-light {
-  background-color: #EEF5FF;
+  background-color: #eef5ff;
 }
 
 .page-loading {
@@ -70,6 +69,6 @@ a {
   }
 }
 
-.card{
+.card {
   @apply bg-white shadow-md p-6 rounded-md my-4;
 }
