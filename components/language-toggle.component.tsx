@@ -1,5 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function LanguageToggle() {
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -18,6 +19,13 @@ export default function LanguageToggle() {
         className="text-white text-md cursor-pointer flex items-center"
         onClick={() => setOpen(!isOpen)}
       >
+        <Image
+          src={`/icons/lang-${locale}.svg`}
+          width={14}
+          height={14}
+          alt="EN"
+        />
+        <span className="mx-2">{locale}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-3 w-3 mr-1"
@@ -32,7 +40,6 @@ export default function LanguageToggle() {
             d="M19 9l-7 7-7-7"
           />
         </svg>
-        {locale}
       </span>
       <div
         className={isOpen ? 'block' : 'hidden'}
@@ -44,16 +51,18 @@ export default function LanguageToggle() {
         >
           <ul className="absolute top-12 right-3 bg-white p-2 rounded-sm shadow-md">
             <li
-              className="cursor-pointer text-gray-700 hover:text-black"
+              className="cursor-pointer text-gray-700 hover:text-black flex items-center"
               onClick={() => changeLanguage('en')}
             >
-              English
+              <Image src="/icons/lang-en.svg" width={14} height={14} alt="EN" />
+              <span className="ml-2">English</span>
             </li>
             <li
-              className="cursor-pointer text-gray-700 hover:text-black"
+              className="cursor-pointer text-gray-700 hover:text-black  flex items-center"
               onClick={() => changeLanguage('es')}
             >
-              Español
+              <Image src="/icons/lang-es.svg" width={14} height={14} alt="ES" />
+              <span className="ml-2">Español</span>
             </li>
           </ul>
         </div>
