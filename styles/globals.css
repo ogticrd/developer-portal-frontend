@@ -26,6 +26,10 @@ a {
   background-color: #eef5ff;
 }
 
+.bg-yellow-primary {
+  background-color: #f58315;
+}
+
 .page-loading {
   height: 4px;
   width: 100%;

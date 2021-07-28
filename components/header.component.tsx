@@ -28,7 +28,7 @@ export default function HeaderComponent() {
   ];
 
   return (
-    <div className="bg-blue-primary flex p-4 items-center justify-between sticky top-0 z-20">
+    <div className="bg-blue-primary flex p-4 items-center justify-between sticky top-0 z-20 px-12">
       <div>
         <Link href="/">
           <a>

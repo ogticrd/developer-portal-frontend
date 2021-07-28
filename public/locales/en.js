@@ -37,4 +37,8 @@ export const en = {
       title: 'Pages',
     },
   },
+  searchBox: {
+    placeholder: "What APIs do you want?",
+    button: "Search"
+  }
 };
