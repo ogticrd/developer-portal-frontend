@@ -4,6 +4,7 @@ import HeroComponent from '../components/home/hero.component';
 import PopularApisComponent from '../components/apis/summary-apis.component';
 import { LanguageContext } from '../context/language.context';
 import { getPopularApis } from '../services/apis.service';
+import InfoTad from '../components/home/info-tad.component';
 
 export default function Home({ pupularApis }: any) {
   const { t } = useContext<any>(LanguageContext);
@@ -16,6 +17,7 @@ export default function Home({ pupularApis }: any) {
       </Head>
       <main className="min-h-screen">
         <HeroComponent />
+        <InfoTad />
         <PopularApisComponent pupularApis={pupularApis} />
       </main>
     </div>

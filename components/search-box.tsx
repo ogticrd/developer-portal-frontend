@@ -5,7 +5,7 @@ export default function SearchBox() {
   const { t } = useContext<any>(LanguageContext);
 
   return (
-    <div className="flex items-center w-full md:w-auto">
+    <div className="flex items-center w-full">
       <input
         className="p-2 border border-gray-200 rounded-l-md w-full"
         type="text"
