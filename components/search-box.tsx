@@ -1,10 +1,15 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '../context/language.context';
+import { SummaryAPI } from '../models/summary-api';
+import { getApis, searchApi } from '../services/apis.service';
+import ApiSearchItem from './apis/api-search-item.component';
 
 export default function SearchBox() {
   const { t } = useContext<any>(LanguageContext);
+  const [apis, setApis] = useState<SummaryAPI[]>([]);
   const [searchText, setSearchText] = useState<string>('');
+  const [selected, setSelected] = useState<number>(-1);
   const router = useRouter();
 
   const search = () => {
@@ -12,18 +17,52 @@ export default function SearchBox() {
       router.push({ pathname: '/apis', query: { q: searchText.trim() } });
   };
 
-  const handleKeyPress = (evt: any) =>
-    evt.code.toLowerCase() === 'enter' && search();
+  const handleKeyPress = (evt: any) => {
+    switch (evt.key) {
+      case 'ArrowUp':
+        selected > 0 && setSelected(selected - 1);
+        break;
+      case 'ArrowDown':
+        selected < apis.length - 1 && setSelected(selected + 1);
+        break;
+      case 'Enter':
+        if (selected >= 0) {
+          const id = apis[selected].id;
+          router.push('/apis/[id]', { pathname: `/apis/${id}` });
+        } else {
+          evt.key.toLowerCase() === 'enter' && search();
+        }
+        break;
+    }
+  };
+
+  const onSearch = async () => {
+    if (searchText.trim()) {
+      const data = await searchApi(searchText);
+      setApis(data);
+    }
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => onSearch(), 250);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [searchText]);
 
   return (
-    <div className="flex items-center w-full">
+    <div className="flex items-center w-full relative">
       <input
         className="p-2 border border-gray-300 rounded-l-md w-full"
         type="text"
         placeholder={t.searchBox.placeholder}
         value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-        onKeyPress={handleKeyPress}
+        onChange={(e) => {
+          setSearchText(e.target.value);
+          setSelected(-1);
+        }}
+        onKeyUp={handleKeyPress}
       />
       <button
         onClick={search}
@@ -45,6 +84,13 @@ export default function SearchBox() {
         </svg>
         {t.searchBox.button}
       </button>
+      {apis.length && searchText.trim() ? (
+        <div className="absolute shadow-2xl rounded-md bg-white py-4 w-full top-11">
+          {apis.map((api, i) => (
+            <ApiSearchItem key={api.id} api={api} selected={selected == i} />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
