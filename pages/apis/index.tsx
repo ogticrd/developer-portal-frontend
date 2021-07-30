@@ -2,13 +2,14 @@
 import Head from 'next/head';
 
 import { SummaryAPI } from '../../models/summary-api';
-import { getApis } from '../../services/apis.service';
+import { getApis, searchApi } from '../../services/apis.service';
 import CardApiComponent from '../../components/apis/card-api.component';
 import { LanguageContext } from '../../context/language.context';
 import { useContext, useState } from 'react';
 import SearchApiComponent from '../../components/apis/search-api.component';
+import SearchBox from '../../components/search-box';
 
-export default function index({ data }: any) {
+export default function index({ data, q }: any) {
   const { t } = useContext<any>(LanguageContext);
   const [apis, setApis] = useState<SummaryAPI[]>(data);
   const [searching, setSearching] = useState<boolean>(false);
@@ -25,7 +26,10 @@ export default function index({ data }: any) {
           <p className="text-lg font-light mx-auto lg:w-2/3 md:w-full my-8 px-10">
             {t.apiCatalog.description}
           </p>
-          <SearchApiComponent setApis={setApis} setSearching={setSearching} />
+          {/* <SearchApiComponent
+            setApis={setApis}
+            setSearching={setSearching}
+          /> */}
           <div className="h-10">
             {searching && <div className="custom-spinner"></div>}
           </div>
@@ -44,8 +48,9 @@ export default function index({ data }: any) {
   );
 }
 
-export async function getServerSideProps() {
-  const data = await getApis();
+export async function getServerSideProps(context: any) {
+  const { q }: any = context?.query;
+  const data = q ? await searchApi(q) : await getApis();
 
   return {
     props: {
