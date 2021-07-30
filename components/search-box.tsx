@@ -27,11 +27,12 @@ export default function SearchBox() {
         break;
       case 'Enter':
         if (selected >= 0) {
-          const id = apis[selected].id;
-          router.push('/apis/[id]', { pathname: `/apis/${id}` });
+          const id = apis[selected]?.id;
+          id && router.push('/apis/[id]', { pathname: `/apis/${id}` });
         } else {
           evt.key.toLowerCase() === 'enter' && search();
         }
+        setApis([]);
         break;
     }
   };

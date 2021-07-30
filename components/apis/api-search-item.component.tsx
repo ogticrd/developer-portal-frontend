@@ -29,7 +29,7 @@ export default function ApiSearchItem({
   return (
     <div
       onClick={openApi}
-      className={`flex p-1 mb-1 cursor-pointer hover:bg-blue-200 ${
+      className={`flex p-1 mb-1 cursor-pointer hover:bg-blue-200 items-center ${
         selected && 'bg-blue-200'
       }`}
     >
