@@ -21,14 +21,14 @@ export default function ApiDetailsHeader(props: any) {
   };
 
   return (
-    <section className="flex flex-col md:flex-row card items-center md:items-end relative pt-24">
+    <section className="flex flex-col md:flex-row card items-center md:items-end relative pt-24 h-96 md:h-72">
       <div
         style={{
           backgroundImage: `url(${data._links.background}), url('/images/default-api-bg.jpg')`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
         }}
-        className="absolute top-0 left-0 w-full h-44"
+        className="absolute top-0 left-0 w-full h-40"
       ></div>
       <div className="md:mr-5">
         <Image
