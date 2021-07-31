@@ -53,7 +53,7 @@ export default function ApiDetailsHeader(props: any) {
           {new Date(data.updated_at).toLocaleDateString()}
         </p>
         <p className="mt-1">
-          <span className="text-gray-600">{t.apiDetails.owner}:</span>
+          <span className="text-gray-600 mr-2">{t.apiDetails.owner}:</span>
           {data.owner.display_name}
         </p>
       </div>

@@ -19,19 +19,50 @@ export default function CardApiComponent(props: any) {
   };
 
   return (
-    <div className="card col-span-4 p-5 text-center shadow-lg">
-      <Image
-        src={imageUrl}
-        width="100%"
-        height="100%"
-        alt={`${data.name} image`}
-        onError={onImageError}
-      />
-      <h3 className="text-lg">{data.name}</h3>
-      <p className="text-sm my-4">{shorten(data.description, 120)}</p>
-      <Link href={`/apis/${data.id}`}>
-        <a className="text-blue-900">{t.popularApis.readmore}</a>
-      </Link>
+    <div className="rounded-lg col-span-4 shadow-xl text-left bg-white text-gray-700">
+      <div className="w-full h-44 grid object-cover">
+        <Image
+          src={imageUrl}
+          width="100"
+          height="100"
+          alt={`${data.name} image`}
+          onError={onImageError}
+        />
+      </div>
+      <div className="p-4">
+        <h3 className="text-lg font-semibold">{data.name}</h3>
+        <p>{data.owner.display_name}</p>
+        <p className="text-sm my-4">{shorten(data.description, 120)}</p>
+      </div>
+      <div className="flex p-4 border-t items-center justify-between">
+        <Link href={`/apis/${data.id}`}>
+          <a className="text-blue-900 font-semibold">
+            {t.popularApis.readmore}
+          </a>
+        </Link>
+
+        <div className="flex">
+          <span className="flex">
+            <Image
+              src="/icons/comment.svg"
+              height={20}
+              width={20}
+              alt="Icon comment"
+            />
+            <span className="ml-1">12</span>
+          </span>
+
+          <span className="flex ml-3">
+            <Image
+              src="/icons/heart.svg"
+              height={20}
+              width={20}
+              alt="Icon heart"
+            />
+            <span className="ml-1">6</span>
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

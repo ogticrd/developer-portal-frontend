@@ -16,10 +16,8 @@ export const es = {
     ctaButton: 'Explorar APIs',
   },
   popularApis: {
-    title: 'APIs más pupulares',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quam fugiat amet aliquid.',
-    readmore: 'Mas información',
+    title: 'APIs destacadas',
+    readmore: 'Leer mas...',
   },
   apiCatalog: {
     title: 'Catálogo de APIs',
