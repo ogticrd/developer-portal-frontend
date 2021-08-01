@@ -35,6 +35,11 @@ export const es = {
       title: 'Páginas',
     },
   },
+  filters: {
+    categories: 'Categorías',
+    brands: 'Marcas',
+    clearFilters: 'Limpiar filtros',
+  },
   searchBox: {
     placeholder: '¿Que APIs quieres buscar?',
     button: 'Buscar',

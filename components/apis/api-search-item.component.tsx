@@ -33,13 +33,15 @@ export default function ApiSearchItem({
         selected && 'bg-blue-200'
       }`}
     >
-      <Image
-        src={imageUrl}
-        width={50}
-        height={50}
-        alt={api.name + ' image'}
-        onError={onImageError}
-      />
+      <div className="object-cover">
+        <Image
+          src={imageUrl}
+          width={50}
+          height={50}
+          alt={api.name + ' image'}
+          onError={onImageError}
+        />
+      </div>
       <div className="flex flex-col ml-4">
         <h3 className="font-medium">{api.name}</h3>
         <p className="font-thin text-sm text-gray-600">

@@ -34,6 +34,11 @@ export const en = {
       title: 'Pages',
     },
   },
+  filters: {
+    categories: 'Categories',
+    brands: 'Brands',
+    clearFilters: 'Clear filters',
+  },
   searchBox: {
     placeholder: 'What APIs do you want?',
     button: 'Search',

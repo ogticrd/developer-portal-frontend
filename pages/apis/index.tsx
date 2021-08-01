@@ -2,13 +2,19 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { SummaryAPI } from '../../models/summary-api';
-import { getApis, searchApi } from '../../services/apis.service';
+import {
+  getApis,
+  searchApi,
+  getApiCategories,
+} from '../../services/apis.service';
 import CardApiComponent from '../../components/apis/card-api.component';
 import { LanguageContext } from '../../context/language.context';
 import { useContext, useState } from 'react';
 import SearchApiComponent from '../../components/apis/search-api.component';
+import ApiFilters from '../../components/apis/api-filters';
+import { Category } from '../../models/category-response';
 
-export default function index({ data, q }: any) {
+export default function index({ data, categories }: any) {
   const { t } = useContext<any>(LanguageContext);
   const [apis, setApis] = useState<SummaryAPI[]>(data);
   const [searching, setSearching] = useState<boolean>(false);
@@ -41,22 +47,30 @@ export default function index({ data, q }: any) {
               </div>
             </div>
           </section>
-
-          <section className="container mx-auto">
-            <SearchApiComponent setApis={setApis} setSearching={setSearching} />
-            <div className="h-3">
-              {searching && <div className="custom-spinner"></div>}
+          <div className="flex container mx-auto">
+            <div className="w-3/12">
+              <ApiFilters categories={categories} />
             </div>
-            {!searching && !apis.length ? (
-              <h4 className="text-lg">{t.apiCatalog.notResults}</h4>
-            ) : (
-              <div className="grid lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1  gap-10 mt-5 px-10">
-                {apis.map((item) => (
-                  <CardApiComponent key={item.id} data={item} />
-                ))}
+
+            <section className=" w-9/12">
+              <SearchApiComponent
+                setApis={setApis}
+                setSearching={setSearching}
+              />
+              <div className="h-3">
+                {searching && <div className="custom-spinner"></div>}
               </div>
-            )}
-          </section>
+              {!searching && !apis.length ? (
+                <h4 className="text-lg">{t.apiCatalog.notResults}</h4>
+              ) : (
+                <div className="grid lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1  gap-10 mt-5 px-10">
+                  {apis.map((item) => (
+                    <CardApiComponent key={item.id} data={item} />
+                  ))}
+                </div>
+              )}
+            </section>
+          </div>
         </article>
       </div>
     </div>
@@ -66,10 +80,12 @@ export default function index({ data, q }: any) {
 export async function getServerSideProps(context: any) {
   const { q }: any = context?.query;
   const data = q ? await searchApi(q) : await getApis();
+  const categories: Category[] = await getApiCategories();
 
   return {
     props: {
       data,
+      categories,
     },
   };
 }

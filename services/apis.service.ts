@@ -1,4 +1,5 @@
 import { ApiPage, APIPagesDTO } from '../models/api-pages';
+import { Category, CategoryResponse } from '../models/category-response';
 import { SummaryAPI } from '../models/summary-api';
 import { get, post } from './http/http.service';
 
@@ -50,6 +51,13 @@ export const getPagesContent = async (
 ): Promise<ApiPage[]> => {
   const { data }: { data: APIPagesDTO } = await get(
     `${apiUrl}apis/${id}/pages/${idPage}/content`
+  );
+  return data?.data || [];
+};
+
+export const getApiCategories = async (): Promise<Category[]> => {
+  const { data }: { data: CategoryResponse } = await get(
+    `${apiUrl}categories?size=-1`
   );
   return data?.data || [];
 };

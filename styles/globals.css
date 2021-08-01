@@ -76,3 +76,32 @@ a {
 .card {
   @apply bg-white shadow-md p-6 rounded-md my-4;
 }
+
+input[type='checkbox']:checked {
+  box-shadow: 0 0 6px #0774fc;
+}
+
+input[type='radio'] {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  -webkit-appearance: inherit;
+  border: 1px solid #747474;
+  position: relative;
+  box-sizing: border-box;
+}
+input[type='radio']:checked:before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  width: 105%;
+  height: 105%;
+  box-shadow: 0 0 6px #0774fc;
+  background-color: #0774fc;
+}
+
+.object-cover img {
+  object-fit: cover;
+}
