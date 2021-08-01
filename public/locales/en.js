@@ -21,8 +21,7 @@ export const en = {
   },
   apiCatalog: {
     title: 'APIs Catalog',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quam fugiat amet aliquid debitis enim repellendus laborum quae, consequatur id!',
+    description: 'A selection of Dominican REST APIs available for developers.',
     notResults: 'No results found',
   },
   apiDetails: {
