@@ -17,7 +17,7 @@ export default function SearchApiComponent({ setApis, setSearching }: any) {
   }, [searchTerm]);
 
   return (
-    <div className="container m-auto my-8 px-10">
+    <div className="container m-auto my-5 px-10">
       <div className="bg-white border shadow-md md:w-1/2 sm:w-full flex items-center m-auto px-2 rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"

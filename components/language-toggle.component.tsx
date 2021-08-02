@@ -19,12 +19,14 @@ export default function LanguageToggle() {
         className="text-white text-md cursor-pointer flex items-center"
         onClick={() => setOpen(!isOpen)}
       >
-        <Image
-          src={`/icons/lang-${locale}.svg`}
-          width={14}
-          height={14}
-          alt="EN"
-        />
+        <span className="w-5 h-5 flex ">
+          <Image
+            src={`/icons/lang-${locale}.svg`}
+            width={14}
+            height={14}
+            alt={locale}
+          />
+        </span>
         <span className="mx-2">{locale}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"

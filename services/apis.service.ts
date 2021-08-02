@@ -61,3 +61,15 @@ export const getApiCategories = async (): Promise<Category[]> => {
   );
   return data?.data || [];
 };
+
+export const getApisByCategory = async (
+  category: string
+): Promise<SummaryAPI[]> => {
+  try {
+    const { data } = await get(`${apiUrl}apis?category=${category}`);
+    return (data?.data as SummaryAPI[]) || [];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

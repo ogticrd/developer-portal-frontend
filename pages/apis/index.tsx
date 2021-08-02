@@ -19,13 +19,13 @@ export default function index({ data, categories }: any) {
   const [apis, setApis] = useState<SummaryAPI[]>(data);
   const [searching, setSearching] = useState<boolean>(false);
   return (
-    <div>
+    <>
       <Head>
         <title>
           {t.app.displayName} - {t.apiCatalog.title}
         </title>
       </Head>
-      <div className="min-h-screen">
+      <div className="min-h-screen pb-10">
         <article className="text-center">
           <section className=" bg-blue-50 py-10">
             <div className="flex items-center justify-around container m-auto">
@@ -48,16 +48,20 @@ export default function index({ data, categories }: any) {
             </div>
           </section>
           <div className="flex container mx-auto">
-            <div className="w-3/12">
-              <ApiFilters categories={categories} />
+            <div className="hidden lg:block w-3/12">
+              <ApiFilters
+                setSearching={setSearching}
+                setApis={setApis}
+                categories={categories}
+              />
             </div>
 
-            <section className=" w-9/12">
+            <section className="w-full lg:w-9/12">
               <SearchApiComponent
                 setApis={setApis}
                 setSearching={setSearching}
               />
-              <div className="h-3">
+              <div className="h-2 mb-9">
                 {searching && <div className="custom-spinner"></div>}
               </div>
               {!searching && !apis.length ? (
@@ -73,7 +77,7 @@ export default function index({ data, categories }: any) {
           </div>
         </article>
       </div>
-    </div>
+    </>
   );
 }
 
