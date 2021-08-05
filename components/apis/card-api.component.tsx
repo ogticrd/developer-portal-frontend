@@ -14,7 +14,8 @@ export default function CardApiComponent({
   distribution: DistributionEnum;
 }) {
   const { t } = useContext<any>(LanguageContext);
-
+  distribution ||= DistributionEnum.GRID;
+  const isDistributionGrid = distribution === DistributionEnum.GRID;
   const defaultImageSrc = '/images/no-image-available.svg.png';
   const [imageUrl, setImageUrl] = useState<string>(data._links.picture);
 
@@ -27,12 +28,14 @@ export default function CardApiComponent({
   return (
     <div
       className={`rounded-lg ${
-        distribution == DistributionEnum.GRID
-          ? 'col-span-4'
-          : 'col-span-12 grid grid-cols-12'
+        isDistributionGrid ? 'col-span-4' : 'col-span-12 grid grid-cols-12'
       } shadow-lg text-left bg-white text-gray-700`}
     >
-      <div className="w-full h-46 grid object-cover col-span-3">
+      <div
+        className={`w-full ${
+          isDistributionGrid ? 'h-44' : 'h-48'
+        } grid object-cover col-span-3`}
+      >
         <Image
           src={imageUrl}
           width="100"
@@ -45,7 +48,9 @@ export default function CardApiComponent({
         <div className="p-4 ">
           <Link href={`/apis/${data.id}`}>
             <a>
-              <h3 className="text-lg font-semibold hover:underline">{data.name}</h3>
+              <h3 className="text-lg font-semibold hover:underline">
+                {data.name}
+              </h3>
             </a>
           </Link>
           <p>{data.owner.display_name}</p>
@@ -53,9 +58,7 @@ export default function CardApiComponent({
         </div>
         <div
           className={`flex p-4 border-t items-center ${
-            distribution == DistributionEnum.GRID
-              ? 'justify-between'
-              : 'justify-end gap-6'
+            isDistributionGrid ? 'justify-between' : 'justify-end gap-6'
           }`}
         >
           <Link href={`/apis/${data.id}`}>
