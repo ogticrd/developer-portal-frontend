@@ -18,6 +18,7 @@ export const es = {
   popularApis: {
     title: 'APIs destacadas',
     readmore: 'Leer mas...',
+    viewMore: 'Ver más',
   },
   apiCatalog: {
     title: 'Catálogo de APIs',

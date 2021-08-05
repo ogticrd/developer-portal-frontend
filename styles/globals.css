@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #003670;
+}
+
 html,
 body {
   padding: 0;
@@ -19,7 +23,15 @@ a {
 }
 
 .bg-blue-primary {
-  background-color: #003670;
+  background-color: var(--primary-color);
+}
+
+.text-blue-primary {
+  color: var(--primary-color);
+}
+
+.border-blue-primary {
+  border-color: var(--primary-color);
 }
 
 .bg-blue-primary-light {
@@ -104,4 +116,9 @@ input[type='radio']:checked:before {
 
 .object-cover img {
   object-fit: cover;
+}
+
+.zoom-hover img:hover {
+  transform: scale(1.2);
+  transition: 300ms;
 }

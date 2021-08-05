@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getApis, searchApi } from '../../services/apis.service';
+import { getApis, searchApi } from '../../../services/apis.service';
+import SearchChangeDistribution from './search-change-distribution';
+import SearchSorter from './search-sorter';
 export default function SearchApiComponent({ setApis, setSearching }: any) {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const onSearch = async () => {
@@ -17,8 +19,8 @@ export default function SearchApiComponent({ setApis, setSearching }: any) {
   }, [searchTerm]);
 
   return (
-    <div className="container m-auto my-5 px-10">
-      <div className="bg-white border shadow-md md:w-1/2 sm:w-full flex items-center m-auto px-2 rounded-md">
+    <div className="container m-auto my-5 px-10 grid grid-cols-12 gap-3">
+      <div className="bg-white col-span-8 border shadow-md w-full flex items-center m-auto px-2 rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 text-gray-400"
@@ -36,10 +38,16 @@ export default function SearchApiComponent({ setApis, setSearching }: any) {
         <input
           className="w-full p-2 outline-none text-lg"
           type="text"
-          placeholder="What are you looking for?"
+          placeholder="Search"
           onChange={(e) => setSearchTerm(e.target.value.trim())}
           value={searchTerm}
         />
+      </div>
+      <div className="col-span-2">
+        <SearchSorter />
+      </div>
+      <div className="col-span-2">
+        <SearchChangeDistribution />
       </div>
     </div>
   );

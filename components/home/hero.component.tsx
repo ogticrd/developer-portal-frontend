@@ -25,7 +25,14 @@ export default function HeroComponent() {
             alt="OGTIC logo"
           />
           <p className="my-6 font-medium text-2xl">{t.hero.ctaDescription}</p>
-          <SearchBox />
+          <div className="flex items-center gap-4">
+            <SearchBox />
+            <Link href="/apis">
+              <a className="border-2 flex items-center justify-center border-blue-primary text-blue-primary  w-32 h-10 rounded-md hover:bg-blue-900 hover:text-white duration-300">
+                Ver todas
+              </a>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

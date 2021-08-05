@@ -10,9 +10,9 @@ import {
 import CardApiComponent from '../../components/apis/card-api.component';
 import { LanguageContext } from '../../context/language.context';
 import { useContext, useState } from 'react';
-import SearchApiComponent from '../../components/apis/search-api.component';
 import ApiFilters from '../../components/apis/api-filters';
 import { Category } from '../../models/category-response';
+import SearchApiComponent from '../../components/apis/search/search-api.component';
 
 export default function index({ data, categories }: any) {
   const { t } = useContext<any>(LanguageContext);
