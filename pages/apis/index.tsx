@@ -54,14 +54,6 @@ export default function index({ data, categories }: any) {
             </div>
           </section>
           <div className="flex container mx-auto">
-            <div className="hidden lg:block w-3/12">
-              <ApiFilters
-                setSearching={setSearching}
-                setApis={setApis}
-                categories={categories}
-              />
-            </div>
-
             <section className="w-full lg:w-9/12">
               <p className="px-11 text-gray-600 mt-5 text-left">{apis?.length || 0} - Resultados de tu busqueda</p>
               <SearchApiComponent
@@ -83,6 +75,13 @@ export default function index({ data, categories }: any) {
                 </div>
               )}
             </section>
+            <div className="hidden top-12 lg:block w-3/12">
+              <ApiFilters
+                setSearching={setSearching}
+                setApis={setApis}
+                categories={categories}
+              />
+            </div>
           </div>
         </article>
       </div>

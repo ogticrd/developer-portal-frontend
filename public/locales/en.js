@@ -36,8 +36,7 @@ export const en = {
     },
   },
   filters: {
-    categories: 'Categories',
-    brands: 'Brands',
+    categories: 'Sectorial',
     clearFilters: 'Clear filters',
   },
   searchBox: {
