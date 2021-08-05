@@ -24,7 +24,7 @@ export default function SearchApiComponent({
   }, [searchTerm]);
 
   return (
-    <div className="container m-auto my-5 px-10 grid grid-cols-12 gap-3">
+    <div className="container m-auto mb-5 px-10 grid grid-cols-12 gap-3">
       <div className="bg-white col-span-8 border shadow-md w-full flex items-center m-auto px-2 rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -63,6 +63,7 @@ export default function index({ data, categories }: any) {
             </div>
 
             <section className="w-full lg:w-9/12">
+              <p className="px-11 text-gray-600 mt-5 text-left">{apis?.length || 0} - Resultados de tu busqueda</p>
               <SearchApiComponent
                 setApis={setApis}
                 setSearching={setSearching}
