@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
 import { DistributionEnum } from '../../../enums/distribution.enum';
 
-export default function SearchChangeDistribution() {
-  const [distribution, setDistribution] = useState<DistributionEnum>(
-    DistributionEnum.LIST
-  );
+export default function SearchChangeDistribution({
+  distribution,
+  setDistribution,
+}: any) {
+  const handleChange = (val: DistributionEnum) => {
+    setDistribution(val);
+  };
 
   return (
     <div className="h-full border border-blue-primary rounded-md flex ">
-      <button className=" h-full w-1/2 flex justify-center items-center bg-blue-100 rounded-l-md border-r border-blue-primary">
+      <button
+        onClick={() => handleChange(DistributionEnum.GRID)}
+        className={`h-full w-1/2 flex justify-center items-center  rounded-l-md duration-300 border-r border-blue-primary ${
+          distribution === DistributionEnum.GRID && 'bg-blue-100'
+        }`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -25,7 +32,12 @@ export default function SearchChangeDistribution() {
         </svg>
       </button>
 
-      <button className=" h-full w-1/2 flex justify-center items-center rounded-r-md">
+      <button
+        onClick={() => handleChange(DistributionEnum.LIST)}
+        className={`h-full w-1/2 flex justify-center items-center rounded-r-md duration-300 ${
+          distribution === DistributionEnum.LIST && 'bg-blue-100'
+        }`}
+      >
         <svg
           width="24"
           height="24"

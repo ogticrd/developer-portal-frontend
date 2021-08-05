@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { getApis, searchApi } from '../../../services/apis.service';
 import SearchChangeDistribution from './search-change-distribution';
 import SearchSorter from './search-sorter';
-export default function SearchApiComponent({ setApis, setSearching }: any) {
+export default function SearchApiComponent({
+  setApis,
+  setSearching,
+  distribution,
+  setDistribution,
+}: any) {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const onSearch = async () => {
     if (searchTerm.length) setSearching(true);
@@ -47,7 +52,10 @@ export default function SearchApiComponent({ setApis, setSearching }: any) {
         <SearchSorter />
       </div>
       <div className="col-span-2">
-        <SearchChangeDistribution />
+        <SearchChangeDistribution
+          distribution={distribution}
+          setDistribution={setDistribution}
+        />
       </div>
     </div>
   );

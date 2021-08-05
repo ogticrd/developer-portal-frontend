@@ -13,11 +13,17 @@ import { useContext, useState } from 'react';
 import ApiFilters from '../../components/apis/api-filters';
 import { Category } from '../../models/category-response';
 import SearchApiComponent from '../../components/apis/search/search-api.component';
+import { DistributionEnum } from '../../enums/distribution.enum';
 
 export default function index({ data, categories }: any) {
   const { t } = useContext<any>(LanguageContext);
   const [apis, setApis] = useState<SummaryAPI[]>(data);
   const [searching, setSearching] = useState<boolean>(false);
+
+  const [distribution, setDistribution] = useState<DistributionEnum>(
+    DistributionEnum.GRID
+  );
+
   return (
     <>
       <Head>
@@ -60,6 +66,8 @@ export default function index({ data, categories }: any) {
               <SearchApiComponent
                 setApis={setApis}
                 setSearching={setSearching}
+                distribution={distribution}
+                setDistribution={setDistribution}
               />
               <div className="h-2 mb-9">
                 {searching && <div className="custom-spinner"></div>}
@@ -69,7 +77,7 @@ export default function index({ data, categories }: any) {
               ) : (
                 <div className="grid lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1  gap-10 mt-5 px-10">
                   {apis.map((item) => (
-                    <CardApiComponent key={item.id} data={item} />
+                    <CardApiComponent distribution={distribution} key={item.id} data={item} />
                   ))}
                 </div>
               )}
