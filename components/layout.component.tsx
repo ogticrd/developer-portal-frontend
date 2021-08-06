@@ -1,5 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react';
+import Footer from './footer';
 import HeaderComponent from './header.component';
 import PageLoadingComponent from './page-loading.component';
 
@@ -25,6 +26,7 @@ export default function Layout({ children }: any) {
       {routeChanging && <PageLoadingComponent />}
       <HeaderComponent />
       <main>{children}</main>
+      <Footer/>
     </div>
   );
 }

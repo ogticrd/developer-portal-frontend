@@ -47,4 +47,12 @@ export const en = {
     title: 'Opening the door to future digital services',
     info: `Welcome to the new API Portal of the Dominican State, our one-stop shop for application programming interfaces (APIs). We recommend that you use these APIs, which provide a wealth of government data and information, to create new applications and services for Canadians. We welcome your feedback on this version of the store. Please check back regularly as we continue to add more APIs to the store.`,
   },
+  footer: {
+    apis: 'APIs',
+    documentation: 'Documentation',
+    terms: 'Terms and conditions',
+    privacy: 'Privacy policy',
+    contact: 'Contact',
+    follow: 'Follow us',
+  },
 };
