@@ -28,54 +28,48 @@ export default function HeaderComponent() {
   ];
 
   return (
-    <div className="bg-blue-primary flex p-4 items-center justify-between sticky top-0 z-20 px-12">
-      <div>
-        <Link href="/">
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+    <header className="bg-blue-primary sticky top-0 z-20">
+      <div className="container mx-auto flex px-12 py-1 items-center justify-between">
+        <div>
+          <Link href="/">
+            <a title={t.header.home}>
+              <Image
+                src="/images/logo-ogtic-horizontal-color-white.png"
+                width={109}
+                height={52}
+                alt="OGTIC logo"
               />
-            </svg>
-          </a>
-        </Link>
+            </a>
+          </Link>
+        </div>
+        <nav>
+          <ul className="flex">
+            {menuItems.map((item, i) => {
+              return (
+                <li key={i} className="mr-5 text-white hover:underline">
+                  <Link href={item.path}>
+                    <a
+                      target={item.external ? '_blank' : '_self'}
+                      className="flex"
+                    >
+                      <Image
+                        src={'/icons/' + item.icon}
+                        width={18}
+                        height={18}
+                        alt={item.label + ' icon'}
+                      />
+                      <span className="ml-2">{item.label}</span>
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+            <li>
+              <LanguageToggle />
+            </li>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul className="flex">
-          {menuItems.map((item, i) => {
-            return (
-              <li key={i} className="mr-5 text-white hover:underline">
-                <Link href={item.path}>
-                  <a
-                    target={item.external ? '_blank' : '_self'}
-                    className="flex"
-                  >
-                    <Image
-                      src={'/icons/' + item.icon}
-                      width={18}
-                      height={18}
-                      alt={item.label + ' icon'}
-                    />
-                    <span className="ml-2">{item.label}</span>
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-          <li>
-            <LanguageToggle />
-          </li>
-        </ul>
-      </nav>
-    </div>
+    </header>
   );
 }

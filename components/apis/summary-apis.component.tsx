@@ -9,10 +9,13 @@ export default function PopularApisComponent(props: any) {
   const { t } = useContext<any>(LanguageContext);
 
   return (
-    <section className="container m-auto text-center py-8">
-      <h2 className="text-2xl text-blue-primary font-semibold">
-        {t.popularApis.title}
-      </h2>
+    <section className="container m-auto text-center py-8 ">
+      <div className="flex flex-col md:flex-row items-center justify-between px-10">
+        <h2 className="text-2xl text-blue-primary font-semibold w-64 text-center md:text-left">
+          {t.popularApis.title}
+        </h2>
+        <div className="w-full border-b border-gray-400"></div>
+      </div>
       <div className="grid lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1  gap-10 mt-5 px-10 mb-6">
         {apis.map((item) => (
           <CardApiComponent key={item.id} data={item} />

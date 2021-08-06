@@ -3,6 +3,7 @@ export const en = {
     displayName: 'Developer Portal',
   },
   header: {
+    home: "Go to main page",
     menu: {
       apis: 'APIs',
       documentation: 'Documentation',
@@ -16,7 +17,7 @@ export const en = {
     ctaButton: 'Explore APIs',
   },
   popularApis: {
-    title: 'Popular APIs',
+    title: 'Featured APIs',
     readmore: 'Read more...',
     viewMore: 'View more',
   },

@@ -3,6 +3,7 @@ export const es = {
     displayName: 'Developer Portal',
   },
   header: {
+    home: "Ir a la pagina principal",
     menu: {
       apis: 'APIs',
       documentation: 'Documentación',

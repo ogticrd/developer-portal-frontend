@@ -27,12 +27,12 @@ export default function Footer() {
         </div>
         <ul className="col-span-12 md:col-span-3 text-white mx-auto text-center md:text-left">
           <li className="hover:underline">
-            <Link href="/">
+            <Link href="/apis">
               <a>{t.footer.apis}</a>
             </Link>
           </li>
           <li className="hover:underline">
-            <Link href="/">
+            <Link href="/docs">
             <a>{t.footer.documentation}</a>
             </Link>
           </li>
