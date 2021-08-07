@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { LanguageContext } from '../../context/language.context';
 import { SummaryAPI } from '../../models/summary-api';
 import formatVersion from '../../utils/format-version';
+import ApiVersionTag from './api-version';
 
 export default function ApiDetailsHeader(props: any) {
   const { t } = useContext<any>(LanguageContext);
@@ -42,12 +43,7 @@ export default function ApiDetailsHeader(props: any) {
       <div className="text-center md:text-left">
         <span className="flex flex-col md:flex-row">
           <h1 className="text-2xl">{data.name}</h1>
-          <small
-            title={t.apiDetails.version}
-            className="my-1 mx-3  bg-blue-500 text-white py-1 text-sm px-1 rounded-full"
-          >
-            {formatVersion(data.version)}
-          </small>
+          <ApiVersionTag version={data.version}/>
         </span>
         <p className="mt-1 text-gray-600">
           {new Date(data.updated_at).toLocaleDateString()}

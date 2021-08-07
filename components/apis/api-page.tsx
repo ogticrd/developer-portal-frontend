@@ -1,56 +1,52 @@
 import { useContext, useEffect, useState } from 'react';
 import { ApiPage } from '../../models/api-pages';
-import { getPages } from '../../services/apis.service';
+import { getPages, getPageContent } from '../../services/apis.service';
 import SwaggerUI from 'swagger-ui-react';
 import 'swagger-ui-react/swagger-ui.css';
 import { LanguageContext } from '../../context/language.context';
 
+import Markdown from 'react-markdown';
+import ApiVersionTag from './api-version';
+
 export default function ApiPageComponent({ id }: { id: string }): JSX.Element {
-  const [pages, setPages] = useState<ApiPage[]>([]);
-  const [selectedPage, setSelectedPage] = useState<ApiPage>();
+  const [swaggerPage, setSwaggerPage] = useState<ApiPage>();
+  const [markdownPage, setMarkdownPage] = useState<string>();
 
   const { t } = useContext<any>(LanguageContext);
 
   useEffect(() => {
-    const getPageInfo = async () => {
-      const res = await getPages(id);
-      setPages(res);
-      res.length && setSelectedPage(res[0]);
+    const getPagesInfo = async () => {
+      const { swagger, markdown } = await getPages(id);
+      setSwaggerPage(swagger);
+      if (markdown) {
+        const content = await getPageContent(markdown._links.content);
+        setMarkdownPage(content);
+      }
     };
 
-    getPageInfo();
+    getPagesInfo();
     return () => {};
   }, [id]);
 
   return (
     <>
-      {pages.length > 0 && (
-        <section>
-          <div className="bg-white shadow-md card">
-            <h2 className="text-xl mb-4">{t.apiDetails.pages.title}</h2>
-            <div>
-              {pages.map((page) => (
-                <span
-                  key={page.id}
-                  onClick={() => setSelectedPage(page)}
-                  className={`cursor-pointer border flex-1 inline-block p-3 hover:bg-blue-800 hover:text-white duration-300 ${
-                    page == selectedPage && 'bg-blue-primary text-white'
-                  }`}
-                >
-                  <span>{page.name}</span>
-                </span>
-              ))}
-            </div>
+      {markdownPage && (
+        <section className="card">
+          <div className="flex items-center mb-4">
+            <h2 className="text-2xl font-semibold">{t.apiDetails.documentation}</h2>
+            <ApiVersionTag version={'1'}/>
           </div>
+          <hr className="mb-3" />
+          {
+            // eslint-disable-next-line react/no-children-prop
+            <Markdown children={markdownPage} />
+          }
+        </section>
+      )}
 
-          {pages.map(
-            (page) =>
-              selectedPage == page && (
-                <div key={page.id} className="card">
-                  <SwaggerUI url={page._links.content} />
-                </div>
-              )
-          )}
+      {swaggerPage && (
+        <section className="card">
+          <SwaggerUI url={swaggerPage?._links.content} />
         </section>
       )}
     </>

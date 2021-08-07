@@ -1,10 +1,11 @@
 import { ApiPage, APIPagesDTO } from '../models/api-pages';
+import { ApiPagesResponse } from '../models/api-pages-response';
 import { Category, CategoryResponse } from '../models/category-response';
 import { SummaryAPI } from '../models/summary-api';
 import { get, post } from './http/http.service';
 
-const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';
-// const apiUrl = 'http://localhost:8083/portal/environments/DEFAULT/';
+// const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';
+const apiUrl = 'http://localhost:8083/portal/environments/DEFAULT/';
 
 export const getPopularApis = async (): Promise<SummaryAPI[]> => {
   const { data } = await get(`${apiUrl}apis`);
@@ -34,25 +35,19 @@ export const searchApi = async (search: string): Promise<SummaryAPI[]> => {
   }
 };
 
-export const getPages = async (id: string): Promise<ApiPage[]> => {
-  try {
-    const { data }: { data: APIPagesDTO } = await get(
-      `${apiUrl}apis/${id}/pages?size=${-1}&homepage=${false}`
-    );
-    return data.data;
-  } catch (error) {
-    return [];
-  }
+export const getPages = async (id: string): Promise<ApiPagesResponse> => {
+  const { data }: { data: APIPagesDTO } = await get(
+    `${apiUrl}apis/${id}/pages?size=${-1}&homepage=${false}`
+  );
+
+  const markdown = data?.data.find((page) => page.type === 'MARKDOWN');
+  const swagger = data?.data.find((page) => page.type === 'SWAGGER');
+  return { markdown, swagger };
 };
 
-export const getPagesContent = async (
-  id: string,
-  idPage: string
-): Promise<ApiPage[]> => {
-  const { data }: { data: APIPagesDTO } = await get(
-    `${apiUrl}apis/${id}/pages/${idPage}/content`
-  );
-  return data?.data || [];
+export const getPageContent = async (url: string): Promise<string> => {
+  const { data }: { data: string } = await get(url);
+  return data || '';
 };
 
 export const getApiCategories = async (): Promise<Category[]> => {

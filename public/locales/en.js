@@ -32,6 +32,7 @@ export const en = {
     owner: 'Owner',
     published: 'Published',
     entryPoints: 'Entry points',
+    documentation: 'API Documentation',
     pages: {
       title: 'Pages',
     },

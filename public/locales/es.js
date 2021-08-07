@@ -33,6 +33,7 @@ export const es = {
     owner: 'Dueño',
     published: 'Publicado',
     entryPoints: 'Puntos de entrada',
+    documentation: 'Documentación API',
     pages: {
       title: 'Páginas',
     },
