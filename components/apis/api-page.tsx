@@ -8,7 +8,13 @@ import { LanguageContext } from '../../context/language.context';
 import Markdown from 'react-markdown';
 import ApiVersionTag from './api-version';
 
-export default function ApiPageComponent({ id }: { id: string }): JSX.Element {
+export default function ApiPageComponent({
+  id,
+  version,
+}: {
+  id: string;
+  version: string;
+}): JSX.Element {
   const [swaggerPage, setSwaggerPage] = useState<ApiPage>();
   const [markdownPage, setMarkdownPage] = useState<string>();
 
@@ -33,8 +39,10 @@ export default function ApiPageComponent({ id }: { id: string }): JSX.Element {
       {markdownPage && (
         <section className="card">
           <div className="flex items-center mb-4">
-            <h2 className="text-2xl font-semibold">{t.apiDetails.documentation}</h2>
-            <ApiVersionTag version={'1'}/>
+            <h2 className="text-2xl font-semibold">
+              {t.apiDetails.documentation}
+            </h2>
+            <ApiVersionTag version={version} />
           </div>
           <hr className="mb-3" />
           {

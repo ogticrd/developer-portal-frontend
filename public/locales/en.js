@@ -29,10 +29,13 @@ export const en = {
   apiDetails: {
     apiDescription: 'API description',
     version: 'Version',
-    owner: 'Owner',
+    owner: 'Developed by',
+    contact: 'Contact',
+    termsAndServics: 'Terms and Services',
     published: 'Published',
     entryPoints: 'Entry points',
     documentation: 'API Documentation',
+    legalLink: 'https://ogtic.gob.do/documentos/marco-legal',
     pages: {
       title: 'Pages',
     },

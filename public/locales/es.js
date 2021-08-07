@@ -30,10 +30,13 @@ export const es = {
   apiDetails: {
     apiDescription: 'Descripción del API',
     version: 'Versión',
-    owner: 'Dueño',
+    owner: 'Desarrollado por',
+    contact: 'Contacto',
+    termsAndServics: 'Términos y servicios',
     published: 'Publicado',
     entryPoints: 'Puntos de entrada',
     documentation: 'Documentación API',
+    legalLink: 'https://ogtic.gob.do/documentos/marco-legal',
     pages: {
       title: 'Páginas',
     },
