@@ -37,7 +37,7 @@ export default function ApiPageComponent({
   return (
     <>
       {markdownPage && (
-        <section className="card">
+        <section id="documentation" className="card">
           <div className="flex items-center mb-4">
             <h2 className="text-2xl font-semibold">
               {t.apiDetails.documentation}
@@ -53,7 +53,7 @@ export default function ApiPageComponent({
       )}
 
       {swaggerPage && (
-        <section className="card">
+        <section id="api" className="card">
           <SwaggerUI url={swaggerPage?._links.content} />
         </section>
       )}

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useContext } from 'react';
+import ApiContextualMenu from '../../components/apis/api-contextual-menu';
 import ApiDetailsHeader from '../../components/apis/api-details-header.component';
 import ApiPageComponent from '../../components/apis/api-page';
 
@@ -17,7 +18,14 @@ export default function ApiDetails({ data }: { data: SummaryAPI }) {
         </title>
       </Head>
       <ApiDetailsHeader data={data} />
-      <ApiPageComponent id={data.id} version={data.version} />
+      <div className="grid grid-cols-12 container mx-auto">
+        <div className="col-span-10">
+          <ApiPageComponent id={data.id} version={data.version} />
+        </div>
+        <div className="col-span-2">
+          <ApiContextualMenu />
+        </div>
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@ export const es = {
     displayName: 'Developer Portal',
   },
   header: {
-    home: "Ir a la pagina principal",
+    home: 'Ir a la pagina principal',
     menu: {
       apis: 'APIs',
       documentation: 'Documentación',
@@ -39,6 +39,12 @@ export const es = {
     legalLink: 'https://ogtic.gob.do/documentos/marco-legal',
     pages: {
       title: 'Páginas',
+    },
+    contextualMenu: {
+      content: 'Contenido',
+      documentation: 'Documentación',
+      api: 'API',
+      support: 'Soporte',
     },
   },
   filters: {

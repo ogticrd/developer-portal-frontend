@@ -39,6 +39,12 @@ export const en = {
     pages: {
       title: 'Pages',
     },
+    contextualMenu: {
+      content: 'Content',
+      documentation: 'Documentation',
+      api: 'API',
+      support: 'Support',
+    },
   },
   filters: {
     categories: 'Sectorial',
