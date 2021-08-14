@@ -14,6 +14,7 @@ import ApiFilters from '../../components/apis/api-filters';
 import { Category } from '../../models/category-response';
 import SearchApiComponent from '../../components/apis/search/search-api.component';
 import { DistributionEnum } from '../../enums/distribution.enum';
+import sortBy from '../../utils/sortby';
 
 export default function index({ data, categories }: any) {
   const { t } = useContext<any>(LanguageContext);
@@ -23,6 +24,11 @@ export default function index({ data, categories }: any) {
   const [distribution, setDistribution] = useState<DistributionEnum>(
     DistributionEnum.GRID
   );
+
+  const sortApis = (key: string) => {
+    const result: SummaryAPI[] = sortBy([...apis], key);
+    setApis(result);
+  };
 
   return (
     <>
@@ -55,12 +61,15 @@ export default function index({ data, categories }: any) {
           </section>
           <div className="flex container mx-auto">
             <section className="w-full lg:w-9/12">
-              <p className="px-11 text-gray-600 mt-5 text-left">{apis?.length || 0} - Resultados de tu busqueda</p>
+              <p className="px-11 text-gray-600 mt-5 text-left">
+                {apis?.length || 0} - Resultados de tu busqueda
+              </p>
               <SearchApiComponent
                 setApis={setApis}
                 setSearching={setSearching}
                 distribution={distribution}
                 setDistribution={setDistribution}
+                onOptionSelected={(value: string) => sortApis(value)}
               />
               <div className="h-2 mb-9">
                 {searching && <div className="custom-spinner"></div>}
@@ -70,7 +79,11 @@ export default function index({ data, categories }: any) {
               ) : (
                 <div className="grid lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1  gap-10 mt-5 px-10">
                   {apis.map((item) => (
-                    <CardApiComponent distribution={distribution} key={item.id} data={item} />
+                    <CardApiComponent
+                      distribution={distribution}
+                      key={item.id}
+                      data={item}
+                    />
                   ))}
                 </div>
               )}

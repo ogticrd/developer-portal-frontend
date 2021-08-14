@@ -25,6 +25,10 @@ export const en = {
     title: 'APIs Catalog',
     description: 'A selection of Dominican REST APIs available for developers.',
     notResults: 'No results found',
+    searchSortBy: {
+      name: 'Name',
+      recent: 'Recents',
+    }
   },
   apiDetails: {
     apiDescription: 'API description',

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { SummaryAPI } from '../../../models/summary-api';
 import { getApis, searchApi } from '../../../services/apis.service';
+import sortBy from '../../../utils/sortby';
 import SearchChangeDistribution from './search-change-distribution';
 import SearchSorter from './search-sorter';
 export default function SearchApiComponent({
@@ -7,17 +9,19 @@ export default function SearchApiComponent({
   setSearching,
   distribution,
   setDistribution,
+  onOptionSelected,
 }: any) {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const onSearch = async () => {
     if (searchTerm.length) setSearching(true);
-    const data = searchTerm.trim()
+    const data: SummaryAPI[] = searchTerm.trim()
       ? await searchApi(searchTerm)
       : await getApis();
     setApis(data);
     setSearching(false);
   };
 
+  
   useEffect(() => {
     const timeout = setTimeout(() => onSearch(), 250);
     return () => clearTimeout(timeout);
@@ -49,7 +53,7 @@ export default function SearchApiComponent({
         />
       </div>
       <div className="col-span-2">
-        <SearchSorter />
+        <SearchSorter onOptionSelected={onOptionSelected} />
       </div>
       <div className="col-span-2">
         <SearchChangeDistribution

@@ -26,6 +26,10 @@ export const es = {
     description:
       'Una selección de API REST domicanas disponibles para desarrolladores.',
     notResults: 'No se encontraron resultados',
+    searchSortBy: {
+      name: 'Nombre',
+      recent: 'Recientes',
+    }
   },
   apiDetails: {
     apiDescription: 'Descripción del API',
