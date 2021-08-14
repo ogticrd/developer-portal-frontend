@@ -1,6 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import { useState } from 'react';
 import Image from 'next/image';
+import Dropdown from './dropdown';
 
 export default function LanguageToggle() {
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -14,7 +15,7 @@ export default function LanguageToggle() {
   };
 
   return (
-    <div>
+    <div className="relative">
       <span
         className="text-white text-md cursor-pointer flex items-center"
         onClick={() => setOpen(!isOpen)}
@@ -43,15 +44,9 @@ export default function LanguageToggle() {
           />
         </svg>
       </span>
-      <div
-        className={isOpen ? 'block' : 'hidden'}
-        onBlur={() => setOpen(false)}
-      >
-        <div
-          onClick={() => setOpen(false)}
-          className="w-screen h-screen left-0 top-0 fixed z-30"
-        >
-          <ul className="absolute top-12 right-3 bg-white p-2 rounded-sm shadow-md">
+      {isOpen && (
+        <Dropdown onClose={() => setOpen(false)}>
+          <ul className="w-24">
             <li
               className="cursor-pointer text-gray-700 hover:text-black flex items-center"
               onClick={() => changeLanguage('en')}
@@ -67,8 +62,8 @@ export default function LanguageToggle() {
               <span className="ml-2">Español</span>
             </li>
           </ul>
-        </div>
-      </div>
+        </Dropdown>
+      )}
     </div>
   );
 }
