@@ -28,8 +28,8 @@ export default function SearchApiComponent({
   }, [searchTerm]);
 
   return (
-    <div className="container m-auto mb-5 px-10 grid grid-cols-12 gap-3">
-      <div className="bg-white col-span-8 border shadow-md w-full flex items-center m-auto px-2 rounded-md">
+    <div className="container m-auto mb-5 px-10 grid grid-cols-12 gap-3 items-center">
+      <div className="bg-white col-span-12 md:col-span-8 border shadow-md w-full flex items-center m-auto px-2 rounded-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 text-gray-400"
@@ -52,10 +52,10 @@ export default function SearchApiComponent({
           value={searchTerm}
         />
       </div>
-      <div className="col-span-2">
+      <div className="hidden md:block h-10 col-span-2">
         <SearchSorter onOptionSelected={onOptionSelected} />
       </div>
-      <div className="col-span-2">
+      <div className="hidden md:block h-10 col-span-2">
         <SearchChangeDistribution
           distribution={distribution}
           setDistribution={setDistribution}

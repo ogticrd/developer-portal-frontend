@@ -65,11 +65,15 @@ export default function SearchSorter({
       </div>
       {isOpen && (
         <Dropdown onClose={() => setIsOpen(false)}>
-          <ul className="text-left w-40 px-2">
+          <ul className="text-left w-28 px-2">
             {options.map((option) => (
               <li
                 key={option.value}
-                className="cursor-pointer mb-1 hover:underline"
+                className={`${
+                  sortBy.value === option.value
+                    ? 'text-black'
+                    : 'text-gray-700 hover:text-black'
+                } cursor-pointer mb-1 `}
                 onClick={() => onSelect(option)}
               >
                 <span>{option.label}</span>

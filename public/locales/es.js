@@ -29,7 +29,8 @@ export const es = {
     searchSortBy: {
       name: 'Nombre',
       recent: 'Recientes',
-    }
+    },
+    searchQuantity: 'Resultados de tu busqueda'
   },
   apiDetails: {
     apiDescription: 'Descripción del API',

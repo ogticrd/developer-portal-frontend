@@ -27,10 +27,10 @@ export default function CardApiComponent(props: any) {
 
   return (
     <div
-      className={`rounded-lg relative ${
-        isDistributionGrid ? 'col-span-4 h-96' : 'col-span-12 grid grid-cols-12'
+      className={`rounded-lg relative col-span-4 block ${
+        isDistributionGrid ? 'h-96' : 'md:col-span-12 md:grid grid-cols-12'
       } shadow-lg text-left bg-white text-gray-700`}
-    > 
+    >
       <div
         className={`w-full ${
           isDistributionGrid ? 'h-44' : 'h-48'
@@ -57,8 +57,10 @@ export default function CardApiComponent(props: any) {
           <p className="text-sm my-4">{shorten(data.description, 72)}</p>
         </div>
         <div
-          className={`flex p-4 border-t items-center bottom-0 w-full ${
-            isDistributionGrid ? 'justify-between absolute' : 'justify-end gap-6'
+          className={`flex p-4 border-t items-center bottom-0 w-full justify-between ${
+            isDistributionGrid
+              ? 'absolute'
+              : 'md:justify-end gap-6'
           }`}
         >
           <Link href={`/apis/${data.id}`}>

@@ -3,7 +3,7 @@ export const en = {
     displayName: 'Developer Portal',
   },
   header: {
-    home: "Go to main page",
+    home: 'Go to main page',
     menu: {
       apis: 'APIs',
       documentation: 'Documentation',
@@ -28,7 +28,8 @@ export const en = {
     searchSortBy: {
       name: 'Name',
       recent: 'Recents',
-    }
+    },
+    searchQuantity: 'Results for your search',
   },
   apiDetails: {
     apiDescription: 'API description',

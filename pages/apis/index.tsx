@@ -40,7 +40,7 @@ export default function index({ data, categories }: any) {
       <div className="min-h-screen pb-10">
         <article className="text-center">
           <section className=" bg-blue-50 py-10">
-            <div className="flex items-center justify-around container m-auto">
+            <div className="flex flex-col md:flex-row items-center justify-around container m-auto">
               <div>
                 <Image
                   src="/images/ogtic-full-logo.png"
@@ -49,8 +49,8 @@ export default function index({ data, categories }: any) {
                   alt="OGTIC logo"
                 />
               </div>
-              <div className="text-left">
-                <h1 className="text-3xl font-semibold mb-4">
+              <div className="px-6 text-left text-blue-primary">
+                <h1 className="text-center md:text-left text-3xl font-semibold mb-4">
                   {t.apiCatalog.title}
                 </h1>
                 <p className="text-lg font-light w-9/12">
@@ -62,7 +62,7 @@ export default function index({ data, categories }: any) {
           <div className="flex container mx-auto">
             <section className="w-full lg:w-9/12">
               <p className="px-11 text-gray-600 mt-5 text-left">
-                {apis?.length || 0} - Resultados de tu busqueda
+                {apis?.length || 0} - {t.apiCatalog.searchQuantity}
               </p>
               <SearchApiComponent
                 setApis={setApis}
