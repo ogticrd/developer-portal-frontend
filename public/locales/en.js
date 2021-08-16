@@ -15,6 +15,7 @@ export const en = {
     ctaDescription:
       'A community of developers who design and code digital public services.',
     ctaButton: 'Explore APIs',
+    viewAll: 'View all',
   },
   popularApis: {
     title: 'Featured APIs',

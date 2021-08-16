@@ -15,6 +15,7 @@ export const es = {
     ctaDescription:
       'Una comunidad de desarrolladores que diseñan y codifican servicios públicos digitales.',
     ctaButton: 'Explorar APIs',
+    viewAll: 'Ver todo',
   },
   popularApis: {
     title: 'APIs destacadas',
