@@ -1,4 +1,4 @@
-import { ApiPage, APIPagesDTO } from '../models/api-pages';
+import { APIPagesDTO } from '../models/api-pages';
 import { ApiPagesResponse } from '../models/api-pages-response';
 import { Category, CategoryResponse } from '../models/category-response';
 import { SummaryAPI } from '../models/summary-api';

@@ -4,9 +4,8 @@ import { getPages, getPageContent } from '../../services/apis.service';
 import SwaggerUI from 'swagger-ui-react';
 import 'swagger-ui-react/swagger-ui.css';
 import { LanguageContext } from '../../context/language.context';
-
-import Markdown from 'react-markdown';
 import ApiVersionTag from './api-version';
+import MarkdownViewer from './markdown-viewer';
 
 export default function ApiPageComponent({
   id,
@@ -45,10 +44,7 @@ export default function ApiPageComponent({
             <ApiVersionTag version={version} />
           </div>
           <hr className="mb-3" />
-          {
-            // eslint-disable-next-line react/no-children-prop
-            <Markdown children={markdownPage} />
-          }
+          <MarkdownViewer content={markdownPage} />
         </section>
       )}
 
