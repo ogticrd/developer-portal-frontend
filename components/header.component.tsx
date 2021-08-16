@@ -2,30 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';
 import { LanguageContext } from '../context/language.context';
-import { MenuItemModel } from '../models/menu-item.model';
-import LanguageToggle from './language-toggle.component';
+import HeaderMenu from './header-menu';
 
 export default function HeaderComponent() {
   const { t } = useContext<any>(LanguageContext);
-
-  const menuItems: MenuItemModel[] = [
-    {
-      label: t.header.menu.apis,
-      icon: 'clouds.svg',
-      path: '/apis',
-    },
-    {
-      label: t.header.menu.documentation,
-      icon: 'docs.svg',
-      path: '/docs',
-    },
-    {
-      label: t.header.menu.github,
-      icon: 'github.svg',
-      path: 'https://github.com/opticrd/',
-      external: true,
-    },
-  ];
 
   return (
     <header className="bg-blue-primary sticky top-0 z-20">
@@ -42,33 +22,7 @@ export default function HeaderComponent() {
             </a>
           </Link>
         </div>
-        <nav>
-          <ul className="flex">
-            {menuItems.map((item, i) => {
-              return (
-                <li key={i} className="mr-5 text-white hover:underline">
-                  <Link href={item.path}>
-                    <a
-                      target={item.external ? '_blank' : '_self'}
-                      className="flex"
-                    >
-                      <Image
-                        src={'/icons/' + item.icon}
-                        width={18}
-                        height={18}
-                        alt={item.label + ' icon'}
-                      />
-                      <span className="ml-2">{item.label}</span>
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <LanguageToggle />
-            </li>
-          </ul>
-        </nav>
+        <HeaderMenu/>
       </div>
     </header>
   );
