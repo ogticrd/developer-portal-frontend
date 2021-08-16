@@ -8,7 +8,7 @@ const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';
 // const apiUrl = 'http://localhost:8083/portal/environments/DEFAULT/';
 
 export const getPopularApis = async (): Promise<SummaryAPI[]> => {
-  const { data } = await get(`${apiUrl}apis`);
+  const { data } = await get(`${apiUrl}apis?size=3`);
   return (data?.data as SummaryAPI[]) || [];
 };
 
