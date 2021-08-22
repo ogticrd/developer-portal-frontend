@@ -14,7 +14,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "showdown": "^1.9.1",
-    "swagger-ui-react": "^3.51.1"
+    "swagger-ui-react": "^4.0.0-beta.4"
   },
   "devDependencies": {
     "@types/react": "17.0.14",
