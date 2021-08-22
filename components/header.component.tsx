@@ -9,7 +9,7 @@ export default function HeaderComponent() {
 
   return (
     <header className="bg-blue-primary sticky top-0 z-20">
-      <div className="container mx-auto flex px-12 py-1 items-center justify-between">
+      <div className="container mx-auto flex px-3 md:px-12 py-1 items-center justify-between">
         <div>
           <Link href="/">
             <a title={t.header.home}>

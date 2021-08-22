@@ -49,8 +49,14 @@ export default function ApiPageComponent({
       )}
 
       {swaggerPage && (
-        <section id="api" className="card">
-          <SwaggerUI url={swaggerPage?._links.content} />
+        <section id="api" className="card w-full overflow-x-auto">
+          <div
+            style={{
+              minWidth: 500,
+            }}
+          >
+            <SwaggerUI url={swaggerPage?._links.content} />
+          </div>
         </section>
       )}
     </>

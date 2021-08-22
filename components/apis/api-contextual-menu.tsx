@@ -15,7 +15,10 @@ export default function ApiContextualMenu() {
   const { t } = useContext<any>(LanguageContext);
 
   const menuItems = [
-    { hash: '#docuemtation', label: t.apiDetails.contextualMenu.documentation },
+    {
+      hash: '#documentation',
+      label: t.apiDetails.contextualMenu.documentation,
+    },
     { hash: '#api', label: t.apiDetails.contextualMenu.api },
     { hash: '#support', label: t.apiDetails.contextualMenu.support },
   ];
@@ -34,7 +37,7 @@ export default function ApiContextualMenu() {
             }`}
           >
             <Link href={item.hash}>
-              <a className="ml-6">{item.label}</a>
+              <a className="contextual-item ml-6">{item.label}</a>
             </Link>
           </li>
         ))}

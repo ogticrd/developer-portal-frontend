@@ -11,7 +11,7 @@ import { getApiDetails } from '../../services/apis.service';
 export default function ApiDetails({ data }: { data: SummaryAPI }) {
   const { t } = useContext<any>(LanguageContext);
   return (
-    <div className="m-auto border-2 min-h-screen bg-white shadow-md">
+    <div className="api-details m-auto border-2 min-h-screen bg-white shadow-md">
       <Head>
         <title>
           {t.app.displayName} - {data.name}
@@ -19,10 +19,10 @@ export default function ApiDetails({ data }: { data: SummaryAPI }) {
       </Head>
       <ApiDetailsHeader data={data} />
       <div className="grid grid-cols-12 container mx-auto">
-        <div className="col-span-10">
+        <div className="col-span-12 md:col-span-10">
           <ApiPageComponent id={data.id} version={data.version} />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 hidden md:block">
           <ApiContextualMenu />
         </div>
       </div>
