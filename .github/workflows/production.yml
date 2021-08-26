@@ -7,7 +7,7 @@ on:
 
 env:
   # Deployment variables
-  PROJECT_NAME: inspector-dashboard
+  PROJECT_NAME: developer-portal
   GAR_BASE: us-docker.pkg.dev/${{ secrets.GCP_PROJECT }}
 
 jobs:
