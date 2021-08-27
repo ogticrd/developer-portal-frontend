@@ -31,7 +31,7 @@ export const es = {
       name: 'Nombre',
       recent: 'Recientes',
     },
-    searchQuantity: 'Resultados de tu busqueda'
+    searchQuantity: 'Resultados de tu busqueda',
   },
   apiDetails: {
     apiDescription: 'Descripción del API',
@@ -73,4 +73,4 @@ export const es = {
     contact: 'Contacto',
     follow: 'Siguenos',
   },
-};
+}
