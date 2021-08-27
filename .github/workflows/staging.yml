@@ -71,7 +71,7 @@ jobs:
           target: release
           tags: ${{ env.GAR_BASE }}/${{env.PROJECT_NAME}}/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}:${{ env.GITHUB_HEAD_REF_SLUG || env.GITHUB_REF_SLUG }}
           build-args: |
-            NODE_ENV=dev
+            NODE_ENV=development
             REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}
             SKIP_PREFLIGHT_CHECK=${{ env.SKIP_PREFLIGHT_CHECK }}
             DISABLE_ESLINT_PLUGIN=${{ env.DISABLE_ESLINT_PLUGIN }}
@@ -98,7 +98,7 @@ jobs:
           credentials: ${{ secrets.GAR_JSON_KEY }}
           region: ${{ secrets.GCP_REGION }}
           env_vars: |
-            NODE_ENV=dev,
+            NODE_ENV=development,
             REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}
 
       - name: Set up Cloud SDK
