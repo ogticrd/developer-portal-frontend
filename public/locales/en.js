@@ -72,4 +72,4 @@ export const en = {
     contact: 'Contact',
     follow: 'Follow us',
   },
-};
+}

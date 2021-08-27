@@ -7,4 +7,4 @@ module.exports = {
   images: {
     domains: ['developers.digital.gob.do', 'localhost'],
   },
-};
+}
