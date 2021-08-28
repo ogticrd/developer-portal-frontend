@@ -18,6 +18,9 @@ on:
       - 'package*.json'
       - '.github/workflows/lint.yml'
 
+env:
+  NODE_ENV: development
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -37,7 +40,7 @@ jobs:
       # ESLint and Prettier must be in  `package.json`
       - run: yarn install --frozen-lockfile
         env:
-          NODE_ENV: development
+          NODE_ENV: ${{ env.NODE_ENV }}
       - name: Run linters
         if: github.event_name == 'push'
         uses: wearerequired/lint-action@v1
