@@ -56,6 +56,6 @@ EXPOSE 3000 80
 COPY nginx.conf /etc/nginx/conf.d/default.conf.template
 
 # bring the built files from the previous step
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/.next /usr/share/nginx/html
 
 CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
