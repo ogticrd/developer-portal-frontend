@@ -11,7 +11,7 @@ on:
       - '.github/workflows/lint.yml'
   pull_request:
     branches:
-      - "master"
+      - "main"
     paths:
       - '**.js*'
       - '**.ts*'
@@ -35,7 +35,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       # ESLint and Prettier must be in  `package.json`
-      - run: npm ci
+      - run: yarn install --frozen-lockfile
         env:
           NODE_ENV: development
       - name: Run linters
