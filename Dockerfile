@@ -40,7 +40,7 @@ RUN yarn build
 #####################################
 ##               Release           ##
 #####################################
-FROM nginx:stable-alpine as release
+FROM node:lts-alpine as release
 
 # get the node environment to use
 ARG NODE_ENV
@@ -49,13 +49,22 @@ ENV NODE_ENV ${NODE_ENV:-development}
 ENV PORT 3000
 ENV HOST 0.0.0.0
 
-EXPOSE ${PORT}
-EXPOSE 3000 80
+WORKDIR /app
 
-# use a custom template for nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf.template
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
 
 # bring the built files from the previous step
-COPY --from=builder /app/.next /usr/share/nginx/html
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=deps /app/node_modules ./node_modules
 
-CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+USER nextjs
+
+EXPOSE ${PORT}
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry.
+ENV NEXT_TELEMETRY_DISABLED 1
+
+CMD sh -c "PORT=\$PORT yarn start"
