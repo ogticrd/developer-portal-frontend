@@ -4,8 +4,8 @@ import { Category, CategoryResponse } from '../models/category-response';
 import { SummaryAPI } from '../models/summary-api';
 import { get, post } from './http/http.service';
 
-const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';
-// const apiUrl = 'http://localhost:8083/portal/environments/DEFAULT/';
+// const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';
+const apiUrl = 'http://34.138.103.79:8083/portal/environments/DEFAULT/';
 
 export const getPopularApis = async (): Promise<SummaryAPI[]> => {
   const { data } = await get(`${apiUrl}apis?size=3`);
