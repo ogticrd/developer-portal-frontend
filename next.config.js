@@ -5,6 +5,6 @@ module.exports = {
     defaultLocale: 'es',
   },
   images: {
-    domains: ['developers.digital.gob.do', 'localhost'],
+    domains: ['developers.digital.gob.do', 'localhost', '34.138.103.79'],
   },
 }
