@@ -4,10 +4,6 @@
 # Install dependencies only when needed
 FROM node:lts-alpine AS deps
 
-# get the node environment to use
-ARG NODE_ENV
-ENV NODE_ENV ${NODE_ENV:-production}
-
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 
@@ -20,6 +16,10 @@ RUN yarn install --frozen-lockfile
 ##               Build             ##
 #####################################
 FROM node:lts-alpine as builder
+
+# get the node environment to use
+ARG NODE_ENV
+ENV NODE_ENV ${NODE_ENV:-production}
 
 # some projects will fail without this variable set to true
 ARG SKIP_PREFLIGHT_CHECK
