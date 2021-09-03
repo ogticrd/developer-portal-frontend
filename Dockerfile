@@ -4,22 +4,22 @@
 # Install dependencies only when needed
 FROM node:lts-alpine AS deps
 
-# get the node environment to use
-ARG NODE_ENV
-ENV NODE_ENV ${NODE_ENV:-production}
-
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 # copy the package.json to install dependencies
-COPY package*.json yarn* ./
+COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 #####################################
 ##               Build             ##
 #####################################
 FROM node:lts-alpine as builder
+
+# get the node environment to use
+ARG NODE_ENV
+ENV NODE_ENV ${NODE_ENV:-production}
 
 # some projects will fail without this variable set to true
 ARG SKIP_PREFLIGHT_CHECK
@@ -40,7 +40,7 @@ RUN yarn build
 #####################################
 ##               Release           ##
 #####################################
-FROM nginx:stable-alpine as release
+FROM node:lts-alpine as release
 
 # get the node environment to use
 ARG NODE_ENV
@@ -49,13 +49,26 @@ ENV NODE_ENV ${NODE_ENV:-development}
 ENV PORT 3000
 ENV HOST 0.0.0.0
 
-EXPOSE ${PORT}
-EXPOSE 3000 80
+WORKDIR /app
 
-# use a custom template for nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf.template
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
 
 # bring the built files from the previous step
-COPY --from=builder /app/.next /usr/share/nginx/html
+# You only need to copy next.config.js if you are NOT using the default configuration
+# COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
-CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+USER nextjs
+
+EXPOSE ${PORT}
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry.
+ENV NEXT_TELEMETRY_DISABLED 1
+
+CMD sh -c "PORT=\$PORT yarn start"
