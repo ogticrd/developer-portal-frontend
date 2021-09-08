@@ -5,7 +5,6 @@ import { SummaryAPI } from '../models/summary-api';
 import { get, post } from './http/http.service';
 
 // const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';
-// const apiUrl = 'http://34.138.103.79:8083/portal/environments/DEFAULT/';
 const apiUrl = 'https://grav-mid.herokuapp.com/portal/environments/DEFAULT/';
 
 
