@@ -20,7 +20,7 @@ export default function Dropdown({
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className="z-10 p-2 bg-white rounded-md shadow-lg absolute"
+      className="z-30 p-2 bg-white rounded-md shadow-lg absolute"
     >
       {children}
     </div>
