@@ -4,6 +4,7 @@
 
 :root {
   --primary-color: #003670;
+  --primary-dark-color: #002349;
 }
 
 html,
@@ -25,6 +26,10 @@ a {
 
 .bg-blue-primary {
   background-color: var(--primary-color);
+}
+
+.bg-blue-primary-dark {
+  background-color: var(--primary-dark-color);
 }
 
 .text-blue-primary {
