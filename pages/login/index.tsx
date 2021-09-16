@@ -47,7 +47,7 @@ export default function index() {
                 className="block border border-gray-200 rounded-md p-2 w-full"
                 type="password"
                 id="password_field"
-                placeholder="Su contraseña"
+                placeholder="*********"
               />
             </span>
             <div className="flex items-center gap-3">
