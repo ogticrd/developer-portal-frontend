@@ -1,8 +1,22 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import { LoginForm } from '../../models/forms/login.form'
 
 export default function index() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data: LoginForm) => {
+    if (Object.keys(errors).length) {
+      return
+    }
+    console.log(data)
+  }
   return (
     <div className="bg-blue-primary-light">
       <div className="container mx-auto flex items-center justify-center py-20">
@@ -22,17 +36,26 @@ export default function index() {
             Inicie sesión en su cuenta para utilizar las APIs
           </h3>
 
-          <form className="flex flex-col gap-6 pt-8 mb-4">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-6 pt-8 mb-4"
+          >
             <span>
               <label className="block text-gray-500" htmlFor="email_field">
                 Correo
               </label>
               <input
                 className="block border border-gray-200 rounded-md p-2 w-full"
-                type="email"
+                type="text"
                 id="email_field"
                 placeholder="johndoe@gmail.com"
+                {...register('email', { required: true })}
               />
+               {errors.email && (
+                <span className="text-red-600 text-sm">
+                  Debe especificar su email
+                </span>
+              )}
             </span>
             <span>
               <span className="flex justify-between">
@@ -48,7 +71,13 @@ export default function index() {
                 type="password"
                 id="password_field"
                 placeholder="*********"
+                {...register('password', { required: true })}
               />
+               {errors.password && (
+                <span className="text-red-600 text-sm">
+                  Debe especificar su contraseña
+                </span>
+              )}
             </span>
             <div className="flex items-center gap-3">
               <input type="checkbox" id="remember" />
