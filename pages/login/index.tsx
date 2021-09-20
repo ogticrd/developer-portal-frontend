@@ -90,7 +90,7 @@ export default function index() {
           </form>
 
           <div className="text-center">
-            <p className="mb-2">¿Nuevo en nuestra plataforma?</p>
+            <p className="mb-2 text-gray-600">¿Nuevo en nuestra plataforma?</p>
             <Link href="register">
               <a className="text-blue-800 text-lg">Crear una cuenta</a>
             </Link>
