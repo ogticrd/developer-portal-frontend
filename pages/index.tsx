@@ -1,13 +1,13 @@
-import Head from 'next/head';
-import { useContext } from 'react';
-import HeroComponent from '../components/home/hero.component';
-import PopularApisComponent from '../components/apis/summary-apis.component';
-import { LanguageContext } from '../context/language.context';
-import { getPopularApis } from '../services/apis.service';
-import InfoTad from '../components/home/info-tad.component';
+import Head from 'next/head'
+import React, { useContext } from 'react'
+import HeroComponent from '../components/home/hero.component'
+import PopularApisComponent from '../components/apis/summary-apis.component'
+import { LanguageContext } from '../context/language.context'
+import { getPopularApis } from '../services/apis.service'
+import InfoTad from '../components/home/info-tad.component'
 
 export default function Home({ pupularApis }: any) {
-  const { t } = useContext<any>(LanguageContext);
+  const { t } = useContext<any>(LanguageContext)
   return (
     <div>
       <Head>
@@ -21,15 +21,15 @@ export default function Home({ pupularApis }: any) {
         <PopularApisComponent pupularApis={pupularApis} />
       </main>
     </div>
-  );
+  )
 }
 
 export async function getServerSideProps() {
-  const data = await getPopularApis();
+  const data = await getPopularApis()
 
   return {
     props: {
       pupularApis: data,
     },
-  };
+  }
 }

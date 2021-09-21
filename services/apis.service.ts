@@ -4,8 +4,9 @@ import { Category, CategoryResponse } from '../models/category-response'
 import { SummaryAPI } from '../models/summary-api'
 import { get, post } from './http/http.service'
 
-// const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';
-const apiUrl = 'https://grav-mid.herokuapp.com/portal/environments/DEFAULT/'
+const origin =
+  typeof window !== 'undefined' ? '/server' : 'http://localhost:8083'
+const apiUrl = `${origin}/portal/environments/DEFAULT/`
 
 export const getPopularApis = async (): Promise<SummaryAPI[]> => {
   const { data } = await get(`${apiUrl}apis?size=3`)

@@ -1,13 +1,41 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import { RegisterForm } from '../../models/forms/register.form'
+import { createAccount } from '../../services/auth.service'
 
 export default function index() {
+  const [loading, setLoading] = useState()
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const password = useRef('')
+  password.current = watch('password', '')
+
+  const onSubmit = async (data: RegisterForm) => {
+    if (Object.keys(errors).length) {
+      return
+    }
+
+    setLoading(true)
+    const res = await createAccount(data)
+    console.log(res)
+
+    setLoading(false)
+  }
+  const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/
+
   return (
     <div className="bg-blue-primary-light">
       <div className="container mx-auto flex items-center justify-center py-20">
         <div className="p-10 bg-white shadow-lg rounded-md">
-          <div className="flex items-center gap-4 justify-center mb-4">
+          <div className="flex items-center gap-2 justify-center mb-4">
             <h2 className="text-3xl font-semibold text-gray-700">
               ¡Registrate!
             </h2>
@@ -23,7 +51,10 @@ export default function index() {
             ¡Haz el uso de APIs fácil y simple!
           </h3>
 
-          <form className="flex flex-col gap-6 pt-8 mb-4">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-6 pt-8 mb-4"
+          >
             <span>
               <label className="block text-gray-500" htmlFor="name_field">
                 Nombre
@@ -33,7 +64,13 @@ export default function index() {
                 type="text"
                 id="name_field"
                 placeholder="John"
+                {...register('firstName', { required: true })}
               />
+              {errors.firstName && (
+                <span className="text-red-600 text-sm">
+                  Debe especificar su nombre
+                </span>
+              )}
             </span>
             <span>
               <label className="block text-gray-500" htmlFor="last_name_field">
@@ -44,7 +81,13 @@ export default function index() {
                 type="text"
                 id="last_name_field"
                 placeholder="Doe"
+                {...register('lastName', { required: true })}
               />
+              {errors.lastName && (
+                <span className="text-red-600 text-sm">
+                  Debe especificar su apellido
+                </span>
+              )}
             </span>
             <span>
               <label className="block text-gray-500" htmlFor="email_field">
@@ -55,7 +98,22 @@ export default function index() {
                 type="email"
                 id="email_field"
                 placeholder="johndoe@gmail.com"
+                {...register('email', {
+                  required: true,
+                  pattern: emailPattern,
+                })}
               />
+              {errors.email?.type === 'required' && (
+                <span className="text-red-600 text-sm">
+                  Debe especificar su correo electrónico
+                </span>
+              )}
+
+              {errors.email?.type === 'pattern' && (
+                <span className="text-red-600 text-sm">
+                  Este correo no es válido
+                </span>
+              )}
             </span>
             <span>
               <label className="block text-gray-500" htmlFor="org_name_field">
@@ -66,7 +124,13 @@ export default function index() {
                 type="text"
                 id="org_name_field"
                 placeholder="Tu organización"
+                {...register('organization', { required: true })}
               />
+              {errors.organization && (
+                <span className="text-red-600 text-sm">
+                  Debe especificar su organizacion
+                </span>
+              )}
             </span>
 
             <span>
@@ -79,7 +143,18 @@ export default function index() {
                 type="password"
                 id="password_field"
                 placeholder="********"
+                {...register('password', { required: true, minLength: 8 })}
               />
+              {errors.password?.type === 'required' && (
+                <span className="text-red-600 text-sm">
+                  Debe especificar su contraseña
+                </span>
+              )}
+              {errors.password?.type === 'minLength' && (
+                <span className="text-red-600 text-sm">
+                  Debe tener al menos 8 digitos
+                </span>
+              )}
             </span>
 
             <span>
@@ -95,10 +170,28 @@ export default function index() {
                 type="password"
                 id="re_password_field"
                 placeholder="********"
+                {...register('rePassword', {
+                  required: true,
+                  validate: (value) => value === password.current,
+                })}
               />
+              {errors.rePassword?.type === 'required' && (
+                <span className="text-red-600 text-sm">
+                  Debe repetir su contraseña
+                </span>
+              )}
+              {errors.rePassword?.type === 'validate' && (
+                <span className="text-red-600 text-sm">
+                  Las contraseñas no coinciden
+                </span>
+              )}
             </span>
             <div className="flex items-center gap-3">
-              <input type="checkbox" id="terms" />
+              <input
+                type="checkbox"
+                id="terms"
+                {...register('conditions', { required: true })}
+              />
               <label htmlFor="terms">
                 Estoy de acuerdo con <br />
                 <Link href="conditions">
@@ -108,8 +201,13 @@ export default function index() {
                 </Link>
               </label>
             </div>
-            <button className="bg-blue-primary text-white rounded-md py-2">
-              Iniciar sesión
+            <button
+              disabled={loading}
+              className={`${
+                loading ? 'bg-gray-400' : 'bg-blue-primary'
+              } text-white rounded-md py-2`}
+            >
+              Crear cuenta
             </button>
           </form>
 
