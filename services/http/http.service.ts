@@ -9,9 +9,13 @@ export const get = async (url: string): Promise<any> => {
   }
 }
 
-export const post = async (url: string, payload: any = null): Promise<any> => {
+export const post = async (
+  url: string,
+  payload: any = null,
+  options = null,
+): Promise<any> => {
   try {
-    const res = await axios.post(url, payload)
+    const res = await axios.post(url, payload, options)
     return res
   } catch (err) {
     return { err }

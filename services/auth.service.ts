@@ -33,7 +33,20 @@ const finalizeRegistration = async (
     password,
   })
 
-  console.log(data)
+  return data
+}
+
+export const login = async (username: string, password: string) => {
+  const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+  const { data } = await post(
+    `${apiUrl}auth/login`,
+    {},
+    {
+      headers: {
+        Authorization: `Basic ${token}`,
+      },
+    },
+  )
 
   return data
 }

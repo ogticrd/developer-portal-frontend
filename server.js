@@ -43,7 +43,9 @@ app.prepare().then(() => {
     try {
       const fullUrl = apiUrl + req.url.replace('/server', '')
       const { data } = await axios
-        .post(fullUrl, req.body)
+        .post(fullUrl, req.body, {
+          headers: { Authorization: req.headers?.authorization },
+        })
         .catch((err) => res.status(err.response.status).json(err))
       res.send(data)
     } catch (err) {

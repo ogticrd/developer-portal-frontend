@@ -28,8 +28,6 @@ export const getApiDetails = async (id: string): Promise<SummaryAPI> => {
 }
 
 export const searchApi = async (search: string): Promise<SummaryAPI[]> => {
-  console.log('apiUrl', apiUrl)
-
   try {
     const { data } = await post(`${apiUrl}apis/_search?size=${5}&q=${search}`)
     return data?.data || []

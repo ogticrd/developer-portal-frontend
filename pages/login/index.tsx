@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { LoginForm } from '../../models/forms/login.form'
+import { login } from '../../services/auth.service'
+import { useRouter } from 'next/dist/client/router'
 
 export default function index() {
   const {
@@ -11,11 +13,20 @@ export default function index() {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data: LoginForm) => {
+  const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false)
+  const router = useRouter()
+  const onSubmit = async (data: LoginForm) => {
     if (Object.keys(errors).length) {
       return
     }
-    console.log(data)
+    const res = await login(data.email, data.password)
+    if (res?.token) {
+      localStorage.setItem('auth-token', res.token)
+      setInvalidCredentials(false)
+      router.push('/')
+    } else {
+      setInvalidCredentials(true)
+    }
   }
   return (
     <div className="bg-blue-primary-light">
@@ -40,6 +51,11 @@ export default function index() {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-6 pt-8 mb-4"
           >
+            {invalidCredentials && (
+              <span className="text-red-600 text-center">
+                Usuario o contraseña incorrecta
+              </span>
+            )}
             <span>
               <label className="block text-gray-500" htmlFor="email_field">
                 Correo
@@ -51,7 +67,7 @@ export default function index() {
                 placeholder="johndoe@gmail.com"
                 {...register('email', { required: true })}
               />
-               {errors.email && (
+              {errors.email && (
                 <span className="text-red-600 text-sm">
                   Debe especificar su email
                 </span>
@@ -73,7 +89,7 @@ export default function index() {
                 placeholder="*********"
                 {...register('password', { required: true })}
               />
-               {errors.password && (
+              {errors.password && (
                 <span className="text-red-600 text-sm">
                   Debe especificar su contraseña
                 </span>
