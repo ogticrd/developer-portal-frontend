@@ -1,29 +1,29 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useContext, useState } from 'react';
-import { LanguageContext } from '../../context/language.context';
-import { DistributionEnum } from '../../enums/distribution.enum';
-import { SummaryAPI } from '../../models/summary-api';
-import shorten from '../../utils/shorten';
+import Image from 'next/image'
+import Link from 'next/link'
+import { useContext, useState } from 'react'
+import { LanguageContext } from '../../context/language.context'
+import { DistributionEnum } from '../../enums/distribution.enum'
+import { SummaryAPI } from '../../models/summary-api'
+import shorten from '../../utils/shorten'
 
 export default function CardApiComponent(props: any) {
   let {
     data,
     distribution,
-  }: { data: SummaryAPI; distribution: DistributionEnum } = props;
-  const { t } = useContext<any>(LanguageContext);
+  }: { data: SummaryAPI; distribution: DistributionEnum } = props
+  const { t } = useContext<any>(LanguageContext)
 
-  distribution ||= DistributionEnum.GRID;
+  distribution ||= DistributionEnum.GRID
 
-  const isDistributionGrid = distribution === DistributionEnum.GRID;
-  const defaultImageSrc = '/images/no-image-available.svg.png';
-  const [imageUrl, setImageUrl] = useState<string>(data._links.picture);
+  const isDistributionGrid = distribution === DistributionEnum.GRID
+  const defaultImageSrc = '/images/no-image-available.svg.png'
+  const [imageUrl, setImageUrl] = useState<string>(data._links.picture)
 
   const onImageError = () => {
-    if (imageUrl != defaultImageSrc) {
-      setImageUrl(defaultImageSrc);
+    if (imageUrl !== defaultImageSrc) {
+      setImageUrl(defaultImageSrc)
     }
-  };
+  }
 
   return (
     <div
@@ -58,9 +58,7 @@ export default function CardApiComponent(props: any) {
         </div>
         <div
           className={`flex p-4 border-t items-center bottom-0 w-full justify-between ${
-            isDistributionGrid
-              ? 'absolute'
-              : 'md:justify-end gap-6'
+            isDistributionGrid ? 'absolute' : 'md:justify-end gap-6'
           }`}
         >
           <Link href={`/apis/${data.id}`}>
@@ -92,5 +90,5 @@ export default function CardApiComponent(props: any) {
         </div>
       </div>
     </div>
-  );
+  )
 }

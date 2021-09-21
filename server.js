@@ -23,8 +23,6 @@ app.prepare().then(() => {
 
   server.get('/server/*', async (req, res) => {
     const fullUrl = apiUrl + req.url.replace('/server', '')
-    console.log('Asd')
-    console.log(fullUrl)
     if (req.url.includes('picture')) {
       const { data } = await axios.get(fullUrl, {
         responseType: 'arraybuffer',

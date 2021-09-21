@@ -1,7 +1,11 @@
 import { RegisterForm } from '../models/forms/register.form'
 import { post } from './http/http.service'
 
-const apiUrl = '/server/portal/environments/DEFAULT/'
+const origin =
+  typeof window !== 'undefined'
+    ? `${window?.location?.origin}/server`
+    : 'http://localhost:8083'
+const apiUrl = `${origin}/portal/environments/DEFAULT/`
 
 export const createAccount = async (
   registerForm: RegisterForm,

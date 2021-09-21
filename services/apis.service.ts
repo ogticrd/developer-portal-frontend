@@ -4,13 +4,11 @@ import { Category, CategoryResponse } from '../models/category-response'
 import { SummaryAPI } from '../models/summary-api'
 import { get, post } from './http/http.service'
 
-// const apiUrl = 'https://developers.digital.gob.do/portal/environments/DEFAULT/';
-// const apiUrl = 'https://grav-mid.herokuapp.com/portal/environments/DEFAULT/'
-const apiUrl = '/server/portal/environments/DEFAULT/'
+const origin =
+  typeof window !== 'undefined' ? '/server' : 'http://localhost:8083'
+const apiUrl = `${origin}/portal/environments/DEFAULT/`
 
 export const getPopularApis = async (): Promise<SummaryAPI[]> => {
-  console.log('Aaa ?')
-  
   const { data } = await get(`${apiUrl}apis?size=3`)
   return data?.data || []
 }
@@ -30,6 +28,8 @@ export const getApiDetails = async (id: string): Promise<SummaryAPI> => {
 }
 
 export const searchApi = async (search: string): Promise<SummaryAPI[]> => {
+  console.log('apiUrl', apiUrl)
+
   try {
     const { data } = await post(`${apiUrl}apis/_search?size=${5}&q=${search}`)
     return data?.data || []
