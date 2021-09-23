@@ -4,18 +4,14 @@ import { Category, CategoryResponse } from '../models/category-response'
 import { SummaryAPI } from '../models/summary-api'
 import { get, post } from './http/http.service'
 
-const origin =
-  typeof window !== 'undefined' ? '/server' : 'http://localhost:8083'
-const apiUrl = `${origin}/portal/environments/DEFAULT/`
-
 export const getPopularApis = async (): Promise<SummaryAPI[]> => {
-  const { data } = await get(`${apiUrl}apis?size=3`)
+  const { data } = await get(`apis?size=3`)
   return data?.data || []
 }
 
 export const getApis = async (): Promise<SummaryAPI[]> => {
   try {
-    const { data } = await get(`${apiUrl}apis`)
+    const { data } = await get(`apis`)
     return data?.data || []
   } catch (e) {
     return []
@@ -23,13 +19,13 @@ export const getApis = async (): Promise<SummaryAPI[]> => {
 }
 
 export const getApiDetails = async (id: string): Promise<SummaryAPI> => {
-  const { data } = await get(`${apiUrl}apis/${id}`)
+  const { data } = await get(`apis/${id}`)
   return data
 }
 
 export const searchApi = async (search: string): Promise<SummaryAPI[]> => {
   try {
-    const { data } = await post(`${apiUrl}apis/_search?size=${5}&q=${search}`)
+    const { data } = await post(`apis/_search?size=${5}&q=${search}`)
     return data?.data || []
   } catch (error) {
     return []
@@ -38,7 +34,7 @@ export const searchApi = async (search: string): Promise<SummaryAPI[]> => {
 
 export const getPages = async (id: string): Promise<ApiPagesResponse> => {
   const { data }: { data: APIPagesDTO } = await get(
-    `${apiUrl}apis/${id}/pages?size=${-1}&homepage=${false}`,
+    `apis/${id}/pages?size=${-1}&homepage=${false}`,
   )
 
   const markdown = data?.data.find((page) => page.type === 'MARKDOWN')
@@ -52,9 +48,7 @@ export const getPageContent = async (url: string): Promise<string> => {
 }
 
 export const getApiCategories = async (): Promise<Category[]> => {
-  const { data }: { data: CategoryResponse } = await get(
-    `${apiUrl}categories?size=-1`,
-  )
+  const { data }: { data: CategoryResponse } = await get(`categories?size=-1`)
   return data?.data || []
 }
 
@@ -62,7 +56,7 @@ export const getApisByCategory = async (
   category: string,
 ): Promise<SummaryAPI[]> => {
   try {
-    const { data } = await get(`${apiUrl}apis?category=${category}`)
+    const { data } = await get(`apis?category=${category}`)
     return data?.data || []
   } catch (error) {
     console.error(error)

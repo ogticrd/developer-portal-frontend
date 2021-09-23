@@ -34,7 +34,9 @@ app.prepare().then(() => {
       })
       res.end(data, 'binary')
     } else {
-      const { data } = await axios.get(fullUrl)
+      const { data } = await axios.get(fullUrl, {
+        headers: { Authorization: req.headers?.authorization },
+      })
       res.send(data)
     }
   })

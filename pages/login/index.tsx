@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { LoginForm } from '../../models/forms/login.form'
 import { login } from '../../services/auth.service'
 import { useRouter } from 'next/dist/client/router'
+import { UserContext } from '../../context/user.context'
+import { getUser } from '../../services/user.service'
 
 export default function index() {
   const {
@@ -15,6 +17,8 @@ export default function index() {
 
   const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false)
   const router = useRouter()
+  const { _, setUser } = useContext(UserContext)
+
   const onSubmit = async (data: LoginForm) => {
     if (Object.keys(errors).length) {
       return
@@ -22,6 +26,8 @@ export default function index() {
     const res = await login(data.email, data.password)
     if (res?.token) {
       localStorage.setItem('auth-token', res.token)
+      const user = await getUser()
+      setUser(user)
       setInvalidCredentials(false)
       router.push('/')
     } else {
