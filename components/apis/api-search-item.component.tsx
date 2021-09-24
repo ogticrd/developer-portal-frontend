@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { SummaryAPI } from '../../models/summary-api';
-import shorten from '../../utils/shorten';
-import { useRouter } from 'next/dist/client/router';
+import React, { useState } from 'react'
+import Image from 'next/image'
+import { SummaryAPI } from '../../models/summary-api'
+import shorten from '../../utils/shorten'
+import { useRouter } from 'next/dist/client/router'
 
 export default function ApiSearchItem({
   api,
   selected,
 }: {
-  api: SummaryAPI;
-  selected: boolean;
+  api: SummaryAPI
+  selected: boolean
 }) {
-  const [imageUrl, setImageUrl] = useState<string>(api._links.picture);
-  const router = useRouter();
-  const defaultImageSrc = '/images/no-image-available.svg.png';
+  const [imageUrl, setImageUrl] = useState<string>(api._links.picture)
+  const router = useRouter()
+  const defaultImageSrc = '/images/no-image-available.svg.png'
 
   const onImageError = (e: any) => {
-    e.preventDefault();
+    e.preventDefault()
     if (imageUrl != defaultImageSrc) {
-      setImageUrl(defaultImageSrc);
+      setImageUrl(defaultImageSrc)
     }
-  };
+  }
 
   const openApi = () => {
-    router.push('/apis/[id]', { pathname: `/apis/${api.id}` });
-  };
+    router.push('/apis/[id]', { pathname: `/apis/${api.id}` })
+  }
 
   return (
     <div
@@ -49,5 +49,5 @@ export default function ApiSearchItem({
         </p>
       </div>
     </div>
-  );
+  )
 }

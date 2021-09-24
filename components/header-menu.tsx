@@ -5,11 +5,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import LanguageToggle from './language-toggle.component'
+import { UserContext } from '../context/user.context'
+import HeaderUserButton from './header-user-button'
 
 export default function HeaderMenu() {
   const { t } = useContext<any>(LanguageContext)
+  const { user } = useContext(UserContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   const menuItems: MenuItemModel[] = [
     {
       label: t.header.menu.apis,
@@ -61,11 +63,15 @@ export default function HeaderMenu() {
           </li>
 
           <li>
-            <Link href="/login">
-              <a className="bg-blue-primary-dark hover:bg-blue-400 text-white px-2 py-1 rounded-md shadow-md ml-2 px-2">
-                Acceder
-              </a>
-            </Link>
+            {user ? (
+              <HeaderUserButton user={user} />
+            ) : (
+              <Link href="/login">
+                <a className="bg-blue-primary-dark hover:bg-blue-400 text-white px-2 py-1 rounded-md shadow-md ml-2 px-2">
+                  Acceder
+                </a>
+              </Link>
+            )}
           </li>
         </ul>
       </nav>

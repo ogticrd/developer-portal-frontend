@@ -1,14 +1,14 @@
-import { useRouter } from 'next/dist/client/router';
-import { createContext, useState } from 'react';
-import { en } from '../public/locales/en';
-import { es } from '../public/locales/es';
+import { useRouter } from 'next/dist/client/router'
+import React, { createContext } from 'react'
+import { en } from '../public/locales/en'
+import { es } from '../public/locales/es'
 
-export const LanguageContext = createContext({});
+export const LanguageContext = createContext({})
 
 const LanguageProvider = ({ children }: any) => {
-  const router = useRouter();
-  const { locale } = router;
-  const t = locale === 'en' ? en : es;
+  const router = useRouter()
+  const { locale } = router
+  const t = locale === 'en' ? en : es
 
   return (
     <LanguageContext.Provider
@@ -18,7 +18,7 @@ const LanguageProvider = ({ children }: any) => {
     >
       {children}
     </LanguageContext.Provider>
-  );
-};
+  )
+}
 
-export default LanguageProvider;
+export default LanguageProvider

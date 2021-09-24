@@ -1,10 +1,13 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { RegisterForm } from '../../models/forms/register.form'
+import { createAccount } from '../../services/auth.service'
 
 export default function index() {
+  const [loading, setLoading] = useState()
+
   const {
     register,
     handleSubmit,
@@ -15,12 +18,16 @@ export default function index() {
   const password = useRef('')
   password.current = watch('password', '')
 
-  const onSubmit = (data: RegisterForm) => {
+  const onSubmit = async (data: RegisterForm) => {
     if (Object.keys(errors).length) {
-      alert('Nel')
       return
     }
-    console.log(data)
+
+    setLoading(true)
+    const res = await createAccount(data)
+    console.log(res)
+
+    setLoading(false)
   }
   const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/
 
@@ -194,7 +201,12 @@ export default function index() {
                 </Link>
               </label>
             </div>
-            <button className="bg-blue-primary text-white rounded-md py-2">
+            <button
+              disabled={loading}
+              className={`${
+                loading ? 'bg-gray-400' : 'bg-blue-primary'
+              } text-white rounded-md py-2`}
+            >
               Crear cuenta
             </button>
           </form>
