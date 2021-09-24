@@ -1,11 +1,12 @@
+import { EffectCallback } from 'hoist-non-react-statics/node_modules/@types/react'
 import React, { createContext, useEffect, useState } from 'react'
-import { UserResponse } from '../models/user-response'
+import { User } from '../models/user.model'
 import { getUser } from '../services/user.service'
 
 export const UserContext = createContext({})
 
 const UserProvider = ({ children }: any) => {
-  const [user, setUser] = useState<UserResponse>()
+  const [user, setUser] = useState<User>()
 
   useEffect(async () => {
     const userData = await getUser()

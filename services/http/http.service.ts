@@ -33,3 +33,24 @@ export const post = async (
     return { err }
   }
 }
+
+export const put = async (
+  path: string,
+  payload: any = null,
+  options = null,
+): Promise<any> => {
+  const token =
+    typeof window !== 'undefined'
+      ? window?.localStorage?.getItem('auth-token')
+      : ''
+
+  const headers = {
+    Authorization: token ? `Bearer ${token}` : null,
+  }
+  try {
+    const res = await axios.put(baseUrl + path, payload, { headers })
+    return res
+  } catch (err) {
+    return { err }
+  }
+}

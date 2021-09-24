@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { UserResponse } from '../models/user-response'
+import { User } from '../models/user.model'
 import Image from 'next/image'
 import Dropdown from './dropdown'
 import Link from 'next/link'
 
-export default function HeaderUserButton({ user }: { user: UserResponse }) {
+export default function HeaderUserButton({ user }: { user: User }) {
   const [imageUrl, setImageUrl] = useState<string>(user._links.avatar)
   const [isOpen, setIsOpen] = useState(false)
   const defaultImageSrc = '/images/no-avatar.png'
@@ -39,7 +39,9 @@ export default function HeaderUserButton({ user }: { user: UserResponse }) {
         className="flex items-center gap-2 ml-6 cursor-pointer"
         onClick={() => setIsOpen(true)}
       >
-        <span className="text-white capitalize">{user.display_name}</span>
+        <div className="flex flex-col">
+          <span className="text-white capitalize">{user.display_name}</span>
+        </div>
         <Image
           className="rounded-full"
           src={imageUrl}
@@ -63,7 +65,8 @@ export default function HeaderUserButton({ user }: { user: UserResponse }) {
                 onError={onImageError}
               />
               <div>
-                <h3 className="capitalize">{user.display_name}</h3>
+                <h3 className="capitalize text-sm">{user.display_name}</h3>
+                <span className="text-xs text-gray-600">{user.email}</span>
               </div>
             </div>
 
@@ -71,7 +74,10 @@ export default function HeaderUserButton({ user }: { user: UserResponse }) {
               {options.map((o) => (
                 <li key={o.path}>
                   <Link href={o.path}>
-                    <a className="hover:bg-blue-400 w-full block py-1 px-6">
+                    <a
+                      className="hover:bg-blue-400 w-full block py-1 px-6"
+                      onClick={() => setIsOpen(false)}
+                    >
                       {o.text}
                     </a>
                   </Link>

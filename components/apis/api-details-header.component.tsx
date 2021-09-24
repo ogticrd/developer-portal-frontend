@@ -1,14 +1,14 @@
-import { useContext } from 'react';
-import { LanguageContext } from '../../context/language.context';
-import { SummaryAPI } from '../../models/summary-api';
-import ApiVersionTag from './api-version';
-import Link from 'next/link';
-import shorten from '../../utils/shorten';
+import React, { useContext } from 'react'
+import { LanguageContext } from '../../context/language.context'
+import { SummaryAPI } from '../../models/summary-api'
+import ApiVersionTag from './api-version'
+import Link from 'next/link'
+import shorten from '../../utils/shorten'
 
 export default function ApiDetailsHeader(props: any) {
-  const { t } = useContext<any>(LanguageContext);
+  const { t } = useContext<any>(LanguageContext)
 
-  const data: SummaryAPI = props.data;
+  const data: SummaryAPI = props.data
 
   return (
     <section className="bg-blue-primary-light">
@@ -59,5 +59,5 @@ export default function ApiDetailsHeader(props: any) {
         </p>
       </div>
     </section>
-  );
+  )
 }

@@ -56,9 +56,17 @@ app.prepare().then(() => {
   })
 
   server.put('/server/*', async (req, res) => {
-    const fullUrl = apiUrl + req.url.replace('/server', '')
-    const { data } = await axios.put(fullUrl, req.body)
-    res.send(data)
+    try {
+      const fullUrl = apiUrl + req.url.replace('/server', '')
+      const { data } = await axios
+        .put(fullUrl, req.body, {
+          headers: { Authorization: req.headers?.authorization },
+        })
+        .catch((err) => res.status(err.response.status).json(err))
+      res.send(data)
+    } catch (err) {
+      res.send(err)
+    }
   })
 
   server.get('*', (req, res) => handle(req, res))
