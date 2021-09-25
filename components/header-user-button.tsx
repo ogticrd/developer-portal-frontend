@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { User } from '../models/user.model'
 import Image from 'next/image'
 import Dropdown from './dropdown'
 import Link from 'next/link'
+import { LanguageContext } from '../context/language.context'
 
 export default function HeaderUserButton({ user }: { user: User }) {
   const [imageUrl, setImageUrl] = useState<string>(user._links.avatar)
   const [isOpen, setIsOpen] = useState(false)
   const defaultImageSrc = '/images/no-avatar.png'
-
+  const { t } = useContext<any>(LanguageContext)
   const onImageError = (e: any) => {
     e.preventDefault()
     if (imageUrl !== defaultImageSrc) {
@@ -17,14 +18,14 @@ export default function HeaderUserButton({ user }: { user: User }) {
   }
 
   const options = [
-    { path: '/account/', text: 'Mi cuenta' },
+    { path: '/account/', text: t.account.myAccount },
     {
       path: '/account/password',
-      text: 'Contraseña',
+      text: t.account.password,
     },
     {
       path: '/account/apis',
-      text: 'APIs',
+      text: t.account.apis,
     },
   ]
 
@@ -88,7 +89,7 @@ export default function HeaderUserButton({ user }: { user: User }) {
               onClick={signOut}
               className="w-full border-t text-yellow-600 py-2 mt-3"
             >
-              Cerrar sesion
+              {t.account.signOut}
             </button>
           </div>
         </Dropdown>

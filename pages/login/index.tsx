@@ -7,6 +7,7 @@ import { login } from '../../services/auth.service'
 import { useRouter } from 'next/dist/client/router'
 import { UserContext } from '../../context/user.context'
 import { getUser } from '../../services/user.service'
+import { LanguageContext } from '../../context/language.context'
 
 export default function index() {
   const {
@@ -18,7 +19,7 @@ export default function index() {
   const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false)
   const router = useRouter()
   const { _, setUser } = useContext(UserContext)
-
+  const { t } = useContext<any>(LanguageContext)
   const onSubmit = async (data: LoginForm) => {
     if (Object.keys(errors).length) {
       return
@@ -40,7 +41,7 @@ export default function index() {
         <div className="p-10 bg-white shadow-lg rounded-md">
           <div className="flex items-center gap-4 justify-center mb-4">
             <h2 className="text-3xl font-semibold text-gray-700">
-              ¡Bienvenido!
+            {t.loginForm.title}
             </h2>
             <Image
               src="/icons/hi-hand.svg"
@@ -49,8 +50,8 @@ export default function index() {
               alt="Hi icon"
             />
           </div>
-          <h3 className="text-gray-600 text-lg">
-            Inicie sesión en su cuenta para utilizar las APIs
+          <h3 className="text-gray-600 text-center">
+            {t.loginForm.subtitle}
           </h3>
 
           <form
@@ -59,12 +60,12 @@ export default function index() {
           >
             {invalidCredentials && (
               <span className="text-red-600 text-center">
-                Usuario o contraseña incorrecta
+                {t.loginForm.loginError}
               </span>
             )}
             <span>
               <label className="block text-gray-500" htmlFor="email_field">
-                Correo
+                {t.loginForm.email}
               </label>
               <input
                 className="block border border-gray-200 rounded-md p-2 w-full"
@@ -75,17 +76,19 @@ export default function index() {
               />
               {errors.email && (
                 <span className="text-red-600 text-sm">
-                  Debe especificar su email
+                  {t.loginForm.emailRequired}
                 </span>
               )}
             </span>
             <span>
               <span className="flex justify-between">
                 <label className="block text-gray-500" htmlFor="password_field">
-                  Contraseña
+                  {t.loginForm.password}
                 </label>
                 <Link href="recover-password">
-                  <a className="text-blue-800">Recuperar contraseña</a>
+                  <a className="text-blue-800">
+                    {t.loginForm.forgotPassword}
+                  </a>
                 </Link>
               </span>
               <input
@@ -97,24 +100,30 @@ export default function index() {
               />
               {errors.password && (
                 <span className="text-red-600 text-sm">
-                  Debe especificar su contraseña
+                  {t.loginForm.passwordRequired}
                 </span>
               )}
             </span>
             <div className="flex items-center gap-3">
               <input type="checkbox" id="remember" />
-              <label htmlFor="remember">Recordarme</label>
+              <label htmlFor="remember">
+                {t.loginForm.rememberMe}
+              </label>
             </div>
 
             <button className="bg-blue-primary text-white rounded-md py-2">
-              Iniciar sesión
+              {t.loginForm.login}
             </button>
           </form>
 
           <div className="text-center">
-            <p className="mb-2 text-gray-600">¿Nuevo en nuestra plataforma?</p>
+            <p className="mb-2 text-gray-600">
+              {t.loginForm.newHere}
+            </p>
             <Link href="register">
-              <a className="text-blue-800 text-lg">Crear una cuenta</a>
+              <a className="text-blue-800 text-lg">
+                {t.loginForm.register}
+              </a>
             </Link>
           </div>
         </div>

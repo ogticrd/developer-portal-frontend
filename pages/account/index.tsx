@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { UserContext } from '../../context/user.context'
 import { useForm } from 'react-hook-form'
 import { User } from '../../models/user.model'
 import { updateUser } from '../../services/user.service'
 import { UpdateUserDataForm } from '../../models/forms/update-user-data.form'
+import { LanguageContext } from '../../context/language.context'
 
 export default function index() {
-  let {
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -16,9 +17,12 @@ export default function index() {
 
   const { user, setUser }: { user: User; setUser: Function } =
     useContext<any>(UserContext)
-
+  const { t } = useContext<any>(LanguageContext)
+  const [image, setImage] = useState('/images/no-avatar.png')
   useEffect(() => {
     reset(user)
+    const imageUrl = '/server/portal' + user?._links.avatar.split('portal')[1]
+    setImage(imageUrl)
   }, [user])
 
   const onSubmit = async (data: UpdateUserDataForm) => {
@@ -41,8 +45,8 @@ export default function index() {
         <div className="card">
           <div className="flex gap-8 items-center">
             <Image
-              src="/images/no-avatar.png"
-              alt={`a${1}`}
+              src={image || '/images/no-avatar.png'}
+              alt={`${user?.display_name} profile image`}
               width={110}
               height={110}
               className="rounded-md"
@@ -53,17 +57,17 @@ export default function index() {
                   type="button"
                   className="bg-blue-primary hover:bg-blue-800 duration-300 py-2 text-sm rounded-md text-white px-8"
                 >
-                  Subit imagen
+                  {t.account.form.loadImage}
                 </button>
                 <button
                   type="button"
                   className="border border-blue-primary duration-300 py-2 text-sm rounded-md text-blue-primary px-8"
                 >
-                  Reset
+                  {t.account.form.reset}
                 </button>
               </div>
               <span className="text-gray-700">
-                Formato JPG, GIF or PNG. Tamaño Maximo of 800kB
+              {t.account.form.maxSize}
               </span>
             </div>
           </div>
@@ -74,51 +78,51 @@ export default function index() {
           >
             <span className="col-span-1">
               <label className="block text-gray-500" htmlFor="firstname">
-                Nombre
+              {t.account.form.firstName}
               </label>
               <input
                 type="text"
                 id="firstname"
                 name="firstname"
-                placeholder="John"
+                placeholder={t.account.form.firstNamePlaceholder}
                 className="block border border-gray-200 rounded-md p-2 w-full"
                 {...register('firstname', { required: true })}
                 defaultValue={user?.first_name}
               />
               {errors.firstname && (
                 <span className="text-red-600 text-sm">
-                  Debe especificar su nombre
+                  {t.account.form.fistNameRequired}
                 </span>
               )}
             </span>
             <span className="col-span-1">
               <label className="block text-gray-500" htmlFor="lastname">
-                Apellido
+              {t.account.form.lastName}
               </label>
               <input
                 type="text"
                 id="lastname"
                 name="lastname"
-                placeholder="Doe"
+                placeholder={t.account.form.lastNamePlaceholder}
                 className="block border border-gray-200 rounded-md p-2 w-full"
                 {...register('lastname', { required: true })}
                 defaultValue={user?.last_name}
               />
               {errors.lastname && (
                 <span className="text-red-600 text-sm">
-                  Debe especificar su apellido
+                  {t.account.form.lastNameRequired}
                 </span>
               )}
             </span>
             <span className="col-span-1">
               <label className="block text-gray-500" htmlFor="email">
-                Correo
+              {t.account.form.email}
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="granger007@hogward.com"
+                placeholder={t.account.form.emailPlaceholder}
                 className="block border border-gray-200 rounded-md p-2 w-full"
                 {...register('email', {
                   required: true,
@@ -129,25 +133,25 @@ export default function index() {
 
               {errors.email?.type === 'required' && (
                 <span className="text-red-600 text-sm">
-                  Debe especificar su correo electrónico
+                  {t.account.form.emailRequired}
                 </span>
               )}
 
               {errors.email?.type === 'pattern' && (
                 <span className="text-red-600 text-sm">
-                  Este correo no es válido
+                  {t.account.form.emailInvalid}
                 </span>
               )}
             </span>
             <span className="col-span-1">
               <label className="block text-gray-500" htmlFor="organization">
-                Empresa
+              {t.account.form.organization}
               </label>
               <input
                 type="text"
                 id="organization"
                 name="organization"
-                placeholder="Clevision Technologies"
+                placeholder={t.account.form.organizationPlaceholder}
                 className="block border border-gray-200 rounded-md p-2 w-full"
                 {...register('organization')}
                 defaultValue={user?.organization}
@@ -158,13 +162,13 @@ export default function index() {
                 type="submit"
                 className="bg-blue-primary hover:bg-blue-800 duration-300 py-2 text-sm rounded-md text-white px-8"
               >
-                Guardar cambios
+                {t.account.form.save}
               </button>
               <button
                 type="reset"
                 className="border border-blue-primary duration-300 py-2 text-sm rounded-md text-blue-primary px-8"
               >
-                Cancelar
+                {t.account.form.cancel}
               </button>
             </div>
           </form>
