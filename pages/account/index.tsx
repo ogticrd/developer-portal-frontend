@@ -20,6 +20,7 @@ export default function index() {
   const { t } = useContext<any>(LanguageContext)
   const defaultImageSrc = '/images/no-avatar.png'
   const [image, setImage] = useState(defaultImageSrc)
+  const [saving, setSaving] = useState(false)
 
   const onImageError = (e: any) => {
     e.preventDefault()
@@ -30,13 +31,33 @@ export default function index() {
 
   useEffect(() => {
     reset(user)
-    const imageUrl = user?._links.avatar
+    const imageUrl = user?.avatar || user?._links?.avatar
     setImage(imageUrl)
   }, [user])
 
+  const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = (error) => reject(error)
+    })
+  }
+
+  const loadImage = async (e: any) => {
+    const imageData = await getBase64(e.target.files[0])
+    setUser({ ...user, avatar: imageData })
+  }
+
+  const resetImage = () => {
+    setUser({ ...user, avatar: null })
+  }
+
   const onSubmit = async (data: UpdateUserDataForm) => {
+    setSaving(true)
     const newUser = await updateUser({
       id: user.id,
+      avatar: user?.avatar || null,
       email: data.email,
       first_name: data.firstname,
       last_name: data.lastname,
@@ -44,6 +65,7 @@ export default function index() {
     })
 
     setUser(newUser)
+    setSaving(false)
   }
 
   const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/
@@ -63,18 +85,29 @@ export default function index() {
             />
             <div>
               <div className="flex gap-3 mb-2">
-                <button
-                  type="button"
-                  className="bg-blue-primary hover:bg-blue-800 duration-300 py-2 text-sm rounded-md text-white px-8"
+                <label
+                  htmlFor="fileInput"
+                  className="bg-blue-primary hover:bg-blue-800 duration-300 py-2 text-sm rounded-md text-white px-8 cursor-pointer"
                 >
                   {t.account.form.loadImage}
-                </button>
-                <button
-                  type="button"
-                  className="border border-blue-primary duration-300 py-2 text-sm rounded-md text-blue-primary px-8"
-                >
-                  {t.account.form.reset}
-                </button>
+                </label>
+                <input
+                  onChange={loadImage}
+                  type="file"
+                  name="fileInput"
+                  id="fileInput"
+                  className="hidden"
+                  accept="image/png, image/jpeg, image/jpg"
+                />
+                {user?.avatar && (
+                  <button
+                    type="button"
+                    onClick={resetImage}
+                    className="border border-blue-primary duration-300 py-2 text-sm rounded-md text-blue-primary px-8"
+                  >
+                    {t.account.form.reset}
+                  </button>
+                )}
               </div>
               <span className="text-gray-700">{t.account.form.maxSize}</span>
             </div>
@@ -167,10 +200,13 @@ export default function index() {
             </span>
             <div className="flex gap-3 mb-2">
               <button
+                disabled={saving}
                 type="submit"
-                className="bg-blue-primary hover:bg-blue-800 duration-300 py-2 text-sm rounded-md text-white px-8"
+                className={`${
+                  saving ? 'bg-gray-500' : 'bg-blue-primary'
+                } hover:bg-blue-800 duration-300 py-2 text-sm rounded-md text-white px-8`}
               >
-                {t.account.form.save}
+                {saving ? t.account.form.saving : t.account.form.save}
               </button>
               <button
                 type="reset"

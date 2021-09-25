@@ -13,7 +13,7 @@ export default function HeaderUserButton({ user }: { user: User }) {
 
   useEffect(() => {
     if (user) {
-      setImageUrl(user._links.avatar)
+      setImageUrl(user?.avatar || user._links.avatar)
     }
   }, [user])
 

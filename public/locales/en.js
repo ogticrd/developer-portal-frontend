@@ -91,8 +91,8 @@ export const en = {
     apis: 'APIs',
     form: {
       loadImage: 'Load image',
-      reset: 'Reset',
-      maxSize: 'Format JPG, GIF, or PNG. Max size of 800kB',
+      reset: 'Discard',
+      maxSize: 'Format JPG or PNG. Max size of 800kB',
       firstName: 'First name',
       firstNamePlaceholder: 'John',
       lastName: 'Last name',
@@ -107,6 +107,7 @@ export const en = {
       lastNameRequired: 'Last name is required',
       emailRequired: 'Email is required',
       emailInvalid: 'Email is invalid',
+      saving: 'Saving...',
     },
   },
   footer: {
