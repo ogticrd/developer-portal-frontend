@@ -18,10 +18,19 @@ export default function index() {
   const { user, setUser }: { user: User; setUser: Function } =
     useContext<any>(UserContext)
   const { t } = useContext<any>(LanguageContext)
-  const [image, setImage] = useState('/images/no-avatar.png')
+  const defaultImageSrc = '/images/no-avatar.png'
+  const [image, setImage] = useState(defaultImageSrc)
+
+  const onImageError = (e: any) => {
+    e.preventDefault()
+    if (image !== defaultImageSrc) {
+      setImage(defaultImageSrc)
+    }
+  }
+
   useEffect(() => {
     reset(user)
-    const imageUrl = '/server/portal' + user?._links.avatar.split('portal')[1]
+    const imageUrl = user?._links.avatar
     setImage(imageUrl)
   }, [user])
 
@@ -44,12 +53,13 @@ export default function index() {
       <div className="container mx-auto">
         <div className="card">
           <div className="flex gap-8 items-center">
-            <Image
+            <img
               src={image || '/images/no-avatar.png'}
               alt={`${user?.display_name} profile image`}
               width={110}
               height={110}
-              className="rounded-md"
+              className="rounded-md shadow-sm"
+              onError={onImageError}
             />
             <div>
               <div className="flex gap-3 mb-2">
@@ -66,9 +76,7 @@ export default function index() {
                   {t.account.form.reset}
                 </button>
               </div>
-              <span className="text-gray-700">
-              {t.account.form.maxSize}
-              </span>
+              <span className="text-gray-700">{t.account.form.maxSize}</span>
             </div>
           </div>
 
@@ -78,7 +86,7 @@ export default function index() {
           >
             <span className="col-span-1">
               <label className="block text-gray-500" htmlFor="firstname">
-              {t.account.form.firstName}
+                {t.account.form.firstName}
               </label>
               <input
                 type="text"
@@ -97,7 +105,7 @@ export default function index() {
             </span>
             <span className="col-span-1">
               <label className="block text-gray-500" htmlFor="lastname">
-              {t.account.form.lastName}
+                {t.account.form.lastName}
               </label>
               <input
                 type="text"
@@ -116,7 +124,7 @@ export default function index() {
             </span>
             <span className="col-span-1">
               <label className="block text-gray-500" htmlFor="email">
-              {t.account.form.email}
+                {t.account.form.email}
               </label>
               <input
                 type="email"
@@ -145,7 +153,7 @@ export default function index() {
             </span>
             <span className="col-span-1">
               <label className="block text-gray-500" htmlFor="organization">
-              {t.account.form.organization}
+                {t.account.form.organization}
               </label>
               <input
                 type="text"

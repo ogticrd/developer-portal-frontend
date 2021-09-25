@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { User } from '../models/user.model'
 import Image from 'next/image'
 import Dropdown from './dropdown'
@@ -6,10 +6,17 @@ import Link from 'next/link'
 import { LanguageContext } from '../context/language.context'
 
 export default function HeaderUserButton({ user }: { user: User }) {
-  const [imageUrl, setImageUrl] = useState<string>(user._links.avatar)
   const [isOpen, setIsOpen] = useState(false)
   const defaultImageSrc = '/images/no-avatar.png'
+  const [imageUrl, setImageUrl] = useState<string>(defaultImageSrc)
   const { t } = useContext<any>(LanguageContext)
+
+  useEffect(() => {
+    if (user) {
+      setImageUrl(user._links.avatar)
+    }
+  }, [user])
+
   const onImageError = (e: any) => {
     e.preventDefault()
     if (imageUrl !== defaultImageSrc) {
@@ -43,7 +50,7 @@ export default function HeaderUserButton({ user }: { user: User }) {
         <div className="flex flex-col">
           <span className="text-white capitalize">{user.display_name}</span>
         </div>
-        <Image
+        <img
           className="rounded-full"
           src={imageUrl}
           alt={`${user.display_name} profile`}
@@ -56,13 +63,13 @@ export default function HeaderUserButton({ user }: { user: User }) {
       {isOpen && (
         <Dropdown onClose={() => setIsOpen(false)} padding={false}>
           <div className="w-60">
-            <div className="flex gap-4 p-2">
-              <Image
-                className="rounded-full"
+            <div className="flex gap-4 p-2 items-center">
+              <img
+                className="rounded-full h-9 w-9"
                 src={imageUrl}
                 alt={`${user.display_name} profile`}
-                height={40}
-                width={40}
+                height={35}
+                width={35}
                 onError={onImageError}
               />
               <div>
