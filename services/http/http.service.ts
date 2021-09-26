@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const origin =
   typeof window !== 'undefined' ? '/server' : 'http://localhost:8083'
@@ -17,6 +18,7 @@ export const get = async (path: string): Promise<any> => {
     const res = await axios.get(baseUrl + path, { headers })
     return res
   } catch (err) {
+    handleError(err)
     return { err }
   }
 }
@@ -30,6 +32,7 @@ export const post = async (
     const res = await axios.post(baseUrl + path, payload, options)
     return res
   } catch (err) {
+    handleError(err)
     return { err }
   }
 }
@@ -51,6 +54,12 @@ export const put = async (
     const res = await axios.put(baseUrl + path, payload, { headers })
     return res
   } catch (err) {
+    handleError(err)
     return { err }
   }
+}
+
+const handleError = (error: any) => {
+  console.error(error)
+  toast.error("We're sorry, something went wrong")
 }
