@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Image from 'next/image'
 import { UserContext } from '../../context/user.context'
 import { useForm } from 'react-hook-form'
 import { User } from '../../models/user.model'

@@ -4,8 +4,15 @@ import Image from 'next/image'
 import Dropdown from './dropdown'
 import Link from 'next/link'
 import { LanguageContext } from '../context/language.context'
+import { UserContext } from '../context/user.context'
 
-export default function HeaderUserButton({ user }: { user: User }) {
+export default function HeaderUserButton({
+  user,
+  setUser,
+}: {
+  user: User
+  setUser: Function
+}) {
   const [isOpen, setIsOpen] = useState(false)
   const defaultImageSrc = '/images/no-avatar.png'
   const [imageUrl, setImageUrl] = useState<string>(defaultImageSrc)
@@ -38,6 +45,7 @@ export default function HeaderUserButton({ user }: { user: User }) {
 
   const signOut = () => {
     window.localStorage.removeItem('auth-token')
+    setUser(null)
     setIsOpen(false)
   }
 

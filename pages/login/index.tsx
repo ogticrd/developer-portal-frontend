@@ -18,12 +18,14 @@ export default function index() {
 
   const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false)
   const router = useRouter()
-  const { _, setUser } = useContext(UserContext)
+  const { _, setUser } = useContext<any>(UserContext)
+  const [loading, setLoading] = useState(false)
   const { t } = useContext<any>(LanguageContext)
   const onSubmit = async (data: LoginForm) => {
     if (Object.keys(errors).length) {
       return
     }
+    setLoading(true)
     const res = await login(data.email, data.password)
     if (res?.token) {
       localStorage.setItem('auth-token', res.token)
@@ -34,6 +36,7 @@ export default function index() {
     } else {
       setInvalidCredentials(true)
     }
+    setLoading(false)
   }
   return (
     <div className="bg-blue-primary-light">
@@ -41,7 +44,7 @@ export default function index() {
         <div className="p-10 bg-white shadow-lg rounded-md">
           <div className="flex items-center gap-4 justify-center mb-4">
             <h2 className="text-3xl font-semibold text-gray-700">
-            {t.loginForm.title}
+              {t.loginForm.title}
             </h2>
             <Image
               src="/icons/hi-hand.svg"
@@ -50,9 +53,7 @@ export default function index() {
               alt="Hi icon"
             />
           </div>
-          <h3 className="text-gray-600 text-center">
-            {t.loginForm.subtitle}
-          </h3>
+          <h3 className="text-gray-600 text-center">{t.loginForm.subtitle}</h3>
 
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -86,9 +87,7 @@ export default function index() {
                   {t.loginForm.password}
                 </label>
                 <Link href="recover-password">
-                  <a className="text-blue-800">
-                    {t.loginForm.forgotPassword}
-                  </a>
+                  <a className="text-blue-800">{t.loginForm.forgotPassword}</a>
                 </Link>
               </span>
               <input
@@ -106,24 +105,23 @@ export default function index() {
             </span>
             <div className="flex items-center gap-3">
               <input type="checkbox" id="remember" />
-              <label htmlFor="remember">
-                {t.loginForm.rememberMe}
-              </label>
+              <label htmlFor="remember">{t.loginForm.rememberMe}</label>
             </div>
 
-            <button className="bg-blue-primary text-white rounded-md py-2">
+            <button
+              disabled={loading}
+              className={`${
+                loading ? 'bg-gray-400' : 'bg-blue-primary'
+              } text-white rounded-md py-2`}
+            >
               {t.loginForm.login}
             </button>
           </form>
 
           <div className="text-center">
-            <p className="mb-2 text-gray-600">
-              {t.loginForm.newHere}
-            </p>
+            <p className="mb-2 text-gray-600">{t.loginForm.newHere}</p>
             <Link href="register">
-              <a className="text-blue-800 text-lg">
-                {t.loginForm.register}
-              </a>
+              <a className="text-blue-800 text-lg">{t.loginForm.register}</a>
             </Link>
           </div>
         </div>
