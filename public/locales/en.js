@@ -89,10 +89,13 @@ export const en = {
     signUp: 'Sign up',
     password: 'Password',
     apis: 'APIs',
+    updated: 'Done! Account updated',
     form: {
       loadImage: 'Load image',
       reset: 'Discard',
       maxSize: 'Format JPG or PNG. Max size of 800kB',
+      imageTooLarge: 'Image is too large. Max size of 800kB',
+      invalidImage: 'Invalid format. JPG or PNG images only',
       firstName: 'First name',
       firstNamePlaceholder: 'John',
       lastName: 'Last name',

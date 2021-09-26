@@ -90,10 +90,13 @@ export const es = {
     signUp: 'Registrarse',
     password: 'Contraseña',
     apis: 'APIs',
+    updated: '¡Listo! Cuenta actualizada',
     form: {
       loadImage: 'Cargar imagen',
       reset: 'Descartar',
       maxSize: 'Formato JPG o PNG. Tamaño maximo de 800kB',
+      imageTooLarge: 'Imagen demasiado grande. Tamaño maximo 800kB',
+      invalidImage: 'Formato invalido. Solo imagenes JPG o PNG',
       firstName: 'Nombre',
       firstNamePlaceholder: 'John',
       lastName: 'Apellido',

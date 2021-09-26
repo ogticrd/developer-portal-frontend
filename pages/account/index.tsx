@@ -5,6 +5,7 @@ import { User } from '../../models/user.model'
 import { updateUser } from '../../services/user.service'
 import { UpdateUserDataForm } from '../../models/forms/update-user-data.form'
 import { LanguageContext } from '../../context/language.context'
+import { toast, ToastContainer } from 'react-toastify'
 
 export default function index() {
   const {
@@ -45,6 +46,17 @@ export default function index() {
 
   const loadImage = async (e: any) => {
     const imageData = await getBase64(e.target.files[0])
+    if (e.target.files[0].size > 819200) {
+      toast.error(t.account.form.imageTooLarge)
+      return
+    }
+    if (
+      !['image/png', 'image/jpg', 'image/jpeg'].includes(e.target.files[0].type)
+    ) {
+      toast.error(t.account.form.invalidImage)
+      return
+    }
+
     setUser({ ...user, avatar: imageData })
   }
 
@@ -65,10 +77,10 @@ export default function index() {
 
     setUser(newUser)
     setSaving(false)
+    toast.success(t.account.updated)
   }
 
   const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/
-
   return (
     <div className="bg-blue-primary-light py-8">
       <div className="container mx-auto">
