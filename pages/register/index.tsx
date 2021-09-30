@@ -6,7 +6,7 @@ import { RegisterForm } from '../../models/forms/register.form'
 import { createAccount } from '../../services/auth.service'
 
 export default function index() {
-  const [loading, setLoading] = useState()
+  const [loading, setLoading] = useState<boolean>()
 
   const {
     register,
