@@ -24,7 +24,6 @@ app.prepare().then(() => {
   server.get('/server/*', async (req, res) => {
     const fullUrl = apiUrl + req.url.replace('/server', '')
     if (req.url.includes('picture') || req.url.includes('user/avatar')) {
-      console.log('picture')
       const { data } = await axios.get(fullUrl, {
         responseType: 'arraybuffer',
       })
@@ -76,6 +75,7 @@ app.prepare().then(() => {
     if (err) {
       throw err
     }
+    // eslint-disable-next-line no-console
     console.log(`Ready on http://localhost:${port}`)
   })
 })
