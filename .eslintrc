@@ -1,9 +1,6 @@
 {
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 2018
-  },
-  "extends": [
-    "@imaginary-cloud/react"
-  ]
+  "extends": ["next", "next/core-web-vitals"],
+  "rules": {
+    "prefer-const": "error"
+  }
 }
