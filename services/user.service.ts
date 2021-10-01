@@ -10,5 +10,3 @@ export const updateUser = async (user: User): Promise<User> => {
   const { data } = await put('user', user)
   return data
 }
-
-
