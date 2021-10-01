@@ -35,7 +35,7 @@ export default function ApiDetails() {
   const { t } = useContext<any>(LanguageContext)
 
   const router = useRouter()
-  const { id } = router.query
+  const id = router.query.id as string
   const [data, setData] = useState<SummaryAPI>()
   const [swaggerContent, setSwaggerContent] = useState<ApiPage>()
   const [markdownContent, setMarkdownContent] = useState<string>()

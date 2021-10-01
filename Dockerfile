@@ -35,12 +35,11 @@ WORKDIR /app
 # build app for production with minification
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
+
 RUN yarn build
 
-#####################################
-##               Release           ##
-#####################################
-FROM node:lts-alpine as release
+RUN mkdir /app/.next/cache/images
+RUN chmod -R 777 /app/.next/cache/images
 
 # get the node environment to use
 ARG NODE_ENV
@@ -53,14 +52,6 @@ WORKDIR /app
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
-
-# bring the built files from the previous step
-# You only need to copy next.config.js if you are NOT using the default configuration
-# COPY --from=builder /app/next.config.js ./
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
 
 USER nextjs
 

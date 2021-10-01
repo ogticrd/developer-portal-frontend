@@ -62,5 +62,5 @@ export const put = async (
 
 const handleError = (error: any) => {
   console.error(error)
-  toast.error("We're sorry, something went wrong")
+  // toast.error("We're sorry, something went wrong")
 }
