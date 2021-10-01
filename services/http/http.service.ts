@@ -1,8 +1,7 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-const origin =
-  typeof window !== 'undefined' ? '/server' : 'http://localhost:8083'
+const origin = '/server'
 const baseUrl = `${origin}/portal/environments/DEFAULT/`
 
 export const get = async (path: string): Promise<any> => {
@@ -11,8 +10,9 @@ export const get = async (path: string): Promise<any> => {
       ? window?.localStorage?.getItem('auth-token')
       : ''
 
-  const headers = {
-    Authorization: token ? `Bearer ${token}` : null,
+  const headers = {}
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`
   }
   try {
     const res = await axios.get(baseUrl + path, { headers })
@@ -47,8 +47,9 @@ export const put = async (
       ? window?.localStorage?.getItem('auth-token')
       : ''
 
-  const headers = {
-    Authorization: token ? `Bearer ${token}` : null,
+  const headers = {}
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`
   }
   try {
     const res = await axios.put(baseUrl + path, payload, { headers })

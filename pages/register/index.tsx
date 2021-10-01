@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { RegisterForm } from '../../models/forms/register.form'
 import { createAccount } from '../../services/auth.service'
 
-export default function index() {
+export default function Index() {
   const [loading, setLoading] = useState<boolean>()
 
   const {
@@ -25,8 +25,6 @@ export default function index() {
 
     setLoading(true)
     const res = await createAccount(data)
-    console.log(res)
-
     setLoading(false)
   }
   const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/

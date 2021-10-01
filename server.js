@@ -5,7 +5,7 @@ require('dotenv').config()
 
 const port = process.env.PORT || 3000
 const dev = process.env.NODE_ENV !== 'production'
-const apiUrl = process.env.API_URL
+const apiUrl = process.env.REACT_APP_API_URL
 
 const app = next({ dev })
 const handle = app.getRequestHandler()
@@ -34,9 +34,16 @@ app.prepare().then(() => {
 
       res.end(data, 'binary')
     } else {
-      const { data } = await axios.get(fullUrl, {
-        headers: { Authorization: req.headers?.authorization },
-      })
+      const headers = {}
+      if (req.headers?.authorization) {
+        headers['Authorization'] = req.headers?.authorization
+      }
+
+      const { data } = await axios
+        .get(fullUrl, {
+          headers,
+        })
+        .catch((err) => res.status(err.response?.status || 500).json(err))
       res.send(data)
     }
   })
@@ -44,13 +51,18 @@ app.prepare().then(() => {
   server.post('/server/*', async (req, res) => {
     try {
       const fullUrl = apiUrl + req.url.replace('/server', '')
+      const headers = {}
+      if (req.headers?.authorization) {
+        headers['Authorization'] = req.headers?.authorization
+      }
       const { data } = await axios
         .post(fullUrl, req.body, {
-          headers: { Authorization: req.headers?.authorization },
+          headers,
         })
-        .catch((err) => res.status(err.response.status).json(err))
+        .catch((err) => res.status(err.response?.status || 500).json(err))
       res.send(data)
     } catch (err) {
+      console.log(err)
       res.send(err)
     }
   })
@@ -58,9 +70,13 @@ app.prepare().then(() => {
   server.put('/server/*', async (req, res) => {
     try {
       const fullUrl = apiUrl + req.url.replace('/server', '')
+      const headers = {}
+      if (req.headers?.authorization) {
+        headers['Authorization'] = req.headers?.authorization
+      }
       const { data } = await axios
         .put(fullUrl, req.body, {
-          headers: { Authorization: req.headers?.authorization },
+          headers,
         })
         .catch((err) => res.status(err.response.status).json(err))
       res.send(data)

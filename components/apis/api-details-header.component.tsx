@@ -10,14 +10,14 @@ export default function ApiDetailsHeader(props: any) {
 
   const data: SummaryAPI = props.data
 
-  return (
+  return data ? (
     <section className="bg-blue-primary-light">
       <div className="container mx-auto grid grid-cols-12 gap-6 py-5 h-auto">
         <div className="col-span-12 md:col-span-5 relative">
           <span className="flex flex-row items-center">
-            <h1 className="text-4xl mr-44">{data.name}</h1>
+            <h1 className="text-4xl mr-44">{data?.name}</h1>
             <div className="absolute top-0 right-0">
-              <ApiVersionTag version={data.version} />
+              <ApiVersionTag version={data?.version} />
             </div>
           </span>
           <p>{shorten(data.description, 268)}</p>
@@ -59,5 +59,7 @@ export default function ApiDetailsHeader(props: any) {
         </p>
       </div>
     </section>
+  ) : (
+    <p></p>
   )
 }

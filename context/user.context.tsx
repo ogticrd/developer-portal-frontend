@@ -9,8 +9,11 @@ const UserProvider = ({ children }: any) => {
 
   useEffect(() => {
     const getData = async () => {
-      const userData = await getUser()
-      setUser(userData)
+      const authToken = localStorage.getItem('auth-token')
+      if (authToken) {
+        const userData = await getUser()
+        setUser(userData)
+      }
     }
     getData()
     return () => {}
