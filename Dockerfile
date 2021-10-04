@@ -45,7 +45,7 @@ RUN chmod -R 777 /app/.next/cache/images
 ARG NODE_ENV
 ENV NODE_ENV ${NODE_ENV:-development}
 
-ENV PORT 3000
+ENV PORT 8080
 ENV HOST 0.0.0.0
 
 WORKDIR /app
