@@ -3,7 +3,7 @@ const next = require('next')
 const axios = require('axios')
 require('dotenv').config()
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT
 const dev = process.env.NODE_ENV !== 'production'
 const apiUrl = process.env.REACT_APP_API_URL
 
