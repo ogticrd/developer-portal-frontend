@@ -1,18 +1,18 @@
-import { useRouter } from 'next/dist/client/router';
-import Link from 'next/link';
-import { useContext, useEffect, useState } from 'react';
-import { LanguageContext } from '../../context/language.context';
+import { useRouter } from 'next/dist/client/router'
+import Link from 'next/link'
+import { useContext, useEffect, useState } from 'react'
+import { LanguageContext } from '../../context/language.context'
 
 export default function ApiContextualMenu() {
-  const router = useRouter();
-  const [hash, setHash] = useState('');
+  const router = useRouter()
+  const [hash, setHash] = useState('')
 
   useEffect(() => {
-    setHash(document.location.hash);
-    return () => {};
-  }, [router]);
+    setHash(document.location.hash)
+    return () => {}
+  }, [router])
 
-  const { t } = useContext<any>(LanguageContext);
+  const { t } = useContext<any>(LanguageContext)
 
   const menuItems = [
     {
@@ -21,7 +21,7 @@ export default function ApiContextualMenu() {
     },
     { hash: '#api', label: t.apiDetails.contextualMenu.api },
     { hash: '#support', label: t.apiDetails.contextualMenu.support },
-  ];
+  ]
 
   return (
     <div className="sticky top-20 z-20 right-12 shadow-lg bg-white pr-6 rounded-lg py-6 float-right">
@@ -32,7 +32,7 @@ export default function ApiContextualMenu() {
         {menuItems.map((item) => (
           <li
             key={item.hash}
-            className={`${
+            className={`mt-2 ${
               hash === item.hash ? 'border-l-2 border-blue-500' : ''
             }`}
           >
@@ -43,5 +43,5 @@ export default function ApiContextualMenu() {
         ))}
       </ul>
     </div>
-  );
+  )
 }
