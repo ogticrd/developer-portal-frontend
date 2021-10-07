@@ -1,6 +1,7 @@
 import { APIPagesDTO } from '../models/api-pages'
-import { ApiPagesResponse } from '../models/api-pages-response'
 import { Category, CategoryResponse } from '../models/category-response'
+import { ApiPagesResponse } from '../models/reponses/api-pages-response'
+import { Plan, PlanResponse } from '../models/reponses/plan.response'
 import { SummaryAPI } from '../models/summary-api'
 import { get, post } from './http/http.service'
 
@@ -21,6 +22,11 @@ export const getApis = async (): Promise<SummaryAPI[]> => {
 export const getApiDetails = async (id: string): Promise<SummaryAPI> => {
   const { data } = await get(`apis/${id}`)
   return data
+}
+
+export const getApiPlans = async (id: string): Promise<Plan[]> => {
+  const { data }: { data: PlanResponse } = await get(`apis/${id}/plans`)
+  return data.data
 }
 
 export const searchApi = async (search: string): Promise<SummaryAPI[]> => {

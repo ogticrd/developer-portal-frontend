@@ -128,3 +128,11 @@ input[type='radio']:checked:before {
   transform: scale(1.2);
   transition: 300ms;
 }
+
+.subscription-status-pending {
+  @apply text-yellow-500;
+}
+
+.subscription-status-accepted {
+  @apply text-green-600 font-medium;
+}
