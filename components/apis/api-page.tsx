@@ -18,6 +18,11 @@ export default function ApiPageComponent({
 }): JSX.Element {
   const { t } = useContext<any>(LanguageContext)
 
+  const swaggerUrl = swaggerContent?._links.content.replace(
+    'http:',
+    location.protocol,
+  )
+
   return (
     <>
       {markdownContent && (
@@ -40,7 +45,7 @@ export default function ApiPageComponent({
               minWidth: 500,
             }}
           >
-            <SwaggerUI url={swaggerContent?._links.content} />
+            <SwaggerUI url={swaggerUrl} />
           </div>
         </section>
       )}

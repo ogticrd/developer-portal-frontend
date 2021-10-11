@@ -17,9 +17,6 @@ export const createSubscription = async (api: string, comment?: string) => {
   }
 
   const { data } = await post('subscriptions', input)
-
-  console.log(data)
-
   return data
 }
 

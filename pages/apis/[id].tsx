@@ -13,7 +13,6 @@ import {
   getPages,
   getPageContent,
 } from '../../services/apis.service'
-import { createSubscription } from '../../services/subscription.service'
 
 async function getData(id: string) {
   const { swagger, markdown } = await getPages(id)

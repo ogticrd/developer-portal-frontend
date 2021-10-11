@@ -10,6 +10,5 @@ export const getApplications = async (
   const { data }: { data: ApplicationResponse } = await get(
     `applications?&forSubscription=${forSubscription}`,
   )
-  console.log(data)
   return data?.data
 }
