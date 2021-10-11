@@ -33,13 +33,12 @@ export const post = async (
       ? window?.localStorage?.getItem('auth-token')
       : ''
 
-  const headers = {}
   if (token) {
-    headers['Authorization'] = `Bearer ${token}`
+    options.headers['Authorization'] = `Bearer ${token}`
   }
 
   try {
-    const res = await axios.post(baseUrl + path, payload, { headers })
+    const res = await axios.post(baseUrl + path, payload, options)
     return res
   } catch (err) {
     handleError(err)
@@ -57,12 +56,11 @@ export const put = async (
       ? window?.localStorage?.getItem('auth-token')
       : ''
 
-  const headers = {}
   if (token) {
-    headers['Authorization'] = `Bearer ${token}`
+    options.headers['Authorization'] = `Bearer ${token}`
   }
   try {
-    const res = await axios.put(baseUrl + path, payload, { headers })
+    const res = await axios.put(baseUrl + path, payload, options)
     return res
   } catch (err) {
     handleError(err)
