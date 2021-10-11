@@ -50,6 +50,7 @@ export const getPages = async (id: string): Promise<ApiPagesResponse> => {
 
 export const getPageContent = async (url: string): Promise<string> => {
   url = url.split('DEFAULT/')[1]
+
   const { data }: { data: string } = await get(url)
   return data || ''
 }
