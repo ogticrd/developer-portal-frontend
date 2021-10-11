@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react'
+import Pagination from '../../components/pagination'
 import { Notification } from '../../models/notification'
 import { getNotificatiosHistory } from '../../services/notification.service'
 import AccountSidebarMenu from './account-sidebar-menu'
 
 export default function Notifications() {
   const [notifications, setNotifications] = useState<Notification[]>()
+  const [page, setPage] = useState<number>(1)
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getNotificatiosHistory()
+      const data = await getNotificatiosHistory(page)
       setNotifications(data)
     }
 
     getData()
-  }, [])
+  }, [page])
+
+  const onPageChange = (pageNumber) => {
+    setPage(pageNumber)
+  }
 
   return (
     <div className="bg-blue-primary-light flex">
@@ -42,6 +48,12 @@ export default function Notifications() {
               ))}
             </tbody>
           </table>
+          <Pagination
+            currentPage={page}
+            limit={10}
+            totalResults={35}
+            onPageChange={onPageChange}
+          />
         </div>
       </div>
     </div>

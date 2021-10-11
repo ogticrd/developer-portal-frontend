@@ -8,8 +8,8 @@ export const getCurrentNotificatios = async (): Promise<Notification[]> => {
 }
 
 export const getNotificatiosHistory = async (
-  limit: number = 10,
   page: number = 1,
+  limit: number = 10,
 ): Promise<Notification[]> => {
   //   const { data } = await get('user/notifications')
   const { data } = await axios.get(
@@ -22,6 +22,5 @@ export const getNotificatiosHistory = async (
 export const subscribeNotifications = async (): Promise<void> => {
   setInterval(async () => {
     const notifications = await getCurrentNotificatios()
-    console.log(notifications)
   }, 10_000)
 }
