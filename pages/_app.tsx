@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
 
@@ -11,8 +11,13 @@ import Layout from '../components/layout.component'
 import LanguageProvider from '../context/language.context'
 import UserProvider from '../context/user.context'
 import { ToastContainer } from 'react-toastify'
+import { subscribeNotifications } from '../services/notification.service'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    subscribeNotifications()
+  }, [])
+
   return (
     <LanguageProvider>
       <UserProvider>

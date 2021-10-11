@@ -6,8 +6,9 @@ import { updateUser } from '../../services/user.service'
 import { UpdateUserDataForm } from '../../models/forms/update-user-data.form'
 import { LanguageContext } from '../../context/language.context'
 import { toast, ToastContainer } from 'react-toastify'
+import AccountSidebarMenu from './account-sidebar-menu'
 
-export default function index() {
+export default function Account() {
   const {
     register,
     handleSubmit,
@@ -82,8 +83,9 @@ export default function index() {
 
   const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/
   return (
-    <div className="bg-blue-primary-light py-8">
-      <div className="container mx-auto">
+    <div className="bg-blue-primary-light flex">
+      <AccountSidebarMenu />
+      <div className="container mx-auto px-6">
         <div className="card">
           <div className="flex gap-8 items-center">
             <img

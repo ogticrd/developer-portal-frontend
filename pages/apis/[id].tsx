@@ -13,6 +13,7 @@ import {
   getPages,
   getPageContent,
 } from '../../services/apis.service'
+import { createSubscription } from '../../services/subscription.service'
 
 async function getData(id: string) {
   const { swagger, markdown } = await getPages(id)
@@ -42,9 +43,9 @@ export default function ApiDetails() {
   useEffect(() => {
     const getUserData = async () => {
       const res = await getData(id)
-      setData(res.data)
-      setSwaggerContent(res.swaggerContent)
-      setMarkdownContent(res.markdownContent)
+      setData(res?.data)
+      setSwaggerContent(res?.swaggerContent)
+      setMarkdownContent(res?.markdownContent)
     }
 
     getUserData()
@@ -59,6 +60,7 @@ export default function ApiDetails() {
         </title>
       </Head>
       <ApiDetailsHeader data={data} />
+
       <div className="grid grid-cols-12 container mx-auto">
         <div className="col-span-12 md:col-span-10">
           <ApiPageComponent

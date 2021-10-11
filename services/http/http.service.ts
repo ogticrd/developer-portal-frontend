@@ -28,8 +28,18 @@ export const post = async (
   payload: any = null,
   options = null,
 ): Promise<any> => {
+  const token =
+    typeof window !== 'undefined'
+      ? window?.localStorage?.getItem('auth-token')
+      : ''
+
+  const headers = {}
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`
+  }
+
   try {
-    const res = await axios.post(baseUrl + path, payload, options)
+    const res = await axios.post(baseUrl + path, payload, { headers })
     return res
   } catch (err) {
     handleError(err)

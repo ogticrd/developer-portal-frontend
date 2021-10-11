@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useContext } from 'react';
-import { LanguageContext } from '../context/language.context';
+import Image from 'next/image'
+import Link from 'next/link'
+import { useContext } from 'react'
+import { LanguageContext } from '../context/language.context'
 
 export default function Footer() {
-  const { t } = useContext<any>(LanguageContext);
+  const { t } = useContext<any>(LanguageContext)
 
   return (
-    <footer className="bg-blue-primary p-10 w-full ">
-      <div className="container mx-auto grid grid-cols-12 items-center gap-y-4">
+    <footer className="bg-blue-primary p-10 w-full">
+      <div className="container mx-auto grid grid-cols-12 items-center gap-y-4 h-36">
         <div className="col-span-12 md:col-span-3 mx-auto">
           <Image
             src="/images/logo-ogtic-white.png"
@@ -33,22 +33,22 @@ export default function Footer() {
           </li>
           <li className="hover:underline">
             <Link href="/docs">
-            <a>{t.footer.documentation}</a>
+              <a>{t.footer.documentation}</a>
             </Link>
           </li>
           <li className="hover:underline">
             <Link href="/">
-            <a>{t.footer.terms}</a>
+              <a>{t.footer.terms}</a>
             </Link>
           </li>
           <li className="hover:underline">
             <Link href="/">
-            <a>{t.footer.privacy}</a>
+              <a>{t.footer.privacy}</a>
             </Link>
           </li>
           <li className="hover:underline">
             <Link href="/">
-            <a>{t.footer.contact}</a>
+              <a>{t.footer.contact}</a>
             </Link>
           </li>
         </ul>
@@ -78,5 +78,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
