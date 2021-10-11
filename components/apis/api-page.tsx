@@ -18,10 +18,8 @@ export default function ApiPageComponent({
 }): JSX.Element {
   const { t } = useContext<any>(LanguageContext)
 
-  const swaggerUrl = swaggerContent?._links.content.replace(
-    'http:',
-    location.protocol,
-  )
+  const swaggerUrl =
+    '/server/portal' + swaggerContent?._links.content.split('portal')[1]
 
   return (
     <>
