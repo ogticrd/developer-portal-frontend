@@ -136,3 +136,7 @@ input[type='radio']:checked:before {
 .subscription-status-accepted {
   @apply text-green-600 font-medium;
 }
+
+.account-sidebar {
+  height: calc(100vh - 270px);
+}
