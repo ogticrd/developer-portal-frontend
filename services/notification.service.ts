@@ -4,7 +4,7 @@ import { get } from './http/http.service'
 
 export const getCurrentNotificatios = async (): Promise<Notification[]> => {
   const { data } = await get('user/notifications?size=1')
-  return data.data
+  return data?.data || []
 }
 
 export const getNotificatiosHistory = async (
