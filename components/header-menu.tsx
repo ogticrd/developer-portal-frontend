@@ -67,9 +67,7 @@ export default function HeaderMenu() {
               <HeaderUserButton user={user} setUser={setUser} />
             ) : (
               <Link href="/login">
-                <a className="bg-blue-primary-dark hover:bg-blue-400 text-white px-2 py-1 rounded-md shadow-md ml-2 px-2">
-                  Acceder
-                </a>
+                <a className="btn-primary-dark">Acceder</a>
               </Link>
             )}
           </li>
