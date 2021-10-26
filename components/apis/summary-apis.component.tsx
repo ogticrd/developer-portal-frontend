@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import Link from 'next/link';
-import { LanguageContext } from '../../context/language.context';
-import { SummaryAPI } from '../../models/summary-api';
-import CardApiComponent from './card-api.component';
+import { useContext } from 'react'
+import Link from 'next/link'
+import { LanguageContext } from '../../context/language.context'
+import { SummaryAPI } from '../../models/summary-api'
+import CardApiComponent from './card-api.component'
 
 export default function PopularApisComponent(props: any) {
-  const apis: SummaryAPI[] = props.pupularApis;
-  const { t } = useContext<any>(LanguageContext);
+  const apis: SummaryAPI[] = props.pupularApis
+  const { t } = useContext<any>(LanguageContext)
 
   return (
     <section className="container m-auto text-center py-8 ">
@@ -22,10 +22,8 @@ export default function PopularApisComponent(props: any) {
         ))}
       </div>
       <Link href="/apis">
-        <a className="bg-blue-primary hover:bg-blue-900 duration-300 py-1 px-24 rounded-md uppercase text-white">
-          {t.popularApis.viewMore}
-        </a>
+        <a className="btn-primary uppercase w-28">{t.popularApis.viewMore}</a>
       </Link>
     </section>
-  );
+  )
 }

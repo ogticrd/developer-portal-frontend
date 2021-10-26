@@ -77,10 +77,7 @@ export default function ApiDetailsHeader(props: any) {
         </p>
       </div>
       <div className="container mx-auto">
-        <button
-          className="py-1 px-3 bg-blue-900 text-white my-2 rounded-md"
-          onClick={subscribe}
-        >
+        <button className="btn-primary mb-4" onClick={subscribe}>
           Subscribe to API
         </button>
       </div>

@@ -9,7 +9,7 @@ import { UserContext } from '../../context/user.context'
 import { getUser } from '../../services/user.service'
 import { LanguageContext } from '../../context/language.context'
 
-export default function index() {
+export default function LoginPage() {
   const {
     register,
     handleSubmit,

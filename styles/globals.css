@@ -140,3 +140,11 @@ input[type='radio']:checked:before {
 .account-sidebar {
   height: calc(100vh - 270px);
 }
+
+.btn-primary {
+  @apply bg-primary hover:bg-primary-hover text-white  py-1 px-12 rounded-md shadow-md duration-300;
+}
+
+.btn-primary-dark {
+  @apply bg-primary-dark hover:bg-primary-hover text-white  py-1 px-2 rounded-md shadow-md duration-300;
+}
