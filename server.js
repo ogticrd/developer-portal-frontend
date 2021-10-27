@@ -39,12 +39,15 @@ app.prepare().then(() => {
         headers['Authorization'] = req.headers?.authorization
       }
 
-      const { data } = await axios
+      const result = await axios
         .get(fullUrl, {
           headers,
         })
-        .catch((err) => res.status(err.response?.status || 500).json(err))
-      res.send(data)
+        .catch((err) => {
+          console.log(err.response.data.errors)
+          res.status(err.response?.status || 500).json(err.response.data.errors)
+        })
+      if (result) res.send(result.data)
     }
   })
 
@@ -55,12 +58,15 @@ app.prepare().then(() => {
       if (req.headers?.authorization) {
         headers['Authorization'] = req.headers?.authorization
       }
-      const { data } = await axios
+      const result = await axios
         .post(fullUrl, req.body, {
           headers,
         })
-        .catch((err) => res.status(err.response?.status || 500).json(err))
-      res.send(data)
+        .catch((err) => {
+          console.log(err.response.data.errors)
+          res.status(err.response?.status || 500).json(err.response.data.errors)
+        })
+      if (result) res.send(result.data)
     } catch (err) {
       console.log(err)
       res.send(err)
@@ -74,12 +80,15 @@ app.prepare().then(() => {
       if (req.headers?.authorization) {
         headers['Authorization'] = req.headers?.authorization
       }
-      const { data } = await axios
+      const result = await axios
         .put(fullUrl, req.body, {
           headers,
         })
-        .catch((err) => res.status(err.response.status).json(err))
-      res.send(data)
+        .catch((err) => {
+          console.log(err.response.data.errors)
+          res.status(err.response?.status || 500).json(err.response.data.errors)
+        })
+      if (result) res.send(result.data)
     } catch (err) {
       res.send(err)
     }

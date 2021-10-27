@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
-import { LoginForm } from '../../models/forms/login.form'
-import { login } from '../../services/auth.service'
+import { LoginForm } from '../../../models/forms/login.form'
 import { useRouter } from 'next/dist/client/router'
-import { UserContext } from '../../context/user.context'
-import { getUser } from '../../services/user.service'
-import { LanguageContext } from '../../context/language.context'
+import { UserContext } from '../../../context/user.context'
+import { getUser } from '../../../services/user.service'
+import { LanguageContext } from '../../../context/language.context'
+import { login } from '../../../services/auth.service'
 
 export default function LoginPage() {
   const {
@@ -120,7 +120,7 @@ export default function LoginPage() {
 
           <div className="text-center">
             <p className="mb-2 text-gray-600">{t.loginForm.newHere}</p>
-            <Link href="register">
+            <Link href="/user/registration">
               <a className="text-blue-800 text-lg">{t.loginForm.register}</a>
             </Link>
           </div>
