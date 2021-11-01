@@ -66,7 +66,7 @@ export default function HeaderMenu() {
             {user ? (
               <HeaderUserButton user={user} setUser={setUser} />
             ) : (
-              <Link href="/login">
+              <Link href="/user/login">
                 <a className="btn-primary-dark">Acceder</a>
               </Link>
             )}

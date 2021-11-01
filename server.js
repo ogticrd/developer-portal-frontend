@@ -44,7 +44,7 @@ app.prepare().then(() => {
           headers,
         })
         .catch((err) => {
-          console.log(err.response.data.errors)
+          
           res.status(err.response?.status || 500).json(err.response.data.errors)
         })
       if (result) res.send(result.data)
@@ -63,7 +63,7 @@ app.prepare().then(() => {
           headers,
         })
         .catch((err) => {
-          console.log(err.response.data.errors)
+          
           res.status(err.response?.status || 500).json(err.response.data.errors)
         })
       if (result) res.send(result.data)
@@ -85,7 +85,7 @@ app.prepare().then(() => {
           headers,
         })
         .catch((err) => {
-          console.log(err.response.data.errors)
+          
           res.status(err.response?.status || 500).json(err.response.data.errors)
         })
       if (result) res.send(result.data)
