@@ -8,23 +8,23 @@ export const createAccount = async (
     firstname: registerForm.firstName,
     lastname: registerForm.lastName,
     email: registerForm.email,
-    newsletter: true,
-    password: registerForm.password,
   })
 
-  const res = await finalizeRegistration(data, registerForm.password)
-  return res
+  // const res = await finalizeRegistration(data, registerForm.password)
+  return data
 }
 
-const finalizeRegistration = async (
-  params: any,
+export const finalizeRegistration = async (
+  token: string,
   password: string,
+  firstname: string,
+  lastname: string,
 ): Promise<any> => {
   const { data } = await post(`users/registration/_finalize`, {
-    token: params.id,
-    firstname: params.first_name,
-    lastname: params.last_name,
+    token,
     password,
+    firstname,
+    lastname,
   })
 
   return data
