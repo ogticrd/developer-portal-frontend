@@ -91,18 +91,16 @@ export default function AccountSidebarMenu() {
 
   return (
     <div className="bg-white shadow-sm account-sidebar">
-      {/* {router.pathname} */}
-      <ul className="p-8">
+      <ul className="p-4">
         {options.map((option) => (
-          <li key={option.title} className="mb-1">
+          <li key={option.title} className="mb-1 w-64">
             <Link href={'/account/' + option.path}>
               <a
-                className={`flex gap-4 p-2 font-medium rounded-lg ${
-                  router.pathname ==
+                className={`flex gap-4 p-2 font-medium rounded-lg ${router.pathname ==
                   '/account' + (option.path ? '/' + option.path : '')
-                    ? 'bg-blue-primary  text-white font-semibold'
-                    : 'text-gray-800'
-                }`}
+                  ? 'bg-blue-primary text-white'
+                  : 'text-gray-800'
+                  }`}
               >
                 {option.icon} {option.title}
               </a>

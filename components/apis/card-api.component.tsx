@@ -27,19 +27,18 @@ export default function CardApiComponent(props: any) {
 
   return (
     <div
-      className={`rounded-lg relative col-span-4 block ${
-        isDistributionGrid ? 'h-96' : 'md:col-span-12 md:grid grid-cols-12'
-      } shadow-lg text-left bg-white text-gray-700`}
+      className={`rounded-lg relative col-span-4 block ${isDistributionGrid ? 'h-96' : 'md:col-span-12 md:grid grid-cols-12'
+        } shadow-lg text-left bg-white text-gray-700`}
     >
       <div
-        className={`w-full ${
-          isDistributionGrid ? 'h-44' : 'h-48'
-        } grid object-cover col-span-3`}
+        className={`w-full ${isDistributionGrid ? 'h-44' : 'h-48'
+          } grid object-cover col-span-3`}
       >
         <Image
           src={imageUrl}
           width="100"
           height="100"
+          className="rounded-t-lg"
           alt={`${data?.name} image`}
           onError={onImageError}
         />
@@ -57,9 +56,8 @@ export default function CardApiComponent(props: any) {
           <p className="text-sm my-4">{shorten(data?.description, 72)}</p>
         </div>
         <div
-          className={`flex p-4 border-t items-center bottom-0 w-full justify-between ${
-            isDistributionGrid ? 'absolute' : 'md:justify-end gap-6'
-          }`}
+          className={`flex p-4 border-t items-center bottom-0 w-full justify-between ${isDistributionGrid ? 'absolute' : 'md:justify-end gap-6'
+            }`}
         >
           <Link href={`/apis/${data?.id}`}>
             <a className="text-blue-900 font-semibold hover:underline">

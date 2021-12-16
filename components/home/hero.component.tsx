@@ -8,8 +8,8 @@ export default function HeroComponent() {
   const { t } = useContext<any>(LanguageContext);
   return (
     <div className="bg-blue-primary-light">
-      <section className="container mx-auto flex justify-center md:justify-between  items-center px-6 py-12">
-        <div className="hidden md:block">
+      <section className="container mx-auto flex justify-center gap-0  items-center px-6 py-12">
+        <div className="hidden md:block w-1/2 text-center">
           <Image
             src="/images/hero-illustration.svg"
             width={350}
