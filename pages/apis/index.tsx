@@ -60,10 +60,7 @@ export default function index({ data, categories }: any) {
             </div>
           </section>
           <div className="flex container mx-auto">
-            <section className="w-full lg:w-9/12">
-              <p className="px-11 text-gray-600 mt-5 text-left">
-                {apis?.length || 0} - {t.apiCatalog.searchQuantity}
-              </p>
+            <section className="w-full lg:w-9/12 pt-4">
               <SearchApiComponent
                 setApis={setApis}
                 setSearching={setSearching}
@@ -71,6 +68,9 @@ export default function index({ data, categories }: any) {
                 setDistribution={setDistribution}
                 onOptionSelected={(value: string) => sortApis(value)}
               />
+              <p className="px-11 text-gray-600 text-left">
+                {apis?.length || 0} - {t.apiCatalog.searchQuantity}
+              </p>
               <div className="h-2 mb-9">
                 {searching && <div className="custom-spinner"></div>}
               </div>
