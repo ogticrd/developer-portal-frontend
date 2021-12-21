@@ -19,7 +19,7 @@ export default function HeroComponent() {
         </div>
         <div className="text-gray-800 flex flex-col items-start w-full md:w-1/2">
           <Image
-            src="/images/ogtic-full-logo.png"
+            src="/images/ogtic-full-logo.svg"
             width="200px"
             height="74px"
             alt="OGTIC logo"

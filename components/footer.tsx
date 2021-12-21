@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="container mx-auto grid grid-cols-12 items-center gap-y-4 h-36">
         <div className="col-span-12 md:col-span-3 mx-auto">
           <Image
-            src="/images/logo-ogtic-white.png"
+            src="/images/logo-ogtic-white.svg"
             width={213 * 0.9}
             height={88 * 0.9}
             alt="OGTIC logo"
@@ -19,7 +19,7 @@ export default function Footer() {
         </div>
         <div className="col-span-12 md:col-span-3 mx-auto">
           <Image
-            src="/images/minimal-logo-white.png"
+            src="/images/minimal-logo-white.svg"
             width={70}
             height={70}
             alt="OGTIC logo"

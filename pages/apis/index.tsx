@@ -43,7 +43,7 @@ export default function index({ data, categories }: any) {
             <div className="flex flex-col md:flex-row items-center justify-around container m-auto">
               <div>
                 <Image
-                  src="/images/ogtic-full-logo.png"
+                  src="/images/ogtic-full-logo.svg"
                   width={179}
                   height={66}
                   alt="OGTIC logo"
