@@ -66,23 +66,23 @@ export default function Footer() {
         <div className='flex items-center gap-8  justify-center md:justify-start'>
 
           <p className='text-blue-primary font-semibold'>{t.footer.copy.follow}</p>
-          <Link href={'http://www.facebook.com/'}>
+          <Link href={'https://www.facebook.com/Ogticrd/'}>
             <a>
               <img src="/icons/facebook.svg" alt="facebook logo" />
             </a>
           </Link>
 
-          <Link href={'http://www.youtube.com/'}>
+          <Link href={'https://www.youtube.com/channel/UChrVtrHv4vHt3Vwhj2RzlvA/'}>
             <a>
               <img src="/icons/youtube.svg" alt="youtube logo" />
             </a>
           </Link>
-          <Link href={'http://www.twitter.com/'}>
+          <Link href={'https://twitter.com/OGTICRDO/'}>
             <a>
               <img src="/icons/twitter.svg" alt="twitter logo" />
             </a>
           </Link>
-          <Link href={'http://www.instagram.com/'}>
+          <Link href={'https://www.instagram.com/ogticrd/'}>
             <a>
               <img src="/icons/instagram.svg" alt="instagram logo" />
             </a>
