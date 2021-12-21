@@ -114,11 +114,27 @@ export const en = {
     },
   },
   footer: {
-    apis: 'APIs',
-    documentation: 'Documentation',
-    terms: 'Terms and conditions',
-    privacy: 'Privacy policy',
-    contact: 'Contact',
-    follow: 'Follow us',
+    help: {
+      title: 'Help',
+      terms: 'Terms of use',
+      privacy: 'Privacy policy',
+      faq: 'FAQ',
+    },
+    call: {
+      title: 'Call us',
+      phone: 'Tel: (809) 731 1100',
+      fax: 'Fax: 809-731-1101',
+      email: 'info@mescyt.gob.do',
+    },
+    lookForUs: {
+      title: 'Look for us',
+      content:
+        'Av. Máximo Gómez No. 31, esq. Pedro Henríquez Ureña, Santo Domingo, República Dominicana',
+    },
+    copy: {
+      rights: 'All rights reserved',
+      poweredBy: 'Powered by',
+      follow: 'Follow us',
+    },
   },
 }

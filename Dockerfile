@@ -38,7 +38,7 @@ COPY --from=deps /app/node_modules ./node_modules
 
 RUN yarn build
 
-RUN mkdir /app/.next/cache/images
+RUN mkdir -p /app/.next/cache/images
 RUN chmod -R 777 /app/.next/cache/images
 
 # get the node environment to use
