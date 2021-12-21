@@ -17,11 +17,11 @@ export default function HeaderComponent() {
                 src="/images/gob-icon.svg"
                 width={40}
                 height={40}
-                alt="Goverment logo"
+                alt="Government logo"
               />
               <span className="text-white text-xl"> |</span>
               <Image
-                src="/images/logo-ogtic-horizontal-color-white.png"
+                src="/images/logo-ogtic-horizontal-color-white.svg"
                 width={109}
                 height={52}
                 alt="OGTIC logo"
