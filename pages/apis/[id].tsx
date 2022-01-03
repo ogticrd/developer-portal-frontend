@@ -22,7 +22,6 @@ async function getData(id: string) {
 
   if (id) {
     const data = await getApiDetails(id)
-
     return {
       data,
       swaggerContent: swagger || null,
@@ -48,7 +47,7 @@ export default function ApiDetails() {
     }
 
     getUserData()
-    return () => {}
+    return () => { }
   }, [id])
 
   return (

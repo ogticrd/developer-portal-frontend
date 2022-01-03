@@ -3,17 +3,19 @@ import { Category, CategoryResponse } from '../models/category-response'
 import { ApiPagesResponse } from '../models/reponses/api-pages-response'
 import { Plan, PlanResponse } from '../models/reponses/plan.response'
 import { SummaryAPI } from '../models/summary-api'
+import { normalizeLinks } from '../utils/normalize-url'
 import { get, post } from './http/http.service'
 
 export const getPopularApis = async (): Promise<SummaryAPI[]> => {
   const { data } = await get(`apis?size=3`)
-  return data?.data || []
+  return normalizeLinks(data?.data || [])
 }
 
 export const getApis = async (): Promise<SummaryAPI[]> => {
   try {
     const { data } = await get(`apis`)
-    return data?.data || []
+
+    return normalizeLinks(data?.data || [])
   } catch (e) {
     return []
   }
@@ -21,7 +23,7 @@ export const getApis = async (): Promise<SummaryAPI[]> => {
 
 export const getApiDetails = async (id: string): Promise<SummaryAPI> => {
   const { data } = await get(`apis/${id}`)
-  return data
+  return normalizeLinks([data] || [])[0]
 }
 
 export const getApiPlans = async (id: string): Promise<Plan[]> => {
@@ -32,7 +34,7 @@ export const getApiPlans = async (id: string): Promise<Plan[]> => {
 export const searchApi = async (search: string): Promise<SummaryAPI[]> => {
   try {
     const { data } = await post(`apis/_search?size=${5}&q=${search}`)
-    return data?.data || []
+    return normalizeLinks(data?.data || [])
   } catch (error) {
     return []
   }
@@ -65,7 +67,7 @@ export const getApisByCategory = async (
 ): Promise<SummaryAPI[]> => {
   try {
     const { data } = await get(`apis?category=${category}`)
-    return data?.data || []
+    return normalizeLinks(data?.data || [])
   } catch (error) {
     console.error(error)
     return []
