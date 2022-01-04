@@ -52,6 +52,15 @@ export const es = {
       api: 'API',
       support: 'Soporte',
     },
+    subscription: {
+      title: 'Subscribirse Actuliazaciones',
+      subtitle: 'Mantenerse actualizado de nuevas versiones.',
+      action: 'Subscribirse',
+      notLogged: {
+        message: 'Para subscribirse, inicie sesión.',
+        action: 'Iniciar sesión',
+      },
+    },
   },
   filters: {
     categories: 'Sectorial',
