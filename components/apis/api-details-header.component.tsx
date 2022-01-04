@@ -4,29 +4,13 @@ import { SummaryAPI } from '../../models/summary-api'
 import ApiVersionTag from './api-version'
 import Link from 'next/link'
 import shorten from '../../utils/shorten'
-import { createSubscription } from '../../services/subscription.service'
-import { toast } from 'react-toastify'
-import { UserContext } from '../../context/user.context'
-import { useRouter } from 'next/dist/client/router'
 
 export default function ApiDetailsHeader(props: any) {
   const { t } = useContext<any>(LanguageContext)
-  const { user } = useContext<any>(UserContext)
-  const data: SummaryAPI = props.data
-  const router = useRouter()
 
-  const subscribe = async () => {
-    try {
-      if (!user) {
-        router.push('/login')
-        return
-      }
-      await createSubscription(data.id, 'A random comment')
-      toast.success('Ready, you have subscribed to this Api')
-    } catch (err) {
-      toast.error('Error')
-    }
-  }
+  const data: SummaryAPI = props.data
+
+
 
   return data ? (
     <section className="bg-blue-primary-light">
@@ -76,11 +60,7 @@ export default function ApiDetailsHeader(props: any) {
           </Link>
         </p>
       </div>
-      <div className="container mx-auto">
-        <button className="btn-primary mb-4" onClick={subscribe}>
-          Subscribe to API
-        </button>
-      </div>
+
     </section>
   ) : (
     <p></p>

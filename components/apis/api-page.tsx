@@ -6,6 +6,10 @@ import 'swagger-ui-react/swagger-ui.css'
 import { LanguageContext } from '../../context/language.context'
 import ApiVersionTag from './api-version'
 import MarkdownViewer from './markdown-viewer'
+import { useRouter } from 'next/dist/client/router'
+import { UserContext } from '../../context/user.context'
+import { createSubscription } from '../../services/subscription.service'
+import { toast } from 'react-toastify'
 
 export default function ApiPageComponent({
   version,
@@ -20,6 +24,23 @@ export default function ApiPageComponent({
 
   const swaggerUrl =
     '/server/portal' + swaggerContent?._links.content.split('portal')[1]
+
+
+  const { user } = useContext<any>(UserContext)
+  const router = useRouter()
+
+  const subscribe = async () => {
+    try {
+      if (!user) {
+        router.push('/user/login')
+        return
+      }
+      await createSubscription(user.id, 'A random comment')
+      toast.success('Ready, you have subscribed to this Api')
+    } catch (err) {
+      toast.error('Error')
+    }
+  }
 
   return (
     <>
@@ -47,6 +68,22 @@ export default function ApiPageComponent({
           </div>
         </section>
       )}
+
+      <div className="card w-full overflow-x-auto mt-8">
+        <h3 className='text-lg font-bold text-gray-700'>{t.apiDetails.subscription.title}</h3>
+        <hr className='text-gray-300 mt-4 mb-8' />
+        <h4 className='font-semibold text-gray-700 mb-4'>{t.apiDetails.subscription.subtitle}</h4>
+        {user ?
+          <button className="btn-primary mb-4" onClick={subscribe}>
+            {t.apiDetails.subscription.action}
+          </button> : <div>
+            <p className='text-gray-700 mb-4'>{t.apiDetails.subscription.notLogged.message}</p>
+            <button className="btn-primary mb-4" onClick={subscribe}>
+              {t.apiDetails.subscription.notLogged.action}
+            </button>
+          </div>}
+
+      </div>
     </>
   )
 }
