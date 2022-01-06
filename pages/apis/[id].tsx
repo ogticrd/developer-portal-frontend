@@ -39,14 +39,15 @@ export default function ApiDetails() {
   const [swaggerContent, setSwaggerContent] = useState<ApiPage>()
   const [markdownContent, setMarkdownContent] = useState<string>()
   useEffect(() => {
-    const getUserData = async () => {
+    const getApiData = async () => {
       const res = await getData(id)
+
       setData(res?.data)
       setSwaggerContent(res?.swaggerContent)
       setMarkdownContent(res?.markdownContent)
     }
 
-    getUserData()
+    getApiData()
     return () => { }
   }, [id])
 

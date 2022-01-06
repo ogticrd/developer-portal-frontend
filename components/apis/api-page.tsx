@@ -10,6 +10,7 @@ import { useRouter } from 'next/dist/client/router'
 import { UserContext } from '../../context/user.context'
 import { createSubscription } from '../../services/subscription.service'
 import { toast } from 'react-toastify'
+import { normalizeLinks } from '../../utils/normalize-url'
 
 export default function ApiPageComponent({
   version,
@@ -24,7 +25,6 @@ export default function ApiPageComponent({
 
   const swaggerUrl =
     '/server/portal' + swaggerContent?._links.content.split('portal')[1]
-
 
   const { user } = useContext<any>(UserContext)
   const router = useRouter()
@@ -70,6 +70,7 @@ export default function ApiPageComponent({
       )}
 
       <div className="card w-full overflow-x-auto mt-8">
+
         <h3 className='text-lg font-bold text-gray-700'>{t.apiDetails.subscription.title}</h3>
         <hr className='text-gray-300 mt-4 mb-8' />
         <h4 className='font-semibold text-gray-700 mb-4'>{t.apiDetails.subscription.subtitle}</h4>
