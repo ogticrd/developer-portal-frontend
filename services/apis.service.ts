@@ -45,8 +45,13 @@ export const getPages = async (id: string): Promise<ApiPagesResponse> => {
     `apis/${id}/pages?size=${-1}&homepage=${false}`,
   )
 
-  const markdown = data?.data.find((page) => page.type === 'MARKDOWN')
-  const swagger = data?.data.find((page) => page.type === 'SWAGGER')
+  const markdown = data?.data.find(
+    (page) => page.type.toUpperCase() === 'MARKDOWN',
+  )
+  const swagger = data?.data.find(
+    (page) => page.type.toUpperCase() === 'SWAGGER',
+  )
+
   return { markdown, swagger }
 }
 
