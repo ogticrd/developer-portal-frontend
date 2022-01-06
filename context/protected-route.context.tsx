@@ -9,9 +9,8 @@ const ProtectedRouteProvider = ({ children }: any) => {
   const { user } = useContext<any>(UserContext)
 
   useEffect(() => {
-    if (!user) {
-      router.push('/user/login')
-    }
+
+    router.push('/')
     return () => { }
   }, [user, router])
 
