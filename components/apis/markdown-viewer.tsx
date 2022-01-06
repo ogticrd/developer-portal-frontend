@@ -1,10 +1,9 @@
 import { useEffect } from 'react'
-import showdown from 'showdown'
+import { marked } from 'marked';
 
 export default function MarkdownViewer({ content }: { content: string }) {
-  const converter = new showdown.Converter()
   const stylesheetTag = '<link rel="stylesheet" href="/css/markdown.css" />'
-  const html = stylesheetTag + converter.makeHtml(content)
+  const html = stylesheetTag + marked.parse(content)
 
   const updateSize = (frame: any) => {
     frame.style.height =
@@ -22,7 +21,7 @@ export default function MarkdownViewer({ content }: { content: string }) {
 
       updateSize(frame)
     }
-    return () => {}
+    return () => { }
   }, [content, html])
 
   return (
