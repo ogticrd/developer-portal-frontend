@@ -11,6 +11,7 @@
     "format": "prettier --write \"{,!(node_modules)/**/}*.js\""
   },
   "dependencies": {
+    "@types/marked": "^4.0.1",
     "axios": "^0.21.4",
     "babel-eslint": "^10.1.0",
     "dotenv": "^10.0.0",
