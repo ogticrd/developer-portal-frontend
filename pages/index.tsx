@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import React, { useContext, useEffect, useState } from 'react'
+import Script from 'next/script'
+
 import HeroComponent from '../components/home/hero.component'
 import PopularApisComponent from '../components/apis/summary-apis.component'
 import { LanguageContext } from '../context/language.context'
@@ -14,7 +16,7 @@ export default function Home() {
       setData(res)
     }
     getData()
-    return () => {}
+    return () => { }
   }, [])
 
   const { t } = useContext<any>(LanguageContext)
@@ -30,6 +32,7 @@ export default function Home() {
         <InfoTad />
         <PopularApisComponent pupularApis={data} />
       </main>
+      <Script src="https://cdn.jsdelivr.net/gh/opticrd/official-header@master/main.js"></Script>
     </div>
   )
 }

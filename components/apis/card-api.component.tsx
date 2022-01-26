@@ -7,15 +7,15 @@ import { SummaryAPI } from '../../models/summary-api'
 import shorten from '../../utils/shorten'
 
 export default function CardApiComponent(props: any) {
-  let {
+  const {
     data,
     distribution,
   }: { data: SummaryAPI; distribution: DistributionEnum } = props
   const { t } = useContext<any>(LanguageContext)
 
-  distribution ||= DistributionEnum.GRID
+  const distro = distribution || DistributionEnum.GRID
 
-  const isDistributionGrid = distribution === DistributionEnum.GRID
+  const isDistributionGrid = distro === DistributionEnum.GRID
   const defaultImageSrc = '/images/no-image-available.svg.png'
   const [imageUrl, setImageUrl] = useState<string>(data._links.picture)
 
