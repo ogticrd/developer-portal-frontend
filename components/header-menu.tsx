@@ -62,6 +62,16 @@ export default function HeaderMenu() {
             <LanguageToggle closeMenu={closeMenu} />
           </li>
 
+          <li>
+            {user ? (
+              <HeaderUserButton user={user} setUser={setUser} />
+            ) : (
+              <Link href="/user/login">
+                <a className="btn-primary-dark">Acceder</a>
+              </Link>
+            )}
+          </li>
+
         </ul>
       </nav>
 
