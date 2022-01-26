@@ -3,12 +3,16 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import { LanguageContext } from '../context/language.context'
 import HeaderMenu from './header-menu'
+import { useRouter } from 'next/router'
+import SearchBox from './search-box'
 
 export default function HeaderComponent() {
   const { t } = useContext<any>(LanguageContext)
+  const router = useRouter()
 
   return (
     <header className="bg-blue-primary sticky top-0 z-20">
+
       <div className="container mx-auto flex px-8 py-1 items-center justify-between">
         <div>
           <Link href="/">
@@ -29,6 +33,7 @@ export default function HeaderComponent() {
             </a>
           </Link>
         </div>
+        {!['/', '/apis'].includes(router.asPath) && <SearchBox />}
         <HeaderMenu />
       </div>
     </header>

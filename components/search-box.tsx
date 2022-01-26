@@ -2,7 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '../context/language.context';
 import { SummaryAPI } from '../models/summary-api';
-import { getApis, searchApi } from '../services/apis.service';
+import { searchApi } from '../services/apis.service';
 import ApiSearchItem from './apis/api-search-item.component';
 
 export default function SearchBox() {
@@ -57,7 +57,7 @@ export default function SearchBox() {
       <div className="border-2 border-blue-primary-light border-r-0 rounded-full w-full flex items-center justify-between bg-white p-0 h-10">
 
         <input
-          className="p-4 rounded-full outline-none h-9"
+          className="p-4 rounded-full outline-none h-9 w-full"
           type="text"
           placeholder={t.searchBox.placeholder}
           value={searchText}
