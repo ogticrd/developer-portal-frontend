@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { ApiPage } from '../../models/api-pages'
 
 import SwaggerUI from 'swagger-ui-react'
@@ -10,7 +10,6 @@ import { useRouter } from 'next/dist/client/router'
 import { UserContext } from '../../context/user.context'
 import { createSubscription } from '../../services/subscription.service'
 import { toast } from 'react-toastify'
-import { normalizeLinks } from '../../utils/normalize-url'
 
 export default function ApiPageComponent({
   version,
