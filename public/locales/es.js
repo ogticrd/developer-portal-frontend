@@ -67,7 +67,7 @@ export const es = {
     clearFilters: 'Limpiar filtros',
   },
   searchBox: {
-    placeholder: '¿Que APIs quieres buscar?',
+    placeholder: 'Buscar',
     button: 'Buscar',
   },
   infoTad: {
