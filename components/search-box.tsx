@@ -2,7 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '../context/language.context';
 import { SummaryAPI } from '../models/summary-api';
-import { getApis, searchApi } from '../services/apis.service';
+import { searchApi } from '../services/apis.service';
 import ApiSearchItem from './apis/api-search-item.component';
 
 export default function SearchBox() {
@@ -54,37 +54,40 @@ export default function SearchBox() {
 
   return (
     <div className="flex items-center w-full relative">
-      <input
-        className="p-2 border border-gray-300 rounded-l-md w-full"
-        type="text"
-        placeholder={t.searchBox.placeholder}
-        value={searchText}
-        onChange={(e) => {
-          setSearchText(e.target.value);
-          setSelected(-1);
-        }}
-        onKeyUp={handleKeyPress}
-      />
-      <button
-        onClick={search}
-        className="p-2 bg-yellow-primary hover:bg-yellow-600 duration-300 rounded-r-md inline-flex items-center text-white"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      <div className="border-2 border-blue-primary-light border-r-0 rounded-full w-full flex items-center justify-between bg-white p-0 h-10">
+
+        <input
+          className="p-4 rounded-full outline-none h-9 w-full"
+          type="text"
+          placeholder={t.searchBox.placeholder}
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            setSelected(-1);
+          }}
+          onKeyUp={handleKeyPress}
+        />
+        <button
+          onClick={search}
+          className="p-2 bg-red-500 hover:bg-red-600 duration-300 rounded-full inline-flex items-center justify-center text-white h-10 w-10 shadow-lg"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
-        {t.searchBox.button}
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+
+        </button>
+      </div>
       {apis.length && searchText.trim() ? (
         <div className="absolute shadow-2xl rounded-md bg-white py-4 w-full top-11">
           {apis.map((api, i) => (

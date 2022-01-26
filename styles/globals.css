@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --primary-light-color: #61affe;
   --primary-color: #003670;
   --primary-dark-color: #002349;
 }
@@ -32,12 +33,20 @@ a {
   background-color: var(--primary-dark-color);
 }
 
+.text-blue-primary-light {
+  color: var(--primary-light-color);
+}
+
 .text-blue-primary {
   color: var(--primary-color);
 }
 
 .border-blue-primary {
   border-color: var(--primary-color);
+}
+
+.border-blue-primary-light {
+  border-color: var(--primary-light-color);
 }
 
 .bg-blue-primary-light {
@@ -142,9 +151,9 @@ input[type='radio']:checked:before {
 }
 
 .btn-primary {
-  @apply bg-primary hover:bg-primary-hover text-white  py-1 px-12 rounded-md shadow-md duration-300;
+  @apply bg-primary hover:bg-primary-hover text-white  py-1 px-12 rounded-full shadow-md duration-300;
 }
 
 .btn-primary-dark {
-  @apply bg-primary-dark hover:bg-primary-hover text-white  py-1 px-2 rounded-md shadow-md duration-300;
+  @apply bg-primary-dark hover:bg-primary-hover text-white  py-1 px-2 rounded-full shadow-md duration-300;
 }

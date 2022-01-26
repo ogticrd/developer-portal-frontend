@@ -66,7 +66,7 @@ export const en = {
     clearFilters: 'Clear filters',
   },
   searchBox: {
-    placeholder: 'What APIs do you want?',
+    placeholder: 'Search',
     button: 'Search',
   },
   infoTad: {

@@ -28,7 +28,7 @@ export default function HeroComponent() {
           <div className="flex flex-col md:flex-row items-center gap-4">
             <SearchBox />
             <Link href="/apis">
-              <a className="w-1/2 md:w-32 border-2 flex items-center justify-center border-blue-primary text-blue-primary   h-10 rounded-md hover:bg-blue-900 hover:text-white duration-300">
+              <a className="w-1/2 md:w-32 border-2 flex items-center justify-center border-blue-primary text-blue-primary   h-10 rounded-full hover:bg-blue-900 hover:text-white duration-300">
                 {t.hero.viewAll}
               </a>
             </Link>
