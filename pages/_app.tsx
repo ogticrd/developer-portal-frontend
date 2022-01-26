@@ -28,6 +28,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             rel="stylesheet"
           />
         </Head>
+        <official-header></official-header>
+
         <Layout>
           <ToastContainer />
           <Component {...pageProps} />
