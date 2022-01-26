@@ -33,7 +33,7 @@ export default function HeaderComponent() {
             </a>
           </Link>
         </div>
-        {!['/', '/apis'].includes(router.asPath) && <SearchBox />}
+        {!['/', '/apis'].includes(router.asPath) && <div className='w-62'> <SearchBox /></div>}
         <HeaderMenu />
       </div>
     </header>
