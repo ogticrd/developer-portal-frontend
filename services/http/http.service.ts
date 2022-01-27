@@ -26,7 +26,9 @@ export const get = async (path: string): Promise<any> => {
 export const post = async (
   path: string,
   payload: any = null,
-  options = null,
+  options = {
+    headers: {},
+  },
 ): Promise<any> => {
   const token =
     typeof window !== 'undefined'
@@ -49,7 +51,9 @@ export const post = async (
 export const put = async (
   path: string,
   payload: any = null,
-  options = null,
+  options = {
+    headers: {},
+  },
 ): Promise<any> => {
   const token =
     typeof window !== 'undefined'
