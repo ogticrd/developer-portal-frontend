@@ -28,7 +28,7 @@ export default function SearchSorter({
     <div className="h-full relative">
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="cursor-pointer border border-blue-primary text-blue-primary h-full flex items-center justify-center rounded-md"
+        className="cursor-pointer border border-blue-primary text-blue-primary h-full flex items-center justify-center rounded-full"
       >
         <span className="mr-2">{sortBy.label}</span>
         {isOpen ? (
@@ -69,11 +69,10 @@ export default function SearchSorter({
             {options.map((option) => (
               <li
                 key={option.value}
-                className={`${
-                  sortBy.value === option.value
+                className={`${sortBy.value === option.value
                     ? 'text-black'
                     : 'text-gray-700 hover:text-black'
-                } cursor-pointer mb-1 `}
+                  } cursor-pointer mb-1 `}
                 onClick={() => onSelect(option)}
               >
                 <span>{option.label}</span>

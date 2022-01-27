@@ -55,7 +55,7 @@ export default function ApiFilters({
 
         <button
           onClick={cleanData}
-          className="mt-6 bg-blue-primary hover:bg-blue-800 duration-300 w-full p-2 text-sm rounded-md text-white"
+          className="mt-6 bg-blue-primary hover:bg-blue-800 duration-300 w-full p-2 text-sm rounded-full text-white"
         >
           {t.filters.clearFilters}
         </button>
