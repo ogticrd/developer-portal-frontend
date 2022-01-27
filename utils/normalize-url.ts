@@ -7,10 +7,14 @@ export const normalizeLinks = (apis: SummaryAPI[]) => {
   for (const api of apis) {
     for (const key in api?._links || []) {
       const url = api._links[key]
-      api._links[key] = url.replace(':80/', '/')
+      api._links[key] = normalizeUrl(url)
     }
     result.push(api)
   }
 
   return result
+}
+
+export const normalizeUrl = (url: string) => {
+  return url.replace(':80/', '/')
 }

@@ -24,12 +24,7 @@ export default function HeaderComponent() {
                 alt="Government logo"
               />
               <span className="text-white text-xl"> |</span>
-              <Image
-                src="/images/logo-ogtic-horizontal-color-white.svg"
-                width={109}
-                height={52}
-                alt="OGTIC logo"
-              />
+              <h2 className='text-white'>{t.header.title} <br /> <b> {t.header.subtitle}</b></h2>
             </a>
           </Link>
         </div>
