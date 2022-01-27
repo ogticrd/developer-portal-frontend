@@ -4,6 +4,8 @@ export const es = {
   },
   header: {
     home: 'Ir a la pagina principal',
+    title: 'Portal de',
+    subtitle: "API's dominicano",
     menu: {
       apis: 'APIs',
       documentation: 'Documentación',

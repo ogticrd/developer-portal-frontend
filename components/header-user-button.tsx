@@ -5,6 +5,7 @@ import Dropdown from './dropdown'
 import Link from 'next/link'
 import { LanguageContext } from '../context/language.context'
 import { UserContext } from '../context/user.context'
+import { normalizeUrl } from '../utils/normalize-url'
 
 export default function HeaderUserButton({
   user,
@@ -60,8 +61,8 @@ export default function HeaderUserButton({
         </div>
         <img
           className="rounded-full"
-          src={imageUrl}
-          alt={`${user.display_name} profile`}
+          src={normalizeUrl(imageUrl)}
+          alt={`${user.display_name} profile picture`}
           height={40}
           width={40}
           onError={onImageError}
@@ -74,8 +75,8 @@ export default function HeaderUserButton({
             <div className="flex gap-4 p-2 items-center">
               <img
                 className="rounded-full h-9 w-9"
-                src={imageUrl}
-                alt={`${user.display_name} profile`}
+                src={normalizeUrl(imageUrl)}
+                alt={`${user.display_name} profile picture`}
                 height={35}
                 width={35}
                 onError={onImageError}
