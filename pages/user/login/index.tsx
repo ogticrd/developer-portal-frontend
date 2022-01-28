@@ -46,12 +46,7 @@ export default function LoginPage() {
             <h2 className="text-3xl font-semibold text-gray-700">
               {t.loginForm.title}
             </h2>
-            <Image
-              src="/icons/hi-hand.svg"
-              height={35}
-              width={35}
-              alt="Hi icon"
-            />
+
           </div>
           <h3 className="text-gray-600 text-center">{t.loginForm.subtitle}</h3>
 
@@ -110,9 +105,8 @@ export default function LoginPage() {
 
             <button
               disabled={loading}
-              className={`${
-                loading ? 'bg-gray-400' : 'bg-blue-primary'
-              } text-white rounded-md py-2`}
+              className={`${loading ? 'bg-gray-400' : 'bg-blue-primary'
+                } text-white rounded-md py-2`}
             >
               {t.loginForm.login}
             </button>

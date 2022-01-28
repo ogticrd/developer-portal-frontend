@@ -4,10 +4,12 @@ export default function Dropdown({
   children,
   onClose,
   padding = true,
+  className
 }: {
   children: any
   onClose: Function
   padding?: boolean
+  className?: string
 }) {
   const listenClickOutside = () => onClose()
 
@@ -22,9 +24,8 @@ export default function Dropdown({
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className={`z-30 ${
-        padding ? 'p-2' : ''
-      } bg-white rounded-md shadow-lg absolute`}
+      className={`${className} z-30 ${padding ? 'p-2' : ''
+        } bg-white rounded-md shadow-lg absolute`}
     >
       {children}
     </div>

@@ -4,6 +4,7 @@ import { LanguageContext } from '../context/language.context';
 import { SummaryAPI } from '../models/summary-api';
 import { searchApi } from '../services/apis.service';
 import ApiSearchItem from './apis/api-search-item.component';
+import Dropdown from './dropdown';
 
 export default function SearchBox() {
   const { t } = useContext<any>(LanguageContext);
@@ -11,6 +12,7 @@ export default function SearchBox() {
   const [searchText, setSearchText] = useState<string>('');
   const [selected, setSelected] = useState<number>(-1);
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false)
 
   const search = () => {
     searchText.trim().length &&
@@ -41,6 +43,9 @@ export default function SearchBox() {
     if (searchText.trim()) {
       const data = await searchApi(searchText);
       setApis(data);
+      if (data.length) {
+        setIsOpen(true)
+      }
     }
   };
 
@@ -88,12 +93,13 @@ export default function SearchBox() {
 
         </button>
       </div>
-      {apis.length && searchText.trim() ? (
-        <div className="absolute shadow-2xl rounded-md bg-white py-4 w-full top-11">
+
+      {isOpen && apis.length && searchText.trim() ? (
+        <Dropdown className=" shadow-2xl rounded-md bg-white py-4 w-full top-11" onClose={() => setIsOpen(false)} >
           {apis.map((api, i) => (
             <ApiSearchItem key={api.id} api={api} selected={selected == i} />
           ))}
-        </div>
+        </Dropdown>
       ) : null}
     </div>
   );
