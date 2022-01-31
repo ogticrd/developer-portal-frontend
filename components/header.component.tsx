@@ -5,11 +5,13 @@ import { LanguageContext } from '../context/language.context'
 import HeaderMenu from './header-menu'
 import SearchBox from './search-box'
 import LanguageToggle from './language-toggle.component'
+import HeaderUserButton from './header-user-button'
+import { UserContext } from '../context/user.context'
 
 export default function HeaderComponent() {
   const { t } = useContext<any>(LanguageContext)
 
-
+  const { user, setUser } = useContext<any>(UserContext)
   return (
     <header className="bg-blue-primary sticky top-0 z-20">
 
@@ -32,14 +34,23 @@ export default function HeaderComponent() {
         </div>
         <div className='flex gap-8 text-white topbar-right'>
           <span>
-            <p className='py-4'>{t.header.menu.designers}</p>
+            <p className='py-4 flex items-center'>{t.header.menu.designers}</p>
           </span>
           <span className="border-t-2 border-blue-primary-light">
-            <p className='py-4'>{t.header.menu.developers}</p>
+            <p className='py-4 flex items-center'>{t.header.menu.developers}</p>
           </span>
-          <div className="p-4 border-l border-gray-400">
+          <div className="p-4 flex items-center border-l border-gray-400">
 
             <LanguageToggle />
+          </div>
+          <div className='text-black py-4 flex items-center'>
+            {user ? (
+              <HeaderUserButton user={user} setUser={setUser} />
+            ) : (
+              <Link href="/user/login">
+                <a className="btn-primary-dark">Acceder</a>
+              </Link>
+            )}
           </div>
         </div>
       </div>
