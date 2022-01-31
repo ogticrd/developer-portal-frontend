@@ -10,6 +10,8 @@ export const en = {
       apis: 'APIs',
       documentation: 'Documentation',
       github: 'Github',
+      designers: 'Designers',
+      developers: 'Developers',
     },
   },
   hero: {
@@ -17,7 +19,7 @@ export const en = {
     ctaDescription:
       'A community of developers who design and code digital public services.',
     ctaButton: 'Explore APIs',
-    viewAll: 'View all',
+    viewAll: 'View all APIs',
   },
   popularApis: {
     title: 'Featured APIs',
@@ -68,7 +70,7 @@ export const en = {
     clearFilters: 'Clear filters',
   },
   searchBox: {
-    placeholder: 'Search',
+    placeholder: 'What are you looking for?',
     button: 'Search',
   },
   infoTad: {

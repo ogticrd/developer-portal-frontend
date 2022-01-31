@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Dropdown from './dropdown';
 
-export default function LanguageToggle({ closeMenu }: { closeMenu: Function }) {
+export default function LanguageToggle({ closeMenu }: { closeMenu?: Function }) {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const router = useRouter();
@@ -12,7 +12,7 @@ export default function LanguageToggle({ closeMenu }: { closeMenu: Function }) {
   const changeLanguage = (code: string) => {
     router.push(router.route, router.asPath, { locale: code });
     setOpen(false);
-    closeMenu();
+    closeMenu && closeMenu();
   };
 
   return (
@@ -30,7 +30,7 @@ export default function LanguageToggle({ closeMenu }: { closeMenu: Function }) {
               alt={locale}
             />
           </span>
-          <span className="mx-2">{locale}</span>
+          <span className="mx-2 uppercase">{locale}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-3 w-3 mr-1"
@@ -80,18 +80,16 @@ export default function LanguageToggle({ closeMenu }: { closeMenu: Function }) {
 
       <div className="flex md:hidden gap-4 mt-8">
         <span
-          className={`${
-            locale == 'en' && 'font-bold underline'
-          } cursor-pointer text-white flex items-center`}
+          className={`${locale == 'en' && 'font-bold underline'
+            } cursor-pointer text-white flex items-center`}
           onClick={() => changeLanguage('en')}
         >
           <Image src="/icons/lang-en.svg" width={14} height={14} alt="EN" />
           <span className="ml-2">English</span>
         </span>
         <span
-          className={`${
-            locale == 'es' && 'font-bold underline'
-          } cursor-pointer text-white flex items-center`}
+          className={`${locale == 'es' && 'font-bold underline'
+            } cursor-pointer text-white flex items-center`}
           onClick={() => changeLanguage('es')}
         >
           <Image src="/icons/lang-es.svg" width={14} height={14} alt="ES" />

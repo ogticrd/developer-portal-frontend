@@ -15,17 +15,17 @@ export default function HeaderMenu() {
   const menuItems: MenuItemModel[] = [
     {
       label: t.header.menu.apis,
-      icon: 'clouds.svg',
+
       path: '/apis',
     },
     {
       label: t.header.menu.documentation,
-      icon: 'docs.svg',
+
       path: '/docs',
     },
     {
       label: t.header.menu.github,
-      icon: 'github.svg',
+
       path: 'https://github.com/opticrd/',
       external: true,
     },
@@ -46,23 +46,14 @@ export default function HeaderMenu() {
                     target={item.external ? '_blank' : '_self'}
                     className="flex"
                   >
-                    <Image
-                      src={'/icons/' + item.icon}
-                      width={18}
-                      height={18}
-                      alt={item.label + ' icon'}
-                    />
-                    <span className="ml-2">{item.label}</span>
+                    <span className="text-blue-primary font-semibold">{item.label}</span>
                   </a>
                 </Link>
               </li>
             )
           })}
-          <li>
-            <LanguageToggle closeMenu={closeMenu} />
-          </li>
 
-          <li>
+          {/* <li>
             {user ? (
               <HeaderUserButton user={user} setUser={setUser} />
             ) : (
@@ -70,7 +61,7 @@ export default function HeaderMenu() {
                 <a className="btn-primary-dark">Acceder</a>
               </Link>
             )}
-          </li>
+          </li> */}
 
         </ul>
       </nav>
@@ -129,21 +120,12 @@ export default function HeaderMenu() {
                           className="flex"
                           onClick={closeMenu}
                         >
-                          <Image
-                            src={'/icons/' + item.icon}
-                            width={18}
-                            height={18}
-                            alt={item.label + ' icon'}
-                          />
                           <span className="ml-2">{item.label}</span>
                         </a>
                       </Link>
                     </li>
                   )
                 })}
-                <li>
-                  <LanguageToggle closeMenu={closeMenu} />
-                </li>
               </ul>
             </nav>
           </div>

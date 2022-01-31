@@ -59,10 +59,10 @@ export default function SearchBox() {
 
   return (
     <div className="flex items-center w-full relative">
-      <div className="border-2 border-blue-primary-light border-r-0 rounded-full w-full flex items-center justify-between bg-white p-0 h-10">
+      <div className="border border-blue-primary-light border-r-0 rounded-full w-full flex items-center justify-between bg-white p-0 h-10">
 
         <input
-          className="p-4 rounded-full outline-none h-9 w-full"
+          className="p-4 rounded-full outline-none h-9 w-full text-sm"
           type="text"
           placeholder={t.searchBox.placeholder}
           value={searchText}
@@ -74,7 +74,7 @@ export default function SearchBox() {
         />
         <button
           onClick={search}
-          className="p-2 bg-red-500 hover:bg-red-600 duration-300 rounded-full inline-flex items-center justify-center text-white h-10 w-10 shadow-lg"
+          className="p-2 bg-red-500 hover:bg-red-600 duration-300 rounded-full inline-flex items-center justify-center text-white h-10 w-10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

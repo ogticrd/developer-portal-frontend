@@ -1,6 +1,5 @@
 export interface MenuItemModel {
-  label: string;
-  path: string;
-  icon: string;
-  external?: boolean;
+  label: string
+  path: string
+  external?: boolean
 }

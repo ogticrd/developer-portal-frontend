@@ -13,15 +13,6 @@ export default function Footer() {
 
         <div className="container mx-auto grid grid-cols-10 items-center gap-y-4 my-4 md:my-8">
 
-          <div className="col-span-10 sm:col-span-5 md:col-span-2 mx-4 flex justify-center items-center flex-col mb-8 md:mb-0">
-            <img
-              src="/images/logo-ogtic-white.svg"
-              alt="OGTIC logo"
-              className='w-1/2 md:w-3/4'
-            />
-          </div>
-
-
           <div className="col-span-10 sm:col-span-5 md:col-span-2 mx-4 flex justify-center items-center flex-col">
             <img
               src="/images/government-full-logo.svg"
@@ -29,6 +20,8 @@ export default function Footer() {
               className='w-1/2 md:w-3/4'
             />
           </div>
+
+          <div className="h-full border-l border-white w-0 "></div>
 
           <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-4 flex justify-center flex-col">
             <h3 className='text-white font-semibold mb-8'>{t.footer.help.title}</h3>
