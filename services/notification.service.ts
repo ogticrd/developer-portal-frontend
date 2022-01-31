@@ -11,12 +11,9 @@ export const getNotificatiosHistory = async (
   page: number = 1,
   limit: number = 10,
 ): Promise<Notification[]> => {
-  //   const { data } = await get('user/notifications')
-  const { data } = await axios.get(
-    `https://61642d60b55edc00175c1deb.mockapi.io/api/notifications?limit=${limit}&page=${page}`,
-  )
-  //   return data.data
-  return data
+  const { data } = await get('user/notifications')
+
+  return data.data
 }
 
 export const subscribeNotifications = async (): Promise<void> => {

@@ -4,6 +4,7 @@ import { LanguageContext } from '../context/language.context';
 import { SummaryAPI } from '../models/summary-api';
 import { searchApi } from '../services/apis.service';
 import ApiSearchItem from './apis/api-search-item.component';
+import Dropdown from './dropdown';
 
 export default function SearchBox() {
   const { t } = useContext<any>(LanguageContext);
@@ -11,6 +12,7 @@ export default function SearchBox() {
   const [searchText, setSearchText] = useState<string>('');
   const [selected, setSelected] = useState<number>(-1);
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false)
 
   const search = () => {
     searchText.trim().length &&
@@ -41,6 +43,9 @@ export default function SearchBox() {
     if (searchText.trim()) {
       const data = await searchApi(searchText);
       setApis(data);
+      if (data.length) {
+        setIsOpen(true)
+      }
     }
   };
 
@@ -54,10 +59,10 @@ export default function SearchBox() {
 
   return (
     <div className="flex items-center w-full relative">
-      <div className="border-2 border-blue-primary-light border-r-0 rounded-full w-full flex items-center justify-between bg-white p-0 h-10">
+      <div className="border border-blue-primary-light border-r-0 rounded-full w-full flex items-center justify-between bg-white p-0 h-10">
 
         <input
-          className="p-4 rounded-full outline-none h-9 w-full"
+          className="p-4 rounded-full outline-none h-9 w-full text-sm"
           type="text"
           placeholder={t.searchBox.placeholder}
           value={searchText}
@@ -69,7 +74,7 @@ export default function SearchBox() {
         />
         <button
           onClick={search}
-          className="p-2 bg-red-500 hover:bg-red-600 duration-300 rounded-full inline-flex items-center justify-center text-white h-10 w-10 shadow-lg"
+          className="p-2 bg-red-500 hover:bg-red-600 duration-300 rounded-full inline-flex items-center justify-center text-white h-10 w-10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -88,12 +93,13 @@ export default function SearchBox() {
 
         </button>
       </div>
-      {apis.length && searchText.trim() ? (
-        <div className="absolute shadow-2xl rounded-md bg-white py-4 w-full top-11">
+
+      {isOpen && apis.length && searchText.trim() ? (
+        <Dropdown className=" shadow-2xl rounded-md bg-white py-4 w-full top-11" onClose={() => setIsOpen(false)} >
           {apis.map((api, i) => (
             <ApiSearchItem key={api.id} api={api} selected={selected == i} />
           ))}
-        </div>
+        </Dropdown>
       ) : null}
     </div>
   );

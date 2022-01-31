@@ -15,8 +15,7 @@ export const get = async (path: string): Promise<any> => {
     headers['Authorization'] = `Bearer ${token}`
   }
   try {
-    const res = await axios.get(baseUrl + path, { headers })
-    return res
+    return await axios.get(baseUrl + path, { headers })
   } catch (err) {
     handleError(err)
     return { err }
@@ -40,8 +39,7 @@ export const post = async (
   }
 
   try {
-    const res = await axios.post(baseUrl + path, payload, options)
-    return res
+    return await axios.post(baseUrl + path, payload, options)
   } catch (err) {
     handleError(err)
     return { err }
@@ -64,8 +62,7 @@ export const put = async (
     options.headers['Authorization'] = `Bearer ${token}`
   }
   try {
-    const res = await axios.put(baseUrl + path, payload, options)
-    return res
+    return await axios.put(baseUrl + path, payload, options)
   } catch (err) {
     handleError(err)
     return { err }

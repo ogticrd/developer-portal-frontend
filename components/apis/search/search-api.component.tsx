@@ -21,7 +21,7 @@ export default function SearchApiComponent({
     setSearching(false);
   };
 
-  
+
   useEffect(() => {
     const timeout = setTimeout(() => onSearch(), 250);
     return () => clearTimeout(timeout);
@@ -29,7 +29,7 @@ export default function SearchApiComponent({
 
   return (
     <div className="container m-auto mb-5 px-10 grid grid-cols-12 gap-3 items-center">
-      <div className="bg-white col-span-12 md:col-span-8 border shadow-md w-full flex items-center m-auto px-2 rounded-md">
+      <div className="bg-white col-span-12 md:col-span-8 border shadow-md w-full flex items-center m-auto px-2 rounded-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 text-gray-400"
@@ -45,7 +45,7 @@ export default function SearchApiComponent({
           />
         </svg>
         <input
-          className="w-full p-2 outline-none text-lg"
+          className="w-full p-2 outline-none text-lg rounded-full"
           type="text"
           placeholder="Search"
           onChange={(e) => setSearchTerm(e.target.value.trim())}
