@@ -5,13 +5,10 @@ import { LanguageContext } from '../context/language.context'
 import HeaderMenu from './header-menu'
 import SearchBox from './search-box'
 import LanguageToggle from './language-toggle.component'
-import HeaderUserButton from './header-user-button'
-import { UserContext } from '../context/user.context'
 
 export default function HeaderComponent() {
   const { t } = useContext<any>(LanguageContext)
 
-  const { user, setUser } = useContext<any>(UserContext)
   return (
     <header className="bg-blue-primary sticky top-0 z-20">
 
@@ -23,8 +20,8 @@ export default function HeaderComponent() {
 
                 <Image
                   src="/images/gob-icon.svg"
-                  width={40}
-                  height={40}
+                  width={30}
+                  height={30}
                   alt="Government logo"
                 />
               </div>
