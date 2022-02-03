@@ -27,7 +27,7 @@ export default function CardApiComponent(props: any) {
 
   return (
     <div
-      className={`rounded-lg relative col-span-4 block ${isDistributionGrid ? 'h-96' : 'md:col-span-12 md:grid grid-cols-12'
+      className={`rounded-md relative col-span-4 block ${isDistributionGrid ? 'h-96' : 'md:col-span-12 md:grid grid-cols-12'
         } shadow-lg text-left bg-white text-gray-700`}
     >
       <div

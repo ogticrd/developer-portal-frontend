@@ -1,16 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { LanguageContext } from '../context/language.context'
 import { MenuItemModel } from '../models/menu-item.model'
-import Image from 'next/image'
 import Link from 'next/link'
 
-import LanguageToggle from './language-toggle.component'
-import { UserContext } from '../context/user.context'
-import HeaderUserButton from './header-user-button'
 
 export default function HeaderMenu() {
   const { t } = useContext<any>(LanguageContext)
-  const { user, setUser } = useContext<any>(UserContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuItems: MenuItemModel[] = [
     {

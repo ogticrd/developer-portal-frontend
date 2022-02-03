@@ -9,7 +9,7 @@ export default function ApiContextualMenu() {
 
   useEffect(() => {
     setHash(document.location.hash)
-    return () => {}
+    return () => { }
   }, [router])
 
   const { t } = useContext<any>(LanguageContext)
@@ -20,7 +20,7 @@ export default function ApiContextualMenu() {
       label: t.apiDetails.contextualMenu.documentation,
     },
     { hash: '#api', label: t.apiDetails.contextualMenu.api },
-    { hash: '#support', label: t.apiDetails.contextualMenu.support },
+    // { hash: '#support', label: t.apiDetails.contextualMenu.support },
   ]
 
   return (
@@ -32,9 +32,8 @@ export default function ApiContextualMenu() {
         {menuItems.map((item) => (
           <li
             key={item.hash}
-            className={`mt-2 ${
-              hash === item.hash ? 'border-l-2 border-blue-500' : ''
-            }`}
+            className={`mt-2 ${hash === item.hash ? 'border-l-2 border-blue-500' : ''
+              }`}
           >
             <Link href={item.hash}>
               <a className="contextual-item ml-6">{item.label}</a>
