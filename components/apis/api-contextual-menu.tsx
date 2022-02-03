@@ -24,15 +24,15 @@ export default function ApiContextualMenu() {
   ]
 
   return (
-    <div className="sticky top-20 z-20 right-12 shadow-lg bg-white pr-6 rounded-lg py-6 float-right">
-      <h3 className="text-lg font-semibold ml-6">
+    <div className="sticky top-36 z-20 right-12 shadow-lg bg-white pr-6 rounded-lg py-6 float-right">
+      <h3 className="text-lg font-semibold ml-6 text-primary">
         {t.apiDetails.contextualMenu.content}
       </h3>
       <ul>
         {menuItems.map((item) => (
           <li
             key={item.hash}
-            className={`mt-2 ${hash === item.hash ? 'border-l-2 border-blue-500' : ''
+            className={`mt-2 ${hash === item.hash ? 'border-l-4 border-blue-500' : ''
               }`}
           >
             <Link href={item.hash}>
