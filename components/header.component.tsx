@@ -43,15 +43,7 @@ export default function HeaderComponent() {
 
             <LanguageToggle />
           </div>
-          <div className='text-black py-4 flex items-center'>
-            {user ? (
-              <HeaderUserButton user={user} setUser={setUser} />
-            ) : (
-              <Link href="/user/login">
-                <a className="btn-primary-dark">Acceder</a>
-              </Link>
-            )}
-          </div>
+
         </div>
       </div>
       <div className='bg-white py-4 shadow'>

@@ -8,7 +8,8 @@ export const es = {
     subtitle: "API's dominicano",
     menu: {
       apis: 'APIs',
-      documentation: 'Documentación',
+      documentation: 'Guía de uso',
+
       github: 'Github',
       designers: 'Diseñadores',
       developers: 'Desarrolladores',

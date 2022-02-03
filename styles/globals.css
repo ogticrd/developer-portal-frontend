@@ -49,6 +49,10 @@ a {
   border-color: var(--primary-light-color);
 }
 
+.text-primary {
+  color: #004d99;
+}
+
 .bg-blue-primary-light {
   background-color: #eef5ff;
 }
@@ -156,4 +160,12 @@ input[type='radio']:checked:before {
 
 .btn-primary-dark {
   @apply bg-primary-dark hover:bg-primary-hover text-white  py-1 px-2 rounded-full shadow-md duration-300;
+}
+
+.view-all-apis-button {
+  height: 49px;
+  width: 226px;
+  left: 739px;
+  top: 357px;
+  border-radius: 26px;
 }
