@@ -6,7 +6,7 @@ export default function InfoTad() {
 
   return (
     <div className="container mx-auto flex my-20 flex-col md:flex-row px-10">
-      <p className="w-full md:w-1/2 flex items-center text-3xl md:px-28 font-semibold mb-8 text-blue-900">
+      <p className="w-full md:w-1/2 flex items-center text-4xl md:px-28 font-semibold mb-8 text-blue-900">
         {t.infoTad.title}
       </p>
       <p className="w-full md:w-1/2 flex items-center">{t.infoTad.info}</p>

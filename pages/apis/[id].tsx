@@ -52,7 +52,7 @@ export default function ApiDetails() {
   }, [id])
 
   return (
-    <div className="api-details m-auto border-2 min-h-screen bg-white shadow-md">
+    <div className="api-details m-auto  min-h-screen bg-white shadow-md">
       <Head>
         <title>
           {t.app.displayName} - {data?.name}

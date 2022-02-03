@@ -8,7 +8,7 @@ export default function HeroComponent() {
   const { t } = useContext<any>(LanguageContext);
   return (
     <div className="bg-blue-primary-light">
-      <section className="container mx-auto flex justify-center  items-center px-6 py-12">
+      <section className="container mx-auto flex justify-center  items-center px-6 py-4">
         <div className="text-gray-800 flex flex-col items-start w-full md:w-1/2 pl-0 md:pl-32">
 
           <p className="my-6 font-bold text-4xl text-blue-primary leading-relaxed">{t.hero.ctaDescription}</p>
@@ -25,8 +25,8 @@ export default function HeroComponent() {
         <div className="hidden md:block w-1/2 text-center">
           <Image
             src="/images/hero-illustration.svg"
-            width={350}
-            height={350}
+            width={400}
+            height={400}
             alt="Hero illustration"
           />
         </div>

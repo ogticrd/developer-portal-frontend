@@ -31,7 +31,7 @@ export default function ApiFilters({
   };
 
   return (
-    <aside className="card text-left font-light text-gray-600 sticky top-16">
+    <aside className="card text-left font-light text-gray-600 sticky top-36">
       <form id="filter-form">
         <div className="py-2">
           <p className="font-semibold mb-2">{t.filters.categories}</p>

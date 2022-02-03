@@ -2,6 +2,10 @@ import React, { useContext, useState } from 'react'
 import { LanguageContext } from '../context/language.context'
 import { MenuItemModel } from '../models/menu-item.model'
 import Link from 'next/link'
+import LanguageToggle from './language-toggle.component'
+import ChangePortal from './change-portal'
+import LogoHeader from './logo-header'
+import SearchBox from './search-box'
 
 
 export default function HeaderMenu() {
@@ -30,6 +34,7 @@ export default function HeaderMenu() {
 
   return (
     <>
+
       <nav className="hidden md:block">
         <ul className="flex items-center">
           {menuItems.map((item, i) => {
@@ -61,15 +66,17 @@ export default function HeaderMenu() {
         </ul>
       </nav>
 
+
+
       <div className="block md:hidden">
         <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-6 w-6 mx-4"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="white"
+              stroke="#ccc"
             >
               <path
                 strokeLinecap="round"
@@ -81,10 +88,10 @@ export default function HeaderMenu() {
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-6 w-6 mx-4"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="white"
+              stroke="#ccc"
             >
               <path
                 strokeLinecap="round"
@@ -103,9 +110,12 @@ export default function HeaderMenu() {
           >
             <nav
               onClick={(e) => e.stopPropagation()}
-              className="fixed w-full left-0 top-16 bg-blue-primary shadow-2xl p-6"
+              className="fixed w-full left-0 top-0 bg-blue-primary shadow-2xl p-6"
             >
-              <ul className="flex flex-col">
+              <LogoHeader />
+              <ChangePortal />
+
+              <ul className="flex flex-col mt-8">
                 {menuItems.map((item, i) => {
                   return (
                     <li key={i} className="mr-5 text-white my-2">
@@ -121,11 +131,19 @@ export default function HeaderMenu() {
                     </li>
                   )
                 })}
+                <li>
+
+                  <LanguageToggle />
+                </li>
               </ul>
             </nav>
           </div>
         )}
       </div>
+
+      {!isMenuOpen && <div className="w-full md:w-80">
+        <SearchBox />
+      </div>}
     </>
   )
 }

@@ -9,16 +9,17 @@ import {
 } from '../../services/apis.service';
 import CardApiComponent from '../../components/apis/card-api.component';
 import { LanguageContext } from '../../context/language.context';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ApiFilters from '../../components/apis/api-filters';
 import { Category } from '../../models/category-response';
 import SearchApiComponent from '../../components/apis/search/search-api.component';
 import { DistributionEnum } from '../../enums/distribution.enum';
 import sortBy from '../../utils/sortby';
 
-export default function index({ data, categories }: any) {
+export default function index({ data }: any) {
   const { t } = useContext<any>(LanguageContext);
   const [apis, setApis] = useState<SummaryAPI[]>(data);
+  const [categories, setCategories] = useState<Category[]>([])
   const [searching, setSearching] = useState<boolean>(false);
 
   const [distribution, setDistribution] = useState<DistributionEnum>(
@@ -30,6 +31,22 @@ export default function index({ data, categories }: any) {
     setApis(result);
   };
 
+  useEffect(() => {
+    const getCategories = async () => {
+
+      const categories: Category[] = await getApiCategories();
+      setCategories(categories)
+    }
+
+    getCategories();
+
+
+    return () => {
+    };
+  }, []);
+
+
+
   return (
     <>
       <Head>
@@ -40,23 +57,24 @@ export default function index({ data, categories }: any) {
       <div className="min-h-screen pb-10">
         <article className="text-center">
           <section className=" bg-blue-50 py-10">
-            <div className="flex flex-col md:flex-row items-center justify-around container m-auto">
-              <div>
-                <Image
-                  src="/images/ogtic-full-logo.svg"
-                  width={179}
-                  height={66}
-                  alt="OGTIC logo"
-                />
-              </div>
-              <div className="px-6 text-left text-blue-primary">
-                <h1 className="text-center md:text-left text-3xl font-semibold mb-4">
+            <div className="flex flex-col md:flex-row items-center  container m-auto">
+              <div className="px-6 text-left text-primary">
+                <h1 className="text-center md:text-left text-4xl font-bold mb-4">
                   {t.apiCatalog.title}
                 </h1>
-                <p className="text-lg font-light w-9/12">
+                <p className="text-lg font-semibold w-9/12">
                   {t.apiCatalog.description}
                 </p>
               </div>
+              <div>
+                <Image
+                  src="/images/apis-header-illustration.svg"
+                  width={217}
+                  height={163}
+                  alt="OGTIC logo"
+                />
+              </div>
+
             </div>
           </section>
           <div className="flex container mx-auto">
@@ -105,12 +123,10 @@ export default function index({ data, categories }: any) {
 export async function getServerSideProps(context: any) {
   const { q }: any = context?.query;
   const data = q ? await searchApi(q) : await getApis();
-  const categories: Category[] = await getApiCategories();
 
   return {
     props: {
       data,
-      categories,
     },
   };
 }
