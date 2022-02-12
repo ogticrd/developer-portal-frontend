@@ -77,7 +77,7 @@ export const es = {
   },
   infoTad: {
     title: 'Abriendo la puerta a futuros servicios digitales',
-    info: `Bienvenido al nuevo Portal de APIs del del Estado Dominicano, nuestra ventanilla única para interfaces de programación de aplicaciones (API). Le recomendamos que utilice estas API, que proporcionan una gran cantidad de datos e información gubernamentales, para crear nuevas aplicaciones y servicios para los canadienses. Agradecemos sus comentarios sobre esta versión de la tienda. Vuelva a consultar con regularidad a medida que continuamos agregando más API a la tienda.`,
+    info: `Bienvenido al nuevo Portal de APIs del del Estado Dominicano, nuestra ventanilla única para interfaces de programación de aplicaciones (API). Le recomendamos que utilice estas API, que proporcionan una gran cantidad de datos e información gubernamentales, para crear nuevas aplicaciones y servicios para los dominicanos. Puedes consultar con regularidad a medida que continuamos agregando más API a la portal.`,
   },
   loginForm: {
     title: '¡Bienvenido!',
