@@ -73,7 +73,7 @@ export default function CardApiComponent(props: any) {
                 width={20}
                 alt="Icon comment"
               />
-              <span className="ml-1">12</span>
+              <span className="ml-1">0</span>
             </span>
             <span className="flex ml-3">
               <Image
@@ -82,7 +82,7 @@ export default function CardApiComponent(props: any) {
                 width={20}
                 alt="Icon heart"
               />
-              <span className="ml-1">6</span>
+              <span className="ml-1">0</span>
             </span>
           </div>
         </div>
