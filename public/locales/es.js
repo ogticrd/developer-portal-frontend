@@ -30,7 +30,7 @@ export const es = {
   apiCatalog: {
     title: 'Catálogo de APIs',
     description:
-      'Una selección de API REST domicanas disponibles para desarrolladores.',
+      'Una selección de API REST dominicanas disponibles para desarrolladores.',
     notResults: 'No se encontraron resultados',
     searchSortBy: {
       name: 'Nombre',

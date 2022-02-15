@@ -38,7 +38,7 @@ export default function CardApiComponent(props: any) {
           src={imageUrl}
           width="100"
           height="100"
-          className="rounded-t-lg"
+          className="rounded-t-md"
           alt={`${data?.name} image`}
           onError={onImageError}
         />
