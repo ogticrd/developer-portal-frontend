@@ -11,7 +11,7 @@ export default function ApiDetailsHeader(props: any) {
   const data: SummaryAPI = props.data
 
   return data ? (
-    <section className="bg-blue-primary-light text-primary">
+    <section className="bg-blue-primary-light text-primary pt-8">
       <div className="container mx-auto">
         <div className="w-20">
           <ApiVersionTag version={data?.version} />
