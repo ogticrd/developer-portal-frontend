@@ -7,7 +7,7 @@ export default function MarkdownViewer({ content }: { content: string }) {
 
   const updateSize = (frame: any) => {
     frame.style.height =
-      50 + frame.contentWindow.document.body.scrollHeight + 'px'
+      420 + frame.contentWindow.document.body.scrollHeight + 'px'
     frame.style.width = '100%'
   }
   useEffect(() => {
