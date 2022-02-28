@@ -33,13 +33,11 @@ export default function index({ data }: any) {
 
   useEffect(() => {
     const getCategories = async () => {
-
       const categories: Category[] = await getApiCategories();
       setCategories(categories)
     }
 
     getCategories();
-
 
     return () => {
     };
@@ -57,8 +55,8 @@ export default function index({ data }: any) {
       <div className="min-h-screen pb-10">
         <article className="text-center">
           <section className=" bg-blue-50 py-10">
-            <div className="flex flex-col md:flex-row items-center  container m-auto">
-              <div className="px-6 text-left text-primary">
+            <div className="flex flex-col md:flex-row items-center container m-auto">
+              <div className="text-left text-primary">
                 <h1 className="text-center md:text-left text-4xl font-bold mb-4">
                   {t.apiCatalog.title}
                 </h1>
@@ -86,8 +84,8 @@ export default function index({ data }: any) {
                 setDistribution={setDistribution}
                 onOptionSelected={(value: string) => sortApis(value)}
               />
-              <p className="px-11 text-gray-600 text-left">
-                {apis?.length || 0} - {t.apiCatalog.searchQuantity}
+              <p className="text-gray-600 text-left">
+                {apis?.length || 0} {t.apiCatalog.searchQuantity}
               </p>
               <div className="h-2 mb-9">
                 {searching && <div className="custom-spinner"></div>}
@@ -95,7 +93,7 @@ export default function index({ data }: any) {
               {!searching && !apis.length ? (
                 <h4 className="text-lg">{t.apiCatalog.notResults}</h4>
               ) : (
-                <div className="grid lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1  gap-10 mt-5 px-10">
+                <div className="grid lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1  gap-10 mt-5 ">
                   {apis.map((item) => (
                     <CardApiComponent
                       distribution={distribution}
@@ -106,7 +104,7 @@ export default function index({ data }: any) {
                 </div>
               )}
             </section>
-            <div className="hidden top-12 lg:block w-3/12">
+            <div className="hidden top-12 lg:block w-3/12 ml-4">
               <ApiFilters
                 setSearching={setSearching}
                 setApis={setApis}
