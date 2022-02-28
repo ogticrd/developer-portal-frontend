@@ -36,7 +36,7 @@ export const es = {
       name: 'Nombre',
       recent: 'Recientes',
     },
-    searchQuantity: 'Resultados de tu busqueda',
+    searchQuantity: 'API’s encontradas.',
   },
   apiDetails: {
     apiDescription: 'Descripción del API',
@@ -135,16 +135,21 @@ export const es = {
       privacy: 'Política de privacidad',
       faq: 'Preguntas frecuentes',
     },
+    info: {
+      title: 'Información',
+      content:
+        'Oficina Gubernamental de Tecnologías de la Información y Comunicación',
+    },
     call: {
       title: 'Llámanos',
-      phone: 'Tel: (809) 731 1100',
-      fax: 'Fax: 809-731-1101',
-      email: 'info@mescyt.gob.do',
+      phone: 'Tel: (809)-286-1009',
+      fax: 'Fax: (809)-732-5465',
+      email: 'info@ogtic.gob.do',
     },
     lookForUs: {
       title: 'Buscanos',
       content:
-        'Av. Máximo Gómez No. 31, esq. Pedro Henríquez Ureña, Santo Domingo, República Dominicana',
+        'Av. 27 de Febrero #419 casi esquina Núñez de Cáceres, Santo Domingo, R.D.',
     },
     copy: {
       rights: 'Todos los derechos reservados.',

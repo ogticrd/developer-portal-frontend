@@ -8,7 +8,7 @@ export const LanguageContext = createContext({})
 const LanguageProvider = ({ children }: any) => {
   const router = useRouter()
   const { locale } = router
-  const t = locale === 'en' ? en : es
+  const t = locale === 'es' ? es : en
 
   return (
     <LanguageContext.Provider

@@ -14,22 +14,20 @@ import { ToastContainer } from 'react-toastify'
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-  }, [])
-
   return (
     <LanguageProvider>
       <UserProvider>
         <Head>
           <title>Developer portal</title>
           <link
-            href="https://fonts.googleapis.com/css?family=Poppins"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
             rel="stylesheet"
           />
+          <official-header></official-header>
         </Head>
-        <official-header></official-header>
 
         <Layout>
+
           <ToastContainer />
           <Component {...pageProps} />
         </Layout>

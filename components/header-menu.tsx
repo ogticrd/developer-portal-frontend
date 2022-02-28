@@ -39,14 +39,14 @@ export default function HeaderMenu() {
         <ul className="flex items-center">
           {menuItems.map((item, i) => {
             return (
-              <li key={i} className="mr-5 text-white hover:underline">
+              <li key={i} className="mr-5 text-white hover:underline uppercase">
                 <Link href={item.path}>
                   <a
                     onClick={closeMenu}
                     target={item.external ? '_blank' : '_self'}
                     className="flex"
                   >
-                    <span className="text-blue-primary font-semibold">{item.label}</span>
+                    <span className="text-blue-primary font-medium">{item.label}</span>
                   </a>
                 </Link>
               </li>

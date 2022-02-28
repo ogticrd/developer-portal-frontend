@@ -18,7 +18,7 @@ export default function LogoHeader() {
                         alt="Government logo"
                     />
                 </div>
-                <h2 className='text-white'>{t.header.title} <br /> <b> {t.header.subtitle}</b></h2>
+                <h2 className='text-white leading-none	'>{t.header.title} <br /> <b> {t.header.subtitle}</b></h2>
             </a>
         </Link>
     </div>;

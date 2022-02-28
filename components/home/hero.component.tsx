@@ -8,8 +8,8 @@ export default function HeroComponent() {
   const { t } = useContext<any>(LanguageContext);
   return (
     <div className="bg-blue-primary-light">
-      <section className="container mx-auto flex justify-center  items-center px-6 py-4">
-        <div className="text-gray-800 flex flex-col items-start w-full md:w-1/2 pl-0 md:pl-32">
+      <section className="container mx-auto flex justify-between  items-center py-4">
+        <div className="text-gray-800 flex flex-col items-start w-full md:w-1/2">
 
           <p className="my-6 font-bold text-4xl text-blue-primary leading-relaxed">{t.hero.ctaDescription}</p>
           <div className="flex flex-col md:flex-row items-center gap-4">
