@@ -9,9 +9,9 @@ export default function HeroComponent() {
   return (
     <div className="bg-blue-primary-light">
       <section className="container mx-auto flex justify-between  items-center py-4">
-        <div className="text-gray-800 flex flex-col items-start w-full md:w-1/2">
-
-          <p className="my-6 font-bold text-4xl text-blue-primary leading-relaxed">{t.hero.ctaDescription}</p>
+        <div className="text-gray-800 flex flex-col items-start w-full md:w-3/5">
+          <p style={{ fontSize: 58 }} className="my-2 font-medium text-blue-primary leading-tight" dangerouslySetInnerHTML={{ __html: t.hero.ctaTitle }}></p>
+          <p className="my-4 font-medium text-lg text-blue-primary leading-relaxed">{t.hero.ctaDescription}</p>
           <div className="flex flex-col md:flex-row items-center gap-4">
 
             <Link href="/apis">
@@ -22,7 +22,7 @@ export default function HeroComponent() {
           </div>
         </div>
 
-        <div className="hidden md:block w-1/2 text-center">
+        <div className="hidden md:block w-2/5 text-right">
           <Image
             src="/images/hero-illustration.svg"
             width={400}
