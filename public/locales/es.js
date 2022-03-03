@@ -9,16 +9,16 @@ export const es = {
     menu: {
       apis: 'APIs',
       documentation: 'Guía de uso',
-
       github: 'Github',
       designers: 'Diseñadores',
       developers: 'Desarrolladores',
     },
   },
   hero: {
-    ctaTitle: 'Mira nuestro catálogo de APIs',
+    ctaTitle:
+      'Abriendo la puerta a futuros <b class="text-red-500">servicios</b> digitales',
     ctaDescription:
-      'Una comunidad de desarrolladores que diseñan y codifican servicios públicos digitales.',
+      'Una comunidad de desarrolladores que diseñan y codifican servicios públicos digitales para todo el Estado Dominicano.',
     ctaButton: 'Explorar APIs',
     viewAll: 'Ver todas las APIs',
   },
@@ -76,7 +76,7 @@ export const es = {
     button: 'Buscar',
   },
   infoTad: {
-    title: 'Abriendo la puerta a futuros servicios digitales',
+    title: '¿Qué es el portal de API’s Dominicano?',
     info: `Bienvenido al nuevo Portal de APIs del del Estado Dominicano, nuestra ventanilla única para interfaces de programación de aplicaciones (API). Le recomendamos que utilice estas API, que proporcionan una gran cantidad de datos e información gubernamentales, para crear nuevas aplicaciones y servicios para los dominicanos. Puedes consultar con regularidad a medida que continuamos agregando más API a la portal.`,
   },
   loginForm: {

@@ -9,16 +9,16 @@ export const en = {
     menu: {
       apis: 'APIs',
       documentation: 'User guide',
-
       github: 'Github',
       designers: 'Designers',
       developers: 'Developers',
     },
   },
   hero: {
-    ctaTitle: 'Check out our API catalog',
+    ctaTitle:
+      'Opening the door to future <b class="text-red-500">digital</b> services',
     ctaDescription:
-      'A community of developers who design and code digital public services.',
+      'A community of developers who design and code digital public services for the entire Dominican State.',
     ctaButton: 'Explore APIs',
     viewAll: 'View all APIs',
   },
@@ -75,7 +75,7 @@ export const en = {
     button: 'Search',
   },
   infoTad: {
-    title: 'Opening the door to future digital services',
+    title: 'What is Portal de API’s Dominicano?',
     info: `Welcome to the new APIs Portal of the Dominican State, our one-stop shop for application programming interfaces (APIs). We encourage you to use these APIs, which provide a wealth of government data and information, to create new applications and services for Dominicans. You can check back regularly as we continue to add more APIs to the portal.`,
   },
   loginForm: {
