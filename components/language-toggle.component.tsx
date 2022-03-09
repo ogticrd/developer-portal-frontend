@@ -48,31 +48,32 @@ export default function LanguageToggle({ closeMenu }: { closeMenu?: Function }) 
         </span>
         {isOpen && (
           <Dropdown onClose={() => setOpen(false)}>
-            <ul className="w-24">
+            <ul className="w-14">
               <li
-                className="cursor-pointer text-gray-700 hover:text-black flex items-center"
-                onClick={() => changeLanguage('en')}
-              >
-                <Image
-                  src="/icons/lang-en.svg"
-                  width={14}
-                  height={14}
-                  alt="EN"
-                />
-                <span className="ml-2">English</span>
-              </li>
-              <li
-                className="cursor-pointer text-gray-700 hover:text-black  flex items-center"
+                className="cursor-pointer text-gray-700 hover:text-black  flex items-center my-2"
                 onClick={() => changeLanguage('es')}
               >
                 <Image
                   src="/icons/lang-es.svg"
-                  width={14}
-                  height={14}
+                  width={13}
+                  height={13}
                   alt="ES"
                 />
-                <span className="ml-2">Español</span>
+                <span className="ml-2">ES</span>
               </li>
+              <li
+                className="cursor-pointer text-gray-700 hover:text-black flex items-center my-2"
+                onClick={() => changeLanguage('en')}
+              >
+                <Image
+                  src="/icons/lang-en.svg"
+                  width={13}
+                  height={13}
+                  alt="EN"
+                />
+                <span className="ml-2">EN</span>
+              </li>
+
             </ul>
           </Dropdown>
         )}

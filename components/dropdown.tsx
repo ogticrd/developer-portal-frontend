@@ -24,7 +24,7 @@ export default function Dropdown({
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className={`${className} z-30 ${padding ? 'p-2' : ''
+      className={`${className} z-30 mt-3 ${padding ? 'p-2' : ''
         } bg-white rounded-md shadow-lg absolute`}
     >
       {children}
