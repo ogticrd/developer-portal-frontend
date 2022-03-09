@@ -5,13 +5,13 @@ on:
     branches:
       - "main"
     paths:
-      - '**.js*'
-      - '**.ts*'
-      - 'package*.json'
-      - 'Dockerfile'
-      - 'entrypoint.sh'
-      - '.github/workflows/development.yml'
-    types: [ opened, synchronize, reopened, labeled ]
+      - "**.js*"
+      - "**.ts*"
+      - "package*.json"
+      - "Dockerfile"
+      - "entrypoint.sh"
+      - ".github/workflows/development.yml"
+    types: [opened, synchronize, reopened, labeled]
 
 env:
   # Deployment variables
@@ -27,7 +27,7 @@ jobs:
 
     strategy:
       matrix:
-        node: ['14']
+        node: ["14"]
 
     steps:
       - uses: actions/checkout@v2
@@ -39,7 +39,7 @@ jobs:
       # - run: yarn test # TODO: rewire aliases are not being detected
 
   build:
-    needs: ['test']
+    needs: ["test"]
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
 
@@ -102,7 +102,7 @@ jobs:
           credentials: ${{ secrets.GAR_JSON_KEY }}
           region: ${{ secrets.GCP_REGION }}
           env_vars: |
-            NODE_ENV=${{ env.NODE_ENV }},
+            NODE_ENV=${{ env.NODE_ENV }}
             REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}
 
       - name: Set up Cloud SDK
