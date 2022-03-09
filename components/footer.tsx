@@ -47,24 +47,21 @@ export default function Footer() {
             <p className='text-white mb-2'>{t.footer.call.email}</p>
           </div>
 
-
           <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-3 flex flex-col">
             <h3 className='text-white font-medium uppercase mb-8'>{t.footer.lookForUs.title}</h3>
             <p className='text-white mb-2'>{t.footer.lookForUs.content}</p>
           </div>
 
-
         </div>
       </div>
       <div className='bg-white container py-6 text-blue-primary text-sm  flex justify-between flex-col md:flex-row gap-4 p-2'>
         <div className='flex  flex-col md:flex-row gap-4 items-center'>
-          <p className='text-center md:text-left'>&copy; {year} {t.footer.copy.rights} {t.footer.copy.poweredBy} </p>
-          <img src="/images/logo-ogtic-horizontal-color-black.svg" alt="OGTIC LOGO" className='w-16' />
+          <p className='text-center md:text-left font-medium'>&copy; {year} {t.footer.copy.rights} {t.footer.copy.poweredBy} </p>
+          <img src="/images/logo-ogtic-horizontal-color-black.svg" alt="OGTIC LOGO" className='w-20' />
         </div>
         <div className='flex items-center gap-4  justify-center md:justify-start'>
 
           <p className='text-blue-primary font-semibold'>{t.footer.copy.follow}</p>
-
 
           <Link href={'https://www.facebook.com/Ogticrd/'}>
             <a>
