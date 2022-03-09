@@ -25,7 +25,7 @@ export default function Footer() {
             <div className="h-full border-l border-white w-0 mx-28"></div>
           </div>
 
-          <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-4 flex flex-col">
+          <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-3 flex flex-col">
             <h3 className='text-white font-medium uppercase mb-8'>{t.footer.help.title}</h3>
             <Link href={'/terms'}>
               <a className='text-white mb-2'>{t.footer.help.terms}</a>
@@ -36,12 +36,12 @@ export default function Footer() {
             </Link>
           </div>
 
-          <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-4 flex flex-col">
+          <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-3 flex flex-col">
             <h3 className='text-white font-medium uppercase mb-8'>{t.footer.info.title}</h3>
             <p className='text-white mb-2'>{t.footer.info.content}</p>
           </div>
 
-          <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-4 flex flex-col">
+          <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-3 flex flex-col">
             <h3 className='text-white font-medium uppercase mb-8'>{t.footer.call.title}</h3>
             <p className='text-white mb-2'>{t.footer.call.phone}</p>
             <p className='text-white mb-2'>{t.footer.call.fax}</p>
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
 
-          <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-4 flex flex-col">
+          <div className="col-span-10 sm:col-span-5 md:col-span-2 text-sm mx-3 flex flex-col">
             <h3 className='text-white font-medium uppercase mb-8'>{t.footer.lookForUs.title}</h3>
             <p className='text-white mb-2'>{t.footer.lookForUs.content}</p>
           </div>

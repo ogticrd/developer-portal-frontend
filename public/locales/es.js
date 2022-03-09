@@ -24,7 +24,7 @@ export const es = {
   },
   popularApis: {
     title: 'APIs destacadas',
-    readmore: 'Leer mas...',
+    readmore: 'Leer más',
     viewMore: 'Ver más',
   },
   apiCatalog: {
@@ -141,7 +141,7 @@ export const es = {
         'Oficina Gubernamental de Tecnologías de la Información y Comunicación',
     },
     call: {
-      title: 'Llámanos',
+      title: 'Contáctanos',
       phone: 'Tel: (809)-286-1009',
       fax: 'Fax: (809)-732-5465',
       email: 'info@ogtic.gob.do',
