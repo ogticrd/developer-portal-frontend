@@ -16,7 +16,7 @@ export const en = {
   },
   hero: {
     ctaTitle:
-      'Opening the door to future <b class="text-red-500">digital</b> services',
+      'Opening the door to future <span class="text-red-600">digital</span> services',
     ctaDescription:
       'A community of developers who design and code digital public services for the entire Dominican State.',
     ctaButton: 'Explore APIs',
@@ -24,7 +24,7 @@ export const en = {
   },
   popularApis: {
     title: 'Featured APIs',
-    readmore: 'Read more...',
+    readmore: 'Read more',
     viewMore: 'View more',
   },
   apiCatalog: {
@@ -140,7 +140,7 @@ export const en = {
         'Oficina Gubernamental de Tecnologías de la Información y Comunicación',
     },
     call: {
-      title: 'Call us',
+      title: 'Contact us',
       phone: 'Tel: (809)-286-1009',
       fax: 'Fax: (809)-732-5465',
       email: 'info@ogtic.gob.do',

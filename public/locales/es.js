@@ -16,7 +16,7 @@ export const es = {
   },
   hero: {
     ctaTitle:
-      'Abriendo la puerta a futuros <b class="text-red-500">servicios</b> digitales',
+      'Abriendo la puerta a futuros <span class="text-red-600">servicios</span> digitales',
     ctaDescription:
       'Una comunidad de desarrolladores que diseñan y codifican servicios públicos digitales para todo el Estado Dominicano.',
     ctaButton: 'Explorar APIs',
@@ -24,7 +24,7 @@ export const es = {
   },
   popularApis: {
     title: 'APIs destacadas',
-    readmore: 'Leer mas...',
+    readmore: 'Leer más',
     viewMore: 'Ver más',
   },
   apiCatalog: {
@@ -141,7 +141,7 @@ export const es = {
         'Oficina Gubernamental de Tecnologías de la Información y Comunicación',
     },
     call: {
-      title: 'Llámanos',
+      title: 'Contáctanos',
       phone: 'Tel: (809)-286-1009',
       fax: 'Fax: (809)-732-5465',
       email: 'info@ogtic.gob.do',

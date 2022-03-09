@@ -2,16 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { LanguageContext } from '../../context/language.context';
-import SearchBox from '../search-box';
 
 export default function HeroComponent() {
   const { t } = useContext<any>(LanguageContext);
   return (
-    <div className="bg-blue-primary-light">
+    <div style={{ height: 500 }} className="bg-blue-primary-light">
       <section className="container mx-auto flex justify-between  items-center py-4">
         <div className="text-gray-800 flex flex-col items-start w-full md:w-3/5">
           <p style={{ fontSize: 58 }} className="my-2 font-medium text-blue-primary leading-tight" dangerouslySetInnerHTML={{ __html: t.hero.ctaTitle }}></p>
-          <p className="my-4 font-medium text-lg text-blue-primary leading-relaxed">{t.hero.ctaDescription}</p>
+          <p className="my-4 text-lg text-blue-primary opacity-80 leading-relaxed">{t.hero.ctaDescription}</p>
           <div className="flex flex-col md:flex-row items-center gap-4">
 
             <Link href="/apis">

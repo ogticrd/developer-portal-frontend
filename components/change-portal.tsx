@@ -12,8 +12,7 @@ export default function ChangePortal() {
         <span className="portal-active">
             <p className='py-4 flex items-center'>{t.header.menu.developers}</p>
         </span>
-        <div className="p-4 hidden md:flex items-center border-l border-gray-400 ">
-
+        <div className="p-4 pl-8 hidden md:flex items-center border-l border-gray-400 ">
             <LanguageToggle />
         </div>
 
