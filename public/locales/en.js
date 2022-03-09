@@ -16,7 +16,7 @@ export const en = {
   },
   hero: {
     ctaTitle:
-      'Opening the door to future <b class="text-red-500">digital</b> services',
+      'Opening the door to future <span class="text-red-600">digital</span> services',
     ctaDescription:
       'A community of developers who design and code digital public services for the entire Dominican State.',
     ctaButton: 'Explore APIs',

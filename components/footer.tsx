@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { LanguageContext } from '../context/language.context'
