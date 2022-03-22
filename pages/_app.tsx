@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <LanguageProvider>
       <UserProvider>
         <Head>
-          <title>Developer portal</title>
+          <title>Portal de APIs Dominicano</title>
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
             rel="stylesheet"
