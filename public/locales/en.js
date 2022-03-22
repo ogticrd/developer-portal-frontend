@@ -1,6 +1,6 @@
 export const en = {
   app: {
-    displayName: 'Developer Portal',
+    displayName: 'Portal de APIs dominicano',
   },
   header: {
     home: 'Go to main page',
