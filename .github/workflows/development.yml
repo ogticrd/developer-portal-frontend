@@ -106,7 +106,7 @@ jobs:
             REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@main
+        uses: google-github-actions/setup-gcloud@master
         with:
           project_id: ${{ secrets.GCP_PROJECT }}
           service_account_key: ${{ secrets.GAR_JSON_KEY }}
