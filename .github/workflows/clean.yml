@@ -25,7 +25,7 @@ jobs:
         uses: rlespinasse/github-slug-action@v3.x
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@main
         with:
           project_id: ${{ secrets.GCP_PROJECT }}
           service_account_key: ${{ secrets.GAR_JSON_KEY }}
