@@ -28,7 +28,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Head>
 
         <Layout>
-
           <ToastContainer />
           <Component {...pageProps} />
         </Layout>
