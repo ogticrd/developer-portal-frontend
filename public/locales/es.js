@@ -5,7 +5,7 @@ export const es = {
   header: {
     home: 'Ir a la pagina principal',
     title: 'Portal de',
-    subtitle: "API's dominicano",
+    subtitle: "APIs dominicano",
     menu: {
       apis: 'APIs',
       documentation: 'Guía de uso',
@@ -36,7 +36,7 @@ export const es = {
       name: 'Nombre',
       recent: 'Recientes',
     },
-    searchQuantity: 'API’s encontradas.',
+    searchQuantity: 'APIs encontradas.',
   },
   apiDetails: {
     apiDescription: 'Descripción del API',
@@ -76,7 +76,7 @@ export const es = {
     button: 'Buscar',
   },
   infoTad: {
-    title: '¿Qué es el portal de API’s Dominicano?',
+    title: '¿Qué es el portal de APIs Dominicano?',
     info: `Bienvenido al nuevo Portal de APIs del del Estado Dominicano, nuestra ventanilla única para interfaces de programación de aplicaciones (API). Le recomendamos que utilice estas API, que proporcionan una gran cantidad de datos e información gubernamentales, para crear nuevas aplicaciones y servicios para los dominicanos. Puedes consultar con regularidad a medida que continuamos agregando más API a la portal.`,
   },
   loginForm: {
