@@ -25,7 +25,7 @@ export default function HeaderMenu() {
     {
       label: t.header.menu.github,
 
-      path: 'https://github.com/opticrd/',
+      path: 'https://github.com/ogticrd/',
       external: true,
     },
   ]
